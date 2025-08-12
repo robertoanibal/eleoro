@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eleoro | AI‑Driven Marketing & Data Innovation</title>
+  <!-- Open source fonts similar to Datavant -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-pacXY3CzvNlC1XhGT66lvF7sn1eAOlaOiWK5P3E2jzAGg4A+iv2MSJt8HcJViS7+2JGnVu+vlEec1yKmzUJ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Announcement bar at the very top -->
+  <div class="announcement-bar">
+    <p>New: AI‑powered marketing solutions now available</p>
+  </div>
+  <!-- Request bar for quick actions -->
+  <div class="request-bar">
+    <div class="container">
+      <a href="contact.html" class="request-link">Book a Consultation</a>
+      <a href="#services" class="request-link">Explore Services</a>
+      <!-- Link to the About section within this page rather than a separate page -->
+      <a href="#about-preview" class="request-link">Our Story</a>
+    </div>
+  </div>
+  <!-- Navigation bar -->
+  <nav>
+    <div class="container nav-container">
+      <!-- Make the logo clickable so users can return to the home page from any page -->
+      <a href="index.html" class="logo"><span class="accent-letter">e</span>leoro</a>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <!-- Rename the Services toggle to Capabilities.  This aligns with Datavant’s menu wording and
+               succinctly describes the offerings. The dropdown will still link to the services section -->
+          <!-- Use a dummy href on the dropdown toggle to prevent navigation when clicked.  The
+               dropdown content appears on hover via CSS. -->
+          <a href="#" class="dropdown-toggle" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <!--
+                Make each capability item fully clickable by wrapping the entire
+                content in an anchor.  This improves usability on both desktop and
+                mobile.  The inner <h4> and <p> elements inherit the text colour.
+              -->
+              <a href="ai-automation.html" class="dropdown-item">
+                <h4>AI &amp; Automation</h4>
+                <p>Generative agents, decisioning frameworks.</p>
+              </a>
+              <a href="platform-integration.html" class="dropdown-item">
+                <h4>Platform Integration</h4>
+                <p>CRM/ESP and CDP implementations.</p>
+              </a>
+              <a href="data-platforms.html" class="dropdown-item">
+                <h4>Data Platforms</h4>
+                <p>CDP deployment &amp; identity resolution.</p>
+              </a>
+              <a href="crm-esp.html" class="dropdown-item">
+                <h4>CRM &amp; ESP</h4>
+                <p>Migrate and modernise marketing clouds.</p>
+              </a>
+              <a href="campaign-ops.html" class="dropdown-item">
+                <h4>Campaign Operations</h4>
+                <p>Journey design &amp; execution at scale.</p>
+              </a>
+              <a href="architecture.html" class="dropdown-item">
+                <h4>Architecture</h4>
+                <p>APIs, microservices &amp; connectors.</p>
+              </a>
+              <a href="analytics.html" class="dropdown-item">
+                <h4>Analytics</h4>
+                <p>Dashboards, attribution &amp; insights.</p>
+              </a>
+              <a href="training.html" class="dropdown-item">
+                <h4>Training &amp; Adoption</h4>
+                <p>Enablement programmes and change management.</p>
+              </a>
+              <a href="consulting.html" class="dropdown-item">
+                <h4>Consulting</h4>
+                <p>Enterprise strategy &amp; advisory.</p>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="#about-preview">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="container hero-container reveal">
+      <div class="hero-text">
+        <h1><span class="accent-letter">e</span>leoro</h1>
+        <h2>Building AI‑powered marketing ecosystems</h2>
+        <p>
+          Transforming marketing begins with a bold vision and the right technology. At eleoro, we lead the way
+          by architecting cutting‑edge data pipelines, deploying customer data platforms, and creating autonomous
+          AI agents that scale your operations. Experience how everything connects and integrates seamlessly.
+        </p>
+        <p>
+          Discover our AI‑driven approach to accelerate growth and operational efficiency. Scroll down to explore
+          our roadmap from foundational audits to continuous optimisation.
+        </p>
+        <a href="#connectivity" class="cta-btn">See how it connects</a>
+      </div>
+      <div class="hero-visual">
+        <!-- Placeholder image for hero visual; replace src with your own image -->
+        <img src="images/hero-placeholder.jpg" alt="Hero visual placeholder">
+        <!-- Animated shapes overlay -->
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+      </div>
+    </div>
+  </header>
+  <!-- Connectivity Section -->
+  <section id="connectivity" class="connectivity-section">
+    <div class="container">
+      <h2 class="section-title">From Audit to Adoption</h2>
+      <p class="section-intro">Our engagements build on one another to create a seamless journey. We start by assessing your current state and progressively connect data, platforms and intelligence until your teams can move fast and confidently.</p>
+      <!-- Roadmap: horizontally aligned steps that expand on hover -->
+      <div class="roadmap reveal">
+        <div class="roadmap-step" data-step="1" data-link="#">
+          <h3>Audit &amp; Strategy</h3>
+          <p>Assess your martech stack, data flows and processes to uncover gaps and design a clear roadmap.</p>
+        </div>
+        <div class="roadmap-step" data-step="2" data-link="#">
+          <h3>CDP Deployment</h3>
+          <!-- Removed specific platform names to maintain a vendor‑agnostic description -->
+          <p>Deploy a customer data platform to unify behavioural, transactional and engagement data.</p>
+        </div>
+        <div class="roadmap-step" data-step="3" data-link="#">
+          <h3>CRM/ESP Migration</h3>
+          <!-- Simplify description and remove brand references -->
+          <p>Seamlessly migrate from legacy platforms to modern customer relationship and messaging systems.</p>
+        </div>
+        <div class="roadmap-step" data-step="4" data-link="#">
+          <h3>AI Content &amp; Decisioning</h3>
+          <p>Develop generative content pipelines and AI decisioning frameworks that personalise offers and channels in real time.</p>
+        </div>
+        <div class="roadmap-step" data-step="5" data-link="#">
+          <h3>AI Analytics &amp; Reporting</h3>
+          <p>Implement dashboards, attribution models and predictive metrics that surface actionable insights using machine learning.</p>
+        </div>
+        <div class="roadmap-step" data-step="6" data-link="#">
+          <h3>Continuous Testing</h3>
+          <p>Automate experimentation to iterate creatives, flows and triggers - learning which experiences resonate best.</p>
+        </div>
+        <div class="roadmap-step" data-step="7" data-link="#">
+          <h3>User Onboarding &amp; Growth</h3>
+          <p>Design tailored onboarding and growth programmes that leverage everything learned to drive adoption and retention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Data & AI Network Section -->
+  <section id="data-network" class="network-section reveal">
+    <div class="container">
+      <h2 class="section-title">Connecting Customer Data &amp; AI</h2>
+      <p class="section-intro">eleoro sits at the centre of your marketing universe. Unified data flows into autonomous systems, powering personalised experiences and producing actionable insights.</p>
+      <div class="data-network">
+        <!-- Placeholder: the graphic will be designed separately -->
+        <p>Graphic placeholder - to be designed separately.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Services Preview Section -->
+  <section id="services" class="services-preview-section">
+    <div class="container">
+      <h2 class="section-title">Our Capabilities</h2>
+      <p class="section-intro">Explore how we can help you transform marketing operations and deliver impactful experiences at scale.</p>
+      <div class="services-list">
+        <a href="ai-automation.html" class="service-item reveal" id="service-ai">
+          <h3>AI &amp; Automation</h3>
+          <p>Harness generative AI and orchestration tools to create, decide and act faster.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="platform-integration.html" class="service-item reveal" id="service-platform">
+          <h3>Platform Integration</h3>
+          <p>Connect your marketing cloud, CRM and CDP for unified campaigns.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="data-platforms.html" class="service-item reveal" id="service-data">
+          <h3>Data Platforms</h3>
+          <p>Deploy CDPs and build identity graphs that power segmentation.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="crm-esp.html" class="service-item reveal" id="service-crm">
+          <h3>CRM &amp; ESP</h3>
+          <p>Migrate and upgrade legacy CRM and messaging platforms to modern, flexible solutions.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="campaign-ops.html" class="service-item reveal" id="service-campaign">
+          <h3>Campaign Ops</h3>
+          <p>Design journey canvases and campaigns across email, SMS and ads.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="architecture.html" class="service-item reveal" id="service-architecture">
+          <h3>Architecture</h3>
+          <p>Build APIs, microservices and integrations for flexible data flows.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="analytics.html" class="service-item reveal" id="service-analytics">
+          <h3>Analytics</h3>
+          <p>Create dashboards, attribution models and predictive insights.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="training.html" class="service-item reveal" id="service-training">
+          <h3>Training &amp; Adoption</h3>
+          <p>Enable your teams with documentation, workshops and mentoring.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="consulting.html" class="service-item reveal" id="service-consulting">
+          <h3>Consulting</h3>
+          <p>Strategic advisory for enterprise martech and operations.</p>
+          <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- About Section (brief on home) -->
+  <section id="about-preview" class="about-preview-section reveal">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <!--
+        Bring the about content into the main page.  These paragraphs are adapted
+        from the old about.html file.  Feel free to adjust the copy in the
+        future; the paragraphs will wrap gracefully within the container.
+      -->
+      <p class="section-intro">eleoro was founded to bridge the gap between marketing, technology and data. With over 15 years of experience across marketing technology, data architecture and campaign operations, our founder has designed enterprise martech stacks, unified customer data and launched campaigns reaching millions of customers.</p>
+      <p>We believe the future of marketing lies in connecting every piece of your ecosystem - people, processes, data and platforms - and supercharging it with artificial intelligence. Our mission is to help businesses of all sizes leverage the right technology to build smarter marketing programmes that learn and improve over time.</p>
+      <p>From strategy and architecture to implementation and training, we’re with you every step of the way. Let’s build something extraordinary together.</p>
+    </div>
+  </section>
+  <!-- Contact CTA Section -->
+  <section id="contact-cta" class="contact-cta-section reveal">
+    <div class="container">
+      <h2 class="section-title">Ready to Transform?</h2>
+      <p class="section-intro">We’d love to discuss how we can help you build smarter marketing programmes. Reach out for a consultation.</p>
+      <a href="contact.html" class="cta-btn">Contact Us</a>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4><span class="accent-letter">e</span>leoro</h4>
+        <p>Empowering businesses to connect data, platforms and AI to drive meaningful growth.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#connectivity">How It Works</a></li>
+          <li><a href="#services">Capabilities</a></li>
+          <li><a href="#about-preview">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> eleoro. All rights reserved.
+    </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    // Update footer year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

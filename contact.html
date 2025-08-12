@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | eleoro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-pacXY3CzvNlC1XhGT66lvF7sn1eAOlaOiWK5P3E2jzAGg4A+iv2MSJt8HcJViS7+2JGnVu+vlEec1yKmzUJ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><span class="accent-letter">e</span>leoro</a>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <!-- Use a dummy href to prevent navigation on click; the menu opens on hover via CSS -->
+          <a href="#" class="dropdown-toggle" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="ai-automation.html" class="dropdown-item">
+                <h4>AI &amp; Automation</h4>
+                <p>Generative agents, decisioning frameworks.</p>
+              </a>
+              <a href="platform-integration.html" class="dropdown-item">
+                <h4>Platform Integration</h4>
+                <p>CRM/ESP and CDP implementations.</p>
+              </a>
+              <a href="data-platforms.html" class="dropdown-item">
+                <h4>Data Platforms</h4>
+                <p>CDP deployment &amp; identity resolution.</p>
+              </a>
+              <a href="crm-esp.html" class="dropdown-item">
+                <h4>CRM &amp; ESP</h4>
+                <p>Migrate and modernise marketing clouds.</p>
+              </a>
+              <a href="campaign-ops.html" class="dropdown-item">
+                <h4>Campaign Operations</h4>
+                <p>Journey design &amp; execution at scale.</p>
+              </a>
+              <a href="architecture.html" class="dropdown-item">
+                <h4>Architecture</h4>
+                <p>APIs, microservices &amp; connectors.</p>
+              </a>
+              <a href="analytics.html" class="dropdown-item">
+                <h4>Analytics</h4>
+                <p>Dashboards, attribution &amp; insights.</p>
+              </a>
+              <a href="training.html" class="dropdown-item">
+                <h4>Training &amp; Adoption</h4>
+                <p>Enablement programmes and change management.</p>
+              </a>
+              <a href="consulting.html" class="dropdown-item">
+                <h4>Consulting</h4>
+                <p>Enterprise strategy &amp; advisory.</p>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="index.html#about-preview">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <section class="contact-page">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Tell us about your project and we’ll get back to you shortly.</p>
+      <div class="contact-layout">
+        <div class="contact-form">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Message</button>
+            <p class="form-message"></p>
+          </form>
+        </div>
+        <div class="booking">
+          <h2>Book a Meeting</h2>
+          <p>Prefer to chat live? Use the link below to schedule a call at a time that works for you.</p>
+          <!-- Placeholder booking link; replace with your calendar link -->
+          <a href="#" class="booking-link">Schedule via Google Calendar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4><span class="accent-letter">e</span>leoro</h4>
+        <p>Empowering businesses to connect data, platforms and AI to drive meaningful growth.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#connectivity">How It Works</a></li>
+          <li><a href="index.html#services">Capabilities</a></li>
+          <li><a href="index.html#about-preview">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> eleoro. All rights reserved.
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

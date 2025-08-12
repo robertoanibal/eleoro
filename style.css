@@ -1,0 +1,1134 @@
+/*
+ * Global stylesheet for the eleoro website.
+ *
+ * This file defines a neutral base style inspired by modern B2B brands like Datavant. A
+ * simple colour palette and open‑source fonts create a professional feel while
+ * leaving room for experimentation. All key colours and fonts are defined as CSS
+ * variables at the root so you can quickly generate and explore new themes.
+ */
+
+/* Root variables for colours and typography */
+:root {
+  /* Primary palette (dark mode): adjust these values to explore different colour schemes. The site
+     uses a dark grey background throughout, with subtle variations for content surfaces and
+     accents. */
+  --color-primary: #e6e6e6;     /* Main text colour on dark backgrounds */
+  --color-secondary: #a3a3a3;   /* Secondary text colour */
+  --color-accent: #00bfa5;      /* Teal accent colour for buttons and highlights */
+  /* Dark mode palette: adjust these values to explore different colour schemes. */
+  --color-light: #1b1b1b;       /* Base background colour */
+  --color-dark: #0c0c0c;        /* Darker backgrounds (footer, nav) */
+  --color-surface: #242424;     /* Surface colour for cards and forms */
+  --color-notice: #004d44;      /* Announcement bar background */
+  --color-request: #161616;     /* Request bar background */
+  --color-border: #333333;      /* Border lines on dark backgrounds */
+
+  /* Typography: using open‑source fonts similar to Datavant */
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Spacing units */
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --nav-height: 60px;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-primary);
+  background-color: var(--color-light);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Global link hover styling.  Underlines and colour shifts provide subtle feedback without
+   overwhelming the dark palette. */
+/* Anchor hover: apply colour and underline to interactive links except the site logo */
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Remove underlines on hover for navigation links in the capabilities menu and
+   the capabilities cards. These elements change colour or border instead of
+   underlining. */
+.nav-links li a:hover,
+.dropdown-item:hover,
+.service-item:hover,
+.service-item:hover .read-more {
+  text-decoration: none;
+}
+.logo:hover {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+/* Images (or containers with background images) slightly scale on hover when they are
+   wrapped in anchor tags.  This effect applies to service cards and hero visuals. */
+a img:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Announcement bar */
+.announcement-bar {
+  background: var(--color-notice);
+  color: var(--color-primary);
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Request bar */
+.request-bar {
+  background: var(--color-request);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.85rem;
+}
+.request-bar .container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  padding: 8px 0;
+}
+.request-bar .request-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.request-bar .request-link:hover {
+  color: #004e48;
+}
+
+/* Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 999;
+}
+
+/* Darken the nav and add a subtle shadow when the page scrolls */
+nav.scrolled {
+  background: var(--color-dark);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: var(--font-heading);
+  /* Slightly lighter weight for a cleaner, contemporary feel */
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+.accent-letter {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+.nav-links li a {
+  font-family: var(--font-heading);
+  /* Use a lighter font weight for navigation links to mimic Datavant’s airy typography */
+  font-weight: 400;
+  color: var(--color-primary);
+  /* Increase padding on navigation links for better spacing */
+  padding: 10px 14px;
+  transition: color 0.2s ease;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--color-accent);
+}
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  /* Center the capabilities dropdown beneath the nav so it doesn’t run off the
+     screen on either side.  Use clamp to constrain the width between 600px
+     and 900px or 90% of the viewport. */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(600px, 90vw, 900px);
+  padding: var(--spacing-md);
+  background: var(--color-light);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  display: none;
+  z-index: 998;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+/* Each capability item in the dropdown is an anchor.  Make it block‑level
+   with padding, rounded corners and a subtle hover. */
+.dropdown-item {
+  display: block;
+  /* Increase padding in dropdown items for consistent spacing */
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.dropdown-item:hover {
+  background: var(--color-request);
+}
+.dropdown-item h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  /* Use medium weight for dropdown headings to align with lighter overall typography */
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.dropdown-item p {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  margin-bottom: 6px;
+}
+/* Remove styling for nested links in dropdown items because the entire item is an anchor */
+
+/* Hamburger menu for mobile */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+.burger span {
+  width: 25px;
+  height: 3px;
+  background: var(--color-primary);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: -100%;
+    flex-direction: column;
+    background: var(--color-light);
+    width: 100%;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    transition: left 0.3s ease;
+  }
+  .nav-links.open {
+    left: 0;
+  }
+  .burger {
+    display: flex;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: none; /* disable hover on mobile */
+  }
+  .dropdown .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+  .dropdown .dropdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero section */
+.hero {
+  /* Dark gradient for the hero. Use two close shades to create depth on dark mode. */
+  background: linear-gradient(135deg, #1f1f1f, #272727);
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+  /* Increase the height of the hero so there is more room for content on larger screens */
+  /* Increase the hero height to provide more breathing room for the expanded
+     heading and content. */
+  min-height: 80vh;
+}
+.hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.hero-text {
+  flex: 1 1 500px;
+}
+.hero-text h1 {
+  font-family: var(--font-heading);
+  /* Increase the heading size to create more impact on larger screens */
+  font-size: 4rem;
+  /* Reduce heading weight to improve balance */
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+.hero-text h2 {
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.hero-text p {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+  max-width: 600px;
+  font-size: 1.15rem;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.cta-btn:hover {
+  background: #005f58;
+  transform: translateY(-2px);
+}
+.cta-btn.secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+.cta-btn.secondary:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+.hero-visual {
+  flex: 1 1 400px;
+  position: relative;
+  min-height: 300px;
+}
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+/* Animated shapes overlay on hero visual */
+.shape {
+  position: absolute;
+  background: var(--color-accent);
+  opacity: 0.2;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+.shape1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 70%;
+}
+.shape2 {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 80%;
+  animation-delay: 2s;
+}
+.shape3 {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  left: 60%;
+  animation-delay: 4s;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* Section titles and intros */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+}
+.section-intro {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-lg);
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Connectivity section */
+.connectivity-section {
+  padding: var(--spacing-lg) 0;
+  /* Use the surface colour for the connectivity section so the network graphic
+     stands out against the page background */
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.connectivity-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+.connectivity-steps .step {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.connectivity-steps .step span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.connectivity-graphic {
+  text-align: center;
+  color: var(--color-secondary);
+  font-style: italic;
+}
+
+/* Services preview section */
+.services-preview-section {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+}
+/* Services preview list on the homepage.  Replace the older grid layout with a two‑column
+   arrangement similar to Datavant’s “Who we serve” section.  Each item has a subtle
+   hover effect and links to a dedicated service page. */
+.services-list {
+  display: grid;
+  /* Default to a single column on small screens; we'll override to two columns on larger screens */
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+.service-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.service-item p {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+.service-item .read-more {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+.service-item .read-more i {
+  transition: transform 0.2s ease;
+}
+.service-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  border-color: var(--color-accent);
+}
+.service-item:hover .read-more {
+  color: #009b8a;
+}
+.service-item:hover .read-more i {
+  transform: translateX(4px);
+}
+
+/* Roadmap styling */
+.roadmap {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-md);
+  /* Hide the native scrollbar; scrolling is handled programmatically */
+  overflow-x: hidden;
+  padding-bottom: var(--spacing-md);
+  position: relative;
+  /* Hide native scrollbars across browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+/* Hide scrollbars in WebKit browsers */
+.roadmap::-webkit-scrollbar {
+  display: none;
+}
+.roadmap-step {
+  /* Default width for each roadmap step; increases on hover */
+  flex: 1 0 200px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  /* Add extra padding on top and left to offset the numbered badge */
+  padding: 24px 24px 24px 44px;
+  position: relative;
+  cursor: pointer;
+  transition: flex-basis 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+.roadmap-step h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.roadmap-step p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+}
+.roadmap-step:hover {
+  /* Expand the width further on hover and highlight with a stronger shadow */
+  flex-basis: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  border-color: var(--color-accent);
+}
+.roadmap-step:hover p {
+  max-height: 200px;
+}
+.roadmap-step::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  /* Longer connecting line and lighter stroke for the roadmap */
+  width: 60px;
+  height: 2px;
+  background: rgba(0, 191, 165, 0.6);
+  transform: translateY(-50%);
+}
+.roadmap-step:last-child::after {
+  display: none;
+}
+
+/* Step numbers for the roadmap: show a numbered circle in the top‑left of each
+   roadmap card. The number is pulled from the data-step attribute on the
+   element. */
+.roadmap-step::before {
+  content: attr(data-step);
+  position: absolute;
+  /* Position the number inside the card */
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+/* Highlight a service card when navigated to via an anchor link.  The :target pseudo-class
+   matches the element whose id equals the URL fragment. */
+.service-item:target {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+  /* Offset scroll position so the card is not hidden beneath the sticky nav */
+  /* Increase scroll offset so that the targeted capability is fully visible below the sticky nav and request bar */
+  scroll-margin-top: 180px;
+}
+
+/* Larger screens: display the capabilities list in two columns similar to Datavant’s “who we serve” section. */
+@media (min-width: 992px) {
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* About preview & contact CTA sections */
+.about-preview-section,
+.contact-cta-section {
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.about-preview-section p,
+.contact-cta-section p {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-md);
+  color: var(--color-secondary);
+}
+
+/* Footer */
+footer {
+  background: var(--color-dark);
+  color: #ffffff;
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+}
+.footer-col {
+  flex: 1 1 220px;
+}
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+.footer-col p {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-bottom: var(--spacing-sm);
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col ul li a {
+  color: #cccccc;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+.footer-col ul li a:hover {
+  color: #ffffff;
+}
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+.social-icons a {
+  color: #cccccc;
+  font-size: 1.2rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.social-icons a:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: var(--spacing-md);
+  font-size: 0.8rem;
+  color: #aaaaaa;
+}
+
+/* Network section showing how customer data and AI connect around eleoro */
+.network-section {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+}
+.data-network {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-top: var(--spacing-lg);
+}
+.network-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.network-node {
+  position: absolute;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  /* Increase node size and roundness to echo Datavant’s network illustration */
+  border-radius: 9999px;
+  padding: 12px 18px;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.network-node.central {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-accent);
+  color: var(--color-dark);
+  font-weight: 600;
+  /* Make central node larger */
+  padding: 16px 32px;
+  border-color: var(--color-accent);
+  border-radius: 9999px;
+}
+.network-node:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+/* Tooltip for network nodes.  Show the data-info attribute above the node on hover. */
+.network-node::after {
+  content: attr(data-info);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.network-node:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Reveal animations
+   Elements with the `reveal` class will be invisible and slightly translated on load.
+   When the `active` class is added via JavaScript, they fade and slide into place.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+/* Network graph styling */
+.connectivity-graph {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: var(--spacing-lg);
+}
+.connectivity-graph svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.connectivity-graph line {
+  /* Use thinner, semi‑transparent lines for a lighter network look */
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+.connectivity-graph .node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+}
+.connectivity-graph .node:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.connectivity-graph .node::after {
+  content: attr(data-info);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+/* Redesigned data flow for the "From Audit to Adoption" section.  Instead of circles, each
+   deliverable is represented as a box connected by lines.  The flow uses absolute
+   positioning and a background SVG for connectors.  Hover a box to reveal a tooltip with
+   more details. */
+.connectivity-flow {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: var(--spacing-lg);
+}
+.connectivity-flow svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.connectivity-flow svg line {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  opacity: 0.5;
+}
+.flow-node {
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  text-align: center;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Ensure the flow nodes sit above the connecting lines so they remain visible */
+  z-index: 1;
+}
+.flow-node:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+.flow-node::after {
+  content: attr(data-info);
+  position: absolute;
+  left: 50%;
+  bottom: 110%;
+  transform: translateX(-50%);
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 220px;
+  text-align: left;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.flow-node:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.connectivity-graph .node:hover::after {
+  opacity: 1;
+}
+
+/* Service page styles */
+.service-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+.service-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  /* Reduce heading weight to align with lighter branding */
+  font-weight: 600;
+}
+.service-page .service-summary {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-lg);
+  text-align: center;
+  color: var(--color-secondary);
+}
+.service-page h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  /* Medium weight for subheadings */
+  font-weight: 500;
+}
+.service-page p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-secondary);
+  line-height: 1.7;
+}
+.service-page ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+}
+.service-page ul li {
+  margin-bottom: 6px;
+}
+
+/* Contact page layout */
+.contact-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+.contact-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+.contact-page p {
+  text-align: center;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+.contact-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+.contact-form {
+  flex: 1 1 480px;
+  /* Dark background for the contact form card */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-primary);
+  /* Use the base background for form fields to blend with the dark palette */
+  background: var(--color-light);
+}
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.contact-form button {
+  padding: 12px 24px;
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.contact-form button:hover {
+  background: #005f58;
+}
+.form-message {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  display: none;
+}
+.booking {
+  flex: 1 1 300px;
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.booking h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+.booking p {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+.booking .booking-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-accent);
+  color: #ffffff;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.booking .booking-link:hover {
+  background: #005f58;
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+  }
+  .hero-text,
+  .hero-visual {
+    flex: 1 1 100%;
+  }
+  .connectivity-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .connectivity-steps {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * About page styling
+ * Defines dark backgrounds and light text for the about page.  The content is
+ * centred within a container and uses the same spacing variables as the rest of
+ * the site.
+ */
+.about-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+.about-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.about-page p {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-sm);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Back link for service pages */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-accent);
+  transition: color 0.2s ease;
+}
+.back-link i {
+  font-size: 0.85rem;
+}
+.back-link:hover {
+  color: #009b8a;
+  text-decoration: underline;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI &amp; Automation | eleoro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-pacXY3CzvNlC1XhGT66lvF7sn1eAOlaOiWK5P3E2jzAGg4A+iv2MSJt8HcJViS7+2JGnVu+vlEec1yKmzUJ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><span class="accent-letter">e</span>leoro</a>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <!-- Use a dummy href to prevent navigation on click; the menu opens on hover via CSS -->
+          <a href="#" class="dropdown-toggle" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-grid">
+              <a href="ai-automation.html" class="dropdown-item">
+                <h4>AI &amp; Automation</h4>
+                <p>Generative agents, decisioning frameworks.</p>
+              </a>
+              <a href="platform-integration.html" class="dropdown-item">
+                <h4>Platform Integration</h4>
+                <p>CRM/ESP and CDP implementations.</p>
+              </a>
+              <a href="data-platforms.html" class="dropdown-item">
+                <h4>Data Platforms</h4>
+                <p>CDP deployment &amp; identity resolution.</p>
+              </a>
+              <a href="crm-esp.html" class="dropdown-item">
+                <h4>CRM &amp; ESP</h4>
+                <p>Migrate and modernise marketing clouds.</p>
+              </a>
+              <a href="campaign-ops.html" class="dropdown-item">
+                <h4>Campaign Operations</h4>
+                <p>Journey design &amp; execution at scale.</p>
+              </a>
+              <a href="architecture.html" class="dropdown-item">
+                <h4>Architecture</h4>
+                <p>APIs, microservices &amp; connectors.</p>
+              </a>
+              <a href="analytics.html" class="dropdown-item">
+                <h4>Analytics</h4>
+                <p>Dashboards, attribution &amp; insights.</p>
+              </a>
+              <a href="training.html" class="dropdown-item">
+                <h4>Training &amp; Adoption</h4>
+                <p>Enablement programmes and change management.</p>
+              </a>
+              <a href="consulting.html" class="dropdown-item">
+                <h4>Consulting</h4>
+                <p>Enterprise strategy &amp; advisory.</p>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li><a href="index.html#about-preview">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <section class="service-page">
+    <div class="container">
+      <h1>AI &amp; Automation</h1>
+      <p class="service-summary">Leverage artificial intelligence and automation to scale your marketing efforts. We build generative content pipelines, create decisioning frameworks and automate workflows across your stack.</p>
+      <a href="index.html#service-ai" class="back-link"><i class="fas fa-arrow-left"></i> Back to Capabilities</a>
+      <h2>What We Do</h2>
+      <p>Generative AI is transforming the way marketing teams create, test and optimise their messaging. At eleoro we develop custom GPT agents and content pipelines that generate subject lines, ad copy, SMS messages and chat responses on demand. We also design decisioning frameworks that utilise machine‑learning models to select the best variation for each audience and deliver it through the right channel at the right time.</p>
+      <p>Beyond content generation, we implement predictive models for lead scoring, churn risk, next‑best action and product affinity. These models help you prioritise resources and personalise experiences at scale. To ensure ongoing performance gains, our AI testing frameworks automatically experiment with creative, timing and channel combinations and learn what resonates with your customers.</p>
+      <p>Automation ties it all together. Using a combination of integration platforms and custom scripts, we orchestrate complex, cross‑system workflows that eliminate manual steps. From triggering journeys when a prospect downloads a white paper to updating scores and segments when a purchase is made, our automations keep your campaigns running smoothly.</p>
+      <h2>Key Benefits</h2>
+      <ul>
+        <li>Accelerate content production with generative AI</li>
+        <li>Improve targeting through predictive models and real‑time decisioning</li>
+        <li>Continuously optimise campaigns via automated experimentation</li>
+        <li>Reduce manual workload by orchestrating cross‑platform processes</li>
+      </ul>
+    </div>
+  </section>
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4><span class="accent-letter">e</span>leoro</h4>
+        <p>Empowering businesses to connect data, platforms and AI to drive meaningful growth.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+        <li><a href="index.html#services">Capabilities</a></li>
+        <li><a href="index.html#connectivity">How It Works</a></li>
+        <li><a href="index.html#about-preview">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year"></span> eleoro. All rights reserved.</div>
+  </footer>
+  <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
