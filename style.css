@@ -698,7 +698,6 @@ footer {
 .data-network {
   position: relative;
   width: 100%;
-  height: 400px;
   margin-top: var(--spacing-lg);
 }
 .network-lines {
@@ -1131,4 +1130,363 @@ footer {
 .back-link:hover {
   color: #009b8a;
   text-decoration: underline;
+}
+
+/* ===== Inline styles moved from index.html ===== */
+/* Moved from index.html: from_ai_to_adoption */
+.from-ai-to-adoption {
+  position: relative;
+  margin-top: 24px;
+  overflow-x: auto;
+}
+.from-ai-to-adoption .roadmap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 0;
+    min-width: 1100px;
+}
+.from-ai-to-adoption .roadmap-line {
+    position: absolute;
+    top: 60px;
+    left: 8%;
+    right: 8%;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 50%, #10b981 100%);
+    border-radius: 2px;
+    z-index: 1;
+}
+.from-ai-to-adoption .step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+.from-ai-to-adoption .step:hover { transform: translateY(-8px); }
+.from-ai-to-adoption .step:hover .step-node {
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.25);
+    border-color: #6366f1;
+}
+.from-ai-to-adoption .step:hover .step-badge {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+.from-ai-to-adoption .step-node {
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    border-radius: 20px;
+    border: 2px solid #6b7280;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.from-ai-to-adoption .step-node::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(79,70,229,.10) 0%, rgba(139,92,246,.10) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.from-ai-to-adoption .step:hover .step-node::before { opacity: 1; }
+.from-ai-to-adoption .step-badge {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: .9rem; color: #fff; margin-bottom: 6px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    box-shadow: 0 4px 12px rgba(79,70,229,.4);
+    transition: all .3s ease;
+}
+.from-ai-to-adoption .step-icon { font-size: 1.6rem; color: #e5e7eb; transition: all .3s ease; }
+.from-ai-to-adoption .step:hover .step-icon { color: #fff; transform: scale(1.08); }
+.from-ai-to-adoption .step-content { text-align: center; }
+.from-ai-to-adoption .step-title {
+    font-size: 1.05rem; font-weight: 600; color: var(--text-strong, #111827);
+    margin-bottom: 6px; line-height: 1.3;
+}
+/* Use a light-on-dark fallback if the site's theme uses dark text on light background */
+@media (prefers-color-scheme: dark) {
+  .from-ai-to-adoption .step-title { color: #fff; }
+}
+.from-ai-to-adoption .step-description {
+    font-size: .88rem; color: #6b7280; line-height: 1.35; font-weight: 400; max-width: 180px;
+}
+.from-ai-to-adoption .progress-indicator {
+    position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px;
+}
+.from-ai-to-adoption .progress-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; transition: all .3s ease;
+}
+.from-ai-to-adoption .progress-dot.active { background: #4f46e5; box-shadow: 0 0 10px rgba(79,70,229,.5); }
+
+@media (max-width: 900px) {
+  .from-ai-to-adoption .roadmap { flex-direction: column; align-items: center; min-width: auto; gap: 28px; }
+  .from-ai-to-adoption .roadmap-line { display: none; }
+  .from-ai-to-adoption .step { max-width: 320px; }
+  .from-ai-to-adoption .step-node { width: 140px; height: 140px; }
+}
+
+/* Moved from index.html: ai_ecosystem */
+400;500;600;700&display=swap');
+        
+        .ai-ecosystem-module {
+            padding: 3rem 2rem;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .ai-ecosystem-module .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+        
+        .ai-ecosystem-module .glow-teal {
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.4), 0 0 30px rgba(20, 184, 166, 0.2);
+        }
+        
+        .ai-ecosystem-module .glow-purple {
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.4), 0 0 30px rgba(147, 51, 234, 0.2);
+        }
+        
+        .ai-ecosystem-module .node-pulse {
+            animation: ai-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes ai-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        
+        .ai-ecosystem-module .floating {
+            animation: ai-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes ai-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .ai-ecosystem-module .text-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .ai-ecosystem-module .ecosystem-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+        
+        .ai-ecosystem-module .ai-header {
+            width: 100%;
+            max-width: 64rem;
+            margin: 0 auto 3rem auto;
+            height: 6rem;
+            border-radius: 1rem;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #60a5fa;
+        }
+        
+        .ai-ecosystem-module .ai-header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .ai-ecosystem-module .ai-header-icon {
+            font-size: 3rem;
+        }
+        
+        .ai-ecosystem-module .ai-header-title {
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .ai-ecosystem-module .ai-header-subtitle {
+            color: #bfdbfe;
+            font-size: 0.875rem;
+        }
+        
+        .ai-ecosystem-module .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .ai-ecosystem-module .ecosystem-grid {
+                gap: 1rem;
+                transform: scale(0.8);
+            }
+            
+            .ai-ecosystem-module .node {
+                width: 10rem;
+                height: 3rem;
+            }
+            
+            .ai-ecosystem-module .node-text {
+                font-size: 0.75rem;
+            }
+        }
+        
+        .ai-ecosystem-module .column-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .ai-ecosystem-module .node-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .ai-ecosystem-module .node {
+            width: 12rem;
+            height: 4rem;
+            margin: 0 auto;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid;
+        }
+        
+        .ai-ecosystem-module .node-teal {
+            background: linear-gradient(to bottom right, #0d9488, #1d4ed8);
+            border-color: #14b8a6;
+        }
+        
+        .ai-ecosystem-module .node-purple {
+            background: linear-gradient(to bottom right, #7c3aed, #ec4899);
+            border-color: #a855f7;
+        }
+        
+        .ai-ecosystem-module .node-green {
+            background: linear-gradient(to bottom right, #059669, #0d9488);
+            border-color: #10b981;
+        }
+        
+        .ai-ecosystem-module .node-text {
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+            padding: 0 0.75rem;
+        }
+        
+        .ai-ecosystem-module .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .ai-ecosystem-module .connection-line {
+            stroke: url(#gradient);
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+        }
+        
+        .ai-ecosystem-module .legend {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            flex-wrap: wrap;
+        }
+        
+        .ai-ecosystem-module .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ai-ecosystem-module .legend-dot {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+        }
+        
+        .ai-ecosystem-module .legend-text {
+            color: #d1d5db;
+        }
+        
+        .ai-ecosystem-module .legend-dot-teal {
+            background: linear-gradient(to bottom right, #0d9488, #1d4ed8);
+        }
+        
+        .ai-ecosystem-module .legend-dot-purple {
+            background: linear-gradient(to bottom right, #7c3aed, #ec4899);
+        }
+        
+        .ai-ecosystem-module .legend-dot-green {
+            background: linear-gradient(to bottom right, #059669, #0d9488);
+        }
+/* Adjustments: center legend items with their column and add spacing */
+.ai-ecosystem-module .legend-item {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.ai-ecosystem-module .legend-text {
+  text-align: center;
+}
+
+/* Ensure the AI ecosystem section has safe spacing below to prevent overlap */
+.ai-ecosystem-module {
+  margin-bottom: 60px; /* extra space below the module */
+  padding-bottom: 24px; /* guard against absolutely-positioned lines */
+  position: relative;
+  z-index: 0;
+}
+
+/* Floating schedule tab */
+.floating-tab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1000;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 12px 12px 0 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  transition: transform .2s ease, background .2s ease;
+}
+.floating-tab:hover {
+  text-decoration: none;
+  background: #009b8a;
+  transform: translateY(-2px);
 }
