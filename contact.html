@@ -71,32 +71,46 @@
       <p>Tell us about your project and we’ll get back to you shortly.</p>
       <div class="contact-layout">
         <div class="contact-form">
-          <form id="contact-form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
-            </div>
-            <button type="submit" class="cta-btn">Send Message</button>
-            <p class="form-message"></p>
-          </form>
+          <form id="contact-form" action="https://formspree.io/f/xpwlelbn" method="POST" autocomplete="off">
+  <!-- real fields -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required maxlength="120">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="_replyto" type="email" required maxlength="160">
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <input id="subject" name="subject" type="text" required maxlength="160">
+  </div>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" required maxlength="5000"></textarea>
+  </div>
+
+  <!-- where Formspree should send the email -->
+  <input type="hidden" name="_to" value="roberto@eleoro.com">
+  <!-- add reply-to & subject mapping -->
+  <input type="hidden" name="_subject" value="Website contact: {subject}">
+
+  <!-- honeypot -->
+  <div style="position:absolute;left:-9999px;" aria-hidden="true">
+    <label>Leave this field empty</label>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+  </div>
+
+  <button type="submit" class="cta-btn">Send Message</button>
+  <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+</form>
+
         </div>
         <div class="booking">
           <h2>Book a Meeting</h2>
           <p>Prefer to chat live? Use the link below to schedule a call at a time that works for you.</p>
           <!-- Placeholder booking link; replace with your calendar link -->
-          <a href="#" class="booking-link">Schedule via Google Calendar</a>
+          <a href="https://calendar.app.google/DFCpxMrYb4P7kCSY9" target="_blank" class="booking-link">Schedule via Google Calendar</a>
         </div>
       </div>
     </div>
@@ -125,5 +139,27 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  const form = document.getElementById('contact-form');
+  const msg = document.getElementById('form-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = 'Sending…';
+    try {
+      const formData = new FormData(form);
+      const res = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' }});
+      if (res.ok) {
+        form.reset();
+        msg.textContent = "Thanks! We'll get back to you shortly.";
+      } else {
+        msg.textContent = 'Something went wrong.';
+      }
+    } catch {
+      msg.textContent = 'Network error. Please try again in a minute.';
+    }
+  });
+</script>
+
 </body>
 </html>
