@@ -1490,3 +1490,10 @@ footer {
   background: #009b8a;
   transform: translateY(-2px);
 }
+
+
+@media screen and (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
