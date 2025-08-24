@@ -1529,3 +1529,6 @@ footer {
 /* Match ordered list spacing with unordered lists inside service pages */
 .service-page ul, .service-page ol { margin: 0 0 1rem 1.25rem; }
 .service-page ol { padding-left: 1.25rem; list-style-position: outside; }
+
+
+.fa-chevron-down { display:none !important; }
