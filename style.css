@@ -1497,3 +1497,35 @@ footer {
     display: none !important;
   }
 }
+
+
+/* Tooltips */
+.tip{position:relative; cursor:help; border-bottom:1px dotted currentColor; outline:0}
+.tip:focus{outline:2px solid rgba(0,0,0,.2); border-radius:4px}
+.tip::after{
+  content: attr(data-tip);
+  position:absolute; left:0; top:120%;
+  min-width:200px; max-width:320px;
+  background:#111; color:#fff; font-size:14px; line-height:1.35;
+  padding:8px 10px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.25);
+  opacity:0; transform:translateY(-6px); pointer-events:none; z-index:999;
+  transition:opacity .15s ease, transform .15s ease;
+  white-space:normal;
+}
+.tip:hover::after, .tip:focus::after, .tip:active::after{ opacity:1; transform:translateY(0); }
+@media (max-width: 600px){ .tip::after{ left:auto; right:0; } }
+
+
+/* Responsive Capabilities links */
+.capabilities-mobile { display:none; margin-left:16px; font-weight:600; }
+.capabilities-desktop { display:inline-flex; }
+
+@media (max-width: 1024px){
+  /* Tablet and below: show direct link, hide desktop dropdown toggle */
+  .capabilities-mobile { display:inline-flex; }
+  .capabilities-desktop { display:none; }
+}
+
+/* Match ordered list spacing with unordered lists inside service pages */
+.service-page ul, .service-page ol { margin: 0 0 1rem 1.25rem; }
+.service-page ol { padding-left: 1.25rem; list-style-position: outside; }

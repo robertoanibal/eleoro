@@ -7,8 +7,8 @@
 <title>eleoro | AI‑Driven Marketing &amp; Data Innovation</title>
 <!-- Open source fonts similar to Datavant -->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="style.css?v=0.1" rel="stylesheet"></link>
-<script src="https://kit.fontawesome.com/b632618dd6.js" crossorigin="anonymous"></script>
+<link href="style.css?v=0.2" rel="stylesheet"/>
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/b632618dd6.js"></script>
 </head>
 <body>
 <!-- Announcement bar at the very top -->
@@ -28,14 +28,14 @@
 <nav>
 <div class="container nav-container">
 <!-- Make the logo clickable so users can return to the home page from any page -->
-<a class="logo" href="index.html"><span class="accent-letter">e</span>leoro</a>
+<a class="logo" href="index.html"><span class="accent-letter">e</span>leoro</a><a class="capabilities-mobile" href="index.html#services">Capabilities</a>
 <ul class="nav-links">
 <li class="dropdown">
 <!-- Rename the Services toggle to Capabilities.  This aligns with Datavant’s menu wording and
                succinctly describes the offerings. The dropdown will still link to the services section -->
 <!-- Use a dummy href on the dropdown toggle to prevent navigation when clicked.  The
                dropdown content appears on hover via CSS. -->
-<a class="dropdown-toggle hide-mobile" href="#" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
+<a class="dropdown-toggle hide-mobile capabilities-desktop" href="#" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
 <div class="dropdown-menu">
 <div class="dropdown-grid">
 <!--
@@ -97,21 +97,13 @@
 <div class="container hero-container reveal">
 <div class="hero-text">
 <h1><span class="accent-letter">e</span>leoro</h1>
-<h2>Building AI‑powered marketing ecosystems</h2>
-<p>
-          Transforming marketing begins with a bold vision and the right technology. At <span class="accent-letter">e</span>leoro, we lead the way
-          by architecting cutting‑edge data pipelines, deploying customer data platforms, and creating autonomous
-          AI agents that scale your operations. Experience how everything connects and integrates seamlessly.
-        </p>
-<p>
-          Discover our AI‑driven approach to accelerate growth and operational efficiency. Scroll down to explore
-          our roadmap from foundational audits to continuous optimisation.
-        </p>
+<h2>Agent-assisted marketing you control</h2>
+<p>We build private, company-safe agents that assist your team and configure your stack; from customer data and automation to analytics.You move faster with less busywork.</p>
+<p>Agents propose safe, reviewable changes first (read-only<span class="tip" data-tip="Agents start with view access only. Write access comes later with approvals." tabindex="0"></span>, dry-run<span class="tip" data-tip="Show exactly what would change before anything actually changes." tabindex="0"></span> diffs<span class="tip" data-tip="Proposed changes in Git for human review before apply." tabindex="0"></span>), and you approve what gets applied. Your knowledge stays inside your company; nothing is used to train public models.</p>
 <a class="cta-btn hide-mobile" href="#services">See the capabilities we deliver</a>
 </div>
 <div class="hero-visual">
 <!-- Placeholder image for hero visual; replace src with your own image -->
-<img alt="Hero visual placeholder" src="images/hero-placeholder.jpg"/>
 <!-- Animated shapes overlay -->
 <div class="shape shape1"></div>
 <div class="shape shape2"></div>
@@ -122,9 +114,8 @@
 <!-- Connectivity Section -->
 <section class="connectivity-section hide-mobile" id="connectivity">
 <div class="container">
-
-<h2 class="section-title">From Audit to Adoption</h2>
-<p class="section-intro">Our engagements build on one another to create a seamless journey. We start by assessing your current state and progressively connect data, platforms and intelligence until your teams can move fast and confidently.</p><div class="from-ai-to-adoption"><div class="roadmap">
+<h2 class="section-title">From Audit to Agent-Assisted Adoption</h2>
+<p class="section-intro">We start by auditing your stack and mapping the data that powers marketing. Then we introduce private, company-safe agents that assist your team, generate reviewable changes, and help you adopt AI without disrupting day-to-day work.</p><div class="from-ai-to-adoption"><div class="roadmap">
 <div class="roadmap-line"></div>
 <div class="step" data-step="1">
 <div class="step-node">
@@ -133,7 +124,7 @@
 </div>
 <div class="step-content">
 <div class="step-title">Audit</div>
-<div class="step-description">Comprehensive review of current MarTech systems</div>
+<div class="step-description">Comprehensive review of current martech systems</div>
 </div>
 </div>
 <div class="step" data-step="2">
@@ -143,7 +134,7 @@
 </div>
 <div class="step-content">
 <div class="step-title">CDP Deployment</div>
-<div class="step-description">Implement Customer Data Platform for unified data</div>
+<div class="step-description">Implement a customer data platform for unified data</div>
 </div>
 </div>
 <div class="step" data-step="3">
@@ -152,8 +143,8 @@
 <div class="step-icon"><i class="fa-solid fa-share-from-square"></i></div>
 </div>
 <div class="step-content">
-<div class="step-title">CRM &amp; ESP Migration</div>
-<div class="step-description">Migrate to scalable systems like Salesforce, HubSpot, or Eloqua</div>
+<div class="step-title">CRM and ESP Migration</div>
+<div class="step-description">Migrate to scalable platforms as needed, with agents proposing safe, reviewable changes</div>
 </div>
 </div>
 <div class="step" data-step="4">
@@ -162,8 +153,8 @@
 <div class="step-icon"><i class="fa-solid fa-person-rays"></i></div>
 </div>
 <div class="step-content">
-<div class="step-title">AI Content &amp; Decisioning</div>
-<div class="step-description">Automate content creation and real-time decisioning with AI</div>
+<div class="step-title">AI Content and Decisioning</div>
+<div class="step-description">Automate content creation and real time decisioning with AI agents</div>
 </div>
 </div>
 <div class="step" data-step="5">
@@ -172,8 +163,8 @@
 <div class="step-icon"><i class="fa-solid fa-chart-column"></i></div>
 </div>
 <div class="step-content">
-<div class="step-title">AI Analytics &amp; Reporting</div>
-<div class="step-description">Build dashboards and predictive models powered by AI</div>
+<div class="step-title">AI Analytics and Reporting</div>
+<div class="step-description">Build dashboards and predictive models powered by AI agents</div>
 </div>
 </div>
 <div class="step" data-step="6">
@@ -183,7 +174,7 @@
 </div>
 <div class="step-content">
 <div class="step-title">Continuous Testing</div>
-<div class="step-description">Ongoing experimentation and optimization</div>
+<div class="step-description">Ongoing experimentation and optimization with guardrails</div>
 </div>
 </div>
 <div class="step" data-step="7">
@@ -193,7 +184,7 @@
 </div>
 <div class="step-content">
 <div class="step-title">User Onboarding</div>
-<div class="step-description">Seamless activation and adoption strategies</div>
+<div class="step-description">Seamless activation and adoption strategies with agent assisted workflows</div>
 </div>
 </div>
 <div class="progress-indicator" style="display: none;">
@@ -206,22 +197,20 @@
 <div class="progress-dot"></div>
 </div>
 </div></div>
-<!-- Roadmap: horizontally aligned steps that expand on hover -->
 </div>
 </section>
 <!-- Data & AI Network Section -->
 <section class="network-section reveal hide-mobile" id="data-network">
 <div class="container">
 <div class="data-network">
-<div class="ai-header-title"><h2 class="section-title" style="margin-top:0;">Connecting Customer Data &amp; AI</h2></div>
+<div class="ai-header-title"><h2 class="section-title" style="margin-top:0;">Connecting Customer Data and AI</h2></div>
 <!-- AI Ecosystem Infographic Module -->
 <div class="ai-ecosystem-module">
-
 <!-- AI Systems Header -->
 <div class="ai-header glow-blue node-pulse">
 <div class="ai-header-content">
 <div>
-<div class="ai-header-subtitle"><p class="section-intro" style="padding-top:40px;color:white;"><span class="accent-letter">e</span>leoro</a> sits at the centre of your marketing universe. Unified data flows into autonomous systems, powering personalised experiences and producing actionable insights.</p>
+<div class="ai-header-subtitle"><p class="section-intro" style="padding-top:40px;color:white;"><span class="accent-letter">e</span>leoro agents bridge your data warehouse, customer data platform, and marketing automation so profiles, audiences, and journeys stay in sync.</p>
 </div>
 </div>
 </div>
@@ -245,7 +234,7 @@
 <div class="node-text">CRM / ESP Systems</div>
 </div>
 <div class="node node-teal glow-teal floating" style="animation-delay: 1.5s;">
-<div class="node-text">3rd Party Vendors</div>
+<div class="node-text">Third Party Vendors</div>
 </div>
 </div>
 </div>
@@ -260,7 +249,7 @@
 <div class="node-text">Content Generation</div>
 </div>
 <div class="node node-purple glow-purple floating" style="animation-delay: 0.5s;">
-<div class="node-text">AI/ML Decisioning</div>
+<div class="node-text">AI and ML Decisioning</div>
 </div>
 <div class="node node-purple glow-purple floating" style="animation-delay: 1s;">
 <div class="node-text">Automated Campaigns</div>
@@ -304,47 +293,47 @@
 <div class="services-list">
 <a class="service-item reveal" href="ai-automation.html" id="service-ai">
 <h3>AI &amp; Automation</h3>
-<p>Harness generative AI and orchestration tools to create, decide and act faster.</p>
+<p>Private agents that assist humans, generate diffs<span class="tip" data-tip="Proposed changes in Git for human review before apply." tabindex="0"></span>, and accelerate day-to-day marketing work.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="platform-integration.html" id="service-platform">
 <h3>Platform Integration</h3>
-<p>Connect your marketing cloud, CRM and CDP for unified campaigns.</p>
+<p>Vendor-agnostic integration with agents that map data and propose configurations across your stack.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="data-platforms.html" id="service-data">
 <h3>Data Platforms</h3>
-<p>Deploy CDPs and build identity graphs that power segmentation.</p>
+<p>Agents help unify identities and propose CDP mappings tied to your business rules.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="crm-esp.html" id="service-crm">
 <h3>CRM &amp; ESP</h3>
-<p>Migrate and upgrade legacy CRM and messaging platforms to modern, flexible solutions.</p>
+<p>Agents build audiences and journeys with guardrails; you approve before launch.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="campaign-ops.html" id="service-campaign">
 <h3>Campaign Ops</h3>
-<p>Design journey canvases and campaigns across email, SMS and ads.</p>
+<p>From taxonomy to QA, agents standardize and preflight campaigns to reduce errors.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="architecture.html" id="service-architecture">
 <h3>Architecture</h3>
-<p>Build APIs, microservices and integrations for flexible data flows.</p>
+<p>Agents propose schemas, tests, and CI hooks so your data supports marketing use cases.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="analytics.html" id="service-analytics">
 <h3>Analytics</h3>
-<p>Create dashboards, attribution models and predictive insights.</p>
+<p>Define KPIs once; agents publish consistent scorecards for your lifecycle goals.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="training.html" id="service-training">
 <h3>Training &amp; Adoption</h3>
-<p>Enable your teams with documentation, workshops and mentoring.</p>
+<p>Hands-on workshops that equip marketers to work confidently with AI agents.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 <a class="service-item reveal" href="consulting.html" id="service-consulting">
 <h3>Consulting</h3>
-<p>Strategic advisory for enterprise martech and operations.</p>
+<p>Strategy, roadmaps, and governance to move from pilot to scaled agent operations.</p>
 <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
 </a>
 </div>
@@ -360,7 +349,7 @@
         future; the paragraphs will wrap gracefully within the container.
       -->
 <p class="section-intro"><span class="accent-letter">e</span>leoro was founded to bridge the gap between marketing, technology and data. With over 15 years of experience across marketing technology, data architecture and campaign operations, our founder has designed enterprise martech stacks, unified customer data and launched campaigns reaching millions of customers.</p>
-<p>We believe the future of marketing lies in connecting every piece of your ecosystem - people, processes, data and platforms - and supercharging it with artificial intelligence. Our mission is to help businesses of all sizes leverage the right technology to build smarter marketing programmes that learn and improve over time.</p>
+<p>Privacy first: your data, prompts, and embeddings<span class="tip" data-tip="Numeric representations of text that help agents find relevant documents quickly." tabindex="0"></span> never train public models. Agents run with least-privilege, start read-only<span class="tip" data-tip="Agents start with view access only. Write access comes later with approvals." tabindex="0"></span>, and generate dry-run<span class="tip" data-tip="Show exactly what would change before anything actually changes." tabindex="0"></span> change sets for approval.</p>
 <p>From strategy and architecture to implementation and training, we’re with you every step of the way. Let’s build something extraordinary together.</p>
 </div>
 </section>
@@ -377,7 +366,7 @@
 <div class="container footer-container">
 <div class="footer-col">
 <h4><span class="accent-letter">e</span>leoro</h4>
-<p>Empowering businesses to connect data,<br>platforms through AI to drive meaningful growth.</p>
+<p>Empowering businesses to connect data,<br/>platforms through AI to drive meaningful growth.</p>
 </div>
 <div class="footer-col">
 <h4>Explore</h4>
@@ -392,7 +381,7 @@
 <div class="footer-bottom">
       © <span id="year"></span> eleoro. All rights reserved.
     </div>
-    <a aria-label="Book a meeting" class="floating-tab" target="_blank" href="https://calendar.app.google/DFCpxMrYb4P7kCSY9">Book a free 15 mins consultation</a>
+<a aria-label="Book a meeting" class="floating-tab" href="https://calendar.app.google/DFCpxMrYb4P7kCSY9" target="_blank">Book a free 15 mins consultation</a>
 </footer>
 <!-- Scripts -->
 <script src="script.js"></script>
