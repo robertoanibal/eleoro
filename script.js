@@ -58,30 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Contact form submission handler */
-  const contactForm = document.querySelector('#contact-form');
-  if (contactForm) {
-    const messageEl = contactForm.querySelector('.form-message');
-    contactForm.addEventListener('submit', event => {
-      event.preventDefault();
-      const name = contactForm.querySelector('input[name="name"]').value.trim();
-      const email = contactForm.querySelector('input[name="email"]').value.trim();
-      const subject = contactForm.querySelector('input[name="subject"]').value.trim();
-      const message = contactForm.querySelector('textarea[name="message"]').value.trim();
-      if (!name || !email || !subject || !message) {
-        messageEl.textContent = 'Please fill in all fields before submitting.';
-        messageEl.style.display = 'block';
-        messageEl.style.color = 'crimson';
-        return;
-      }
-      // Show success message
-      messageEl.textContent = `Thank you, ${name}! Your message has been sent successfully. We will contact you soon.`;
-      messageEl.style.display = 'block';
-      messageEl.style.color = 'green';
-      // Reset the form fields
-      contactForm.reset();
-    });
-  }
+
 
   /* Reveal animation for elements as they enter the viewport.  Elements with the
      `reveal` class will animate into view the first time they are scrolled into the
