@@ -2,9 +2,40 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Campaign Operations | eleoro</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaign Operations & Workflow Design | eleoro</title>
+<link rel="canonical" href="https://eleoro.com/campaign-operations.html">
+<meta name="description" content="Standardize briefs, naming, QA, and approvals. Preflight checks catch issues before launch so teams move fast with confidence.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0f172a">
+
+<!-- Structured Data: Service + Breadcrumbs -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Campaign Operations & Workflow Design",
+  "serviceType": "Marketing operations",
+  "description": "A clear way to request, build, test, and ship campaigns with fewer errors.",
+  "provider": {"@type": "Organization","name": "eleoro","url": "https://eleoro.com/"},
+  "areaServed": "US",
+  "url": "https://eleoro.com/campaign-operations.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem","position": 1,"name": "Home","item": "https://eleoro.com/"},
+    {"@type": "ListItem","position": 2,"name": "Campaign Operations","item": "https://eleoro.com/campaign-operations.html"}
+  ]
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pacXY3CzvNlC1XhGT66lvF7sn1eAOlaOiWK5P3E2jzAGg4A+iv2MSJt8HcJViS7+2JGnVu+vlEec1yKmzUJ5lw==" referrerpolicy="no-referrer" rel="stylesheet">
 <link href="style.css" rel="stylesheet"/>
@@ -16,7 +47,7 @@
 <ul class="nav-links">
 <li class="dropdown">
 <!-- Use a dummy href to prevent navigation on click; the menu opens on hover via CSS -->
-<a class="dropdown-toggle" href="#" onclick="return false;">Capabilities <i class="fas fa-chevron-down"></i></a>
+<a class="dropdown-toggle" href="#" onclick="return false;">Capabilities</a>
 <div class="dropdown-menu">
 <div class="dropdown-grid">
 <a class="dropdown-item" href="ai-automation.html">
@@ -64,24 +95,35 @@
 <div class="burger"><span></span><span></span><span></span></div>
 </div>
 </nav>
+<!-- Campaign Operations & Workflow Design -->
 <section class="service-page">
-<div class="container">
-<h1>Campaign Operations &amp; Workflow Design</h1>
-<p class="service-summary">Standardize taxonomy, QA, and approvals. Agents preflight campaign settings and surface issues before launch.</p>
-<!-- Back link to return the user to the appropriate section on the home page -->
-<a class="back-link" href="index.html#service-campaign"><i class="fas fa-arrow-left"></i> Back to Capabilities</a>
-<h2>What We Do</h2><p>Agents assist humans  -  not replace them. They start read-only<span class="tip" tabindex="0" data-tip="Agents start with view access only. Write access comes later with approvals."></span>, learn your data model, and propose changes as dry-run<span class="tip" tabindex="0" data-tip="Show exactly what would change before anything actually changes."></span> diffs<span class="tip" tabindex="0" data-tip="Proposed changes in Git for human review before apply."></span> or pull requests. You review and approve; then agents apply and log changes.</p><h2>How It Works (Agent-Assisted)</h2><ol><li>Connect with least-privilege access (read-only<span class="tip" tabindex="0" data-tip="Agents start with view access only. Write access comes later with approvals."></span> first).</li><li>Map entities, events, and business rules.</li><li>Propose changes as diffs<span class="tip" tabindex="0" data-tip="Proposed changes in Git for human review before apply."></span>/PRs or SDK calls in dry-run<span class="tip" tabindex="0" data-tip="Show exactly what would change before anything actually changes."></span> mode.</li><li>You approve; agents apply and audit every change.</li></ol><h2>Privacy &amp; Safety</h2><ul><li>Your data, prompts, and embeddings<span class="tip" tabindex="0" data-tip="Numeric representations of text that help agents find relevant documents quickly."></span> never train public models.</li><li>Payload logging is off by default or sent to your SIEM<span class="tip" tabindex="0" data-tip="Your security logging system (e.g., Splunk, Datadog)."></span> under your retention.</li><li>RAG<span class="tip" tabindex="0" data-tip="Retrieval‑augmented generation: the model looks up your documents first, then answers."></span> first; fine-tuning only when justified and within your boundary.</li></ul><p>We’re vendor-agnostic. Whether it’s a CDP, a marketing automation platform, a CRM, or a data warehouse, agents connect the dots so audiences, journeys, and analytics stay in sync.</p>
-
-
-
-<h2>Key Benefits</h2>
-<ul>
-<li>Orchestrate campaigns across email, SMS, push and paid media</li>
-<li>Trigger journeys based on real‑time customer behaviour</li>
-<li>Experiment and optimise with built‑in testing frameworks</li>
-<li>Establish governance and processes for consistent execution</li>
-</ul>
-</div>
+  <div class="container">
+    <h1>Campaign Operations &amp; Workflow Design</h1>
+    <p class="service-summary">A clear way to request, build, test, and ship campaigns so your team moves fast and stays on brand.</p>
+    <a class="back-link" href="index.html#service-campaigns"><i class="fas fa-arrow-left"></i> Back to Capabilities</a>
+    <h2>What We Do</h2>
+    <p>We standardize briefs, naming, and approvals. Assistants preflight links, audiences, and content rules in a safe preview and flag issues before launch.</p>
+    <h2>How It Works</h2>
+    <ol>
+      <li>Map the current process and pain points.</li>
+      <li>Design the operating model and roles.</li>
+      <li>Set up automation, checklists, and scorecards.</li>
+      <li>Pilot with one team, refine, then roll out.</li>
+    </ol>
+    <h2>Privacy &amp; Safety</h2>
+    <ul>
+      <li>Access by role with required review steps</li>
+      <li>Automatic checks on links, audiences, and suppressions</li>
+      <li>Brand and compliance rules with audit trails</li>
+    </ul>
+    <h2>Key Benefits</h2>
+    <ul>
+      <li>Shorter cycle times</li>
+      <li>Fewer errors</li>
+      <li>Repeatable experiments with clear learnings</li>
+      <li>Better capacity planning</li>
+    </ul>
+  </div>
 </section>
 <footer>
 <div class="container footer-container">
