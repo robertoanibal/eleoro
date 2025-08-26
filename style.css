@@ -1212,10 +1212,6 @@ footer {
 .from-ai-to-adoption .step-icon { font-size: 1.6rem; color: #e5e7eb; transition: all .3s ease; }
 .from-ai-to-adoption .step:hover .step-icon { color: #fff; transform: scale(1.08); }
 .from-ai-to-adoption .step-content { text-align: center; }
-.from-ai-to-adoption .step-title {
-    font-size: 1.05rem; font-weight: 600; color: var(--text-strong, #111827);
-    margin-bottom: 6px; line-height: 1.3;
-}
 /* Use a light-on-dark fallback if the site's theme uses dark text on light background */
 @media (prefers-color-scheme: dark) {
   .from-ai-to-adoption .step-title { color: #fff; }
