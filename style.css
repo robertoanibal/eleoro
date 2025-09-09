@@ -644,6 +644,7 @@ footer {
 }
 .footer-col {
   flex: 1 1 220px;
+  text-align:center;
 }
 .footer-col h4 {
   font-family: var(--font-heading);
@@ -1323,9 +1324,6 @@ footer {
         }
         
         .ai-ecosystem-module .ecosystem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
             max-width: 72rem;
             margin: 0 auto;
         }
@@ -1337,8 +1335,7 @@ footer {
             }
             
             .ai-ecosystem-module .node {
-                width: 10rem;
-                height: 3rem;
+                width: 80%;
             }
             
             .ai-ecosystem-module .node-text {
@@ -1361,8 +1358,7 @@ footer {
         }
         
         .ai-ecosystem-module .node {
-            width: 12rem;
-            height: 4rem;
+            width: 80%;
             margin: 0 auto;
             border-radius: 0.75rem;
             display: flex;
@@ -1385,13 +1381,42 @@ footer {
             background: linear-gradient(to bottom right, #059669, #0d9488);
             border-color: #10b981;
         }
+
+        .ai-ecosystem-module .node-blue {
+            background: linear-gradient(to bottom right, #2563eb, #1e3a8a);
+            border-color: #3b82f6;
+        }
+
+        .ai-ecosystem-module .node-orange {
+            background: linear-gradient(to bottom right, #f97316, #c2410c);
+            border-color: #fb923c;
+        }
+
+        .ai-ecosystem-module .node-purple {
+            background: linear-gradient(to bottom right, #9333ea, #6b21a8);
+            border-color: #a855f7;
+        }
+
+        .ai-ecosystem-module .node-green {
+            background: linear-gradient(to bottom right, #22c55e, #166534);
+            border-color: #4ade80;
+        }
         
-        .ai-ecosystem-module .node-text {
+       .ai-ecosystem-module .node-text {
             color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
+            font-weight: 500;
+            font-size: 0.9rem; /* base size for body text */
             text-align: center;
-            padding: 0 0.75rem;
+            line-height: 1.4;
+            padding: 1rem 0.75rem; /* more breathing room */
+        }
+
+        .ai-ecosystem-module .node-text strong {
+            display: block;
+            font-size: 1.5rem; /* larger font for agent name */
+            font-weight: normal;
+            padding-bottom: 0.4rem; /* spacing under agent name */
+            border-bottom:solid 1px white;
         }
         
         .ai-ecosystem-module .connection-lines {
@@ -1528,3 +1553,25 @@ footer {
 
 
 .fas .fa-chevron-down { display:none !important; }
+
+
+/* Reveal effect */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.is-visible[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Optional: smooth height expansion when you also add data-accordion */
+[data-reveal][data-accordion] {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 500ms ease, opacity 400ms ease, transform 400ms ease;
+}
+.is-visible[data-reveal][data-accordion] {
+  /* max-height is set in JS to the element's scrollHeight */
+}
