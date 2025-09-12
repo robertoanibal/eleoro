@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
-    <div class="container nav-container">
-      <a href="index.html" class="logo"><span class="accent-letter">e</span>leoro</a>
-      <a class="capabilities-mobile" href="index.html#services">Capabilities</a>
+<nav>
+<div class="container nav-container">
+<!-- Make the logo clickable so users can return to the home page from any page -->
+<a class="logo" href="index.html"><span class="accent-letter">e</span>leoro</a>
+<a class="capabilities-mobile" href="index.html#services">AI Agents</a>
 <ul class="nav-links">
-<li><a class="dropdown-toggle hide-mobile capabilities-desktop" href="index.html#services">Capabilities</a></li>
-<li><a href="index.html#about-preview">About</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li><a class="dropdown-toggle hide-mobile capabilities-desktop" href="index.html#services">AI Agents</a></li>
 </ul>
-      <div class="burger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
+<div class="burger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</nav>
   <section class="contact-page">
     <div class="container">
       <h1>Contact Us</h1>
@@ -61,26 +62,18 @@
       </div>
     </div>
   </section>
-  <footer>
-    <div class="container footer-container">
-      <div class="footer-col">
-        <h4><span class="accent-letter">e</span>leoro</h4>
-        <p>Empowering organizations to harness data, platforms, and AI to drive meaningful growth.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="index.html#connectivity">How It Works</a></li>
-          <li><a href="index.html#services">Capabilities</a></li>
-          <li><a href="index.html#about-preview">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
+<footer>
+<div class="container footer-container">
+<div class="footer-col">
+<h4><span class="accent-letter">e</span>leoro</h4>
+<p>We empower businesses to turn everyday work into smarter processes and lasting growth with AI agents.</p>
+</div>
+</div>
+<div class="footer-bottom">
+      © <span id="year"></span> eleoro. All rights reserved.
     </div>
-    <div class="footer-bottom">
-      &copy; <span id="year"></span> eleoro. All rights reserved.
-    </div>
-  </footer>
+<a aria-label="Book a meeting" class="floating-tab" href="https://calendar.app.google/DFCpxMrYb4P7kCSY9" target="_blank">Book a free 15 mins consultation</a>
+</footer>
   <script src="script.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

@@ -41,7 +41,7 @@
 </head>
 <body>
 <!-- Request bar for quick actions -->
-<div class="request-bar">
+<div class="request-bar" style="display:none;">
 <div class="container">
 <a class="request-link" href="contact.html">Book a Consultation</a>
 <a class="request-link" href="#services">Custom AI Agents</a>
@@ -72,12 +72,237 @@
 <div class="container hero-container reveal">
 <div class="hero-text">
 <h1><span class="accent-letter">e</span>leoro</h1>
-<h2 style="font-size:28px;">Practical AI agents built for real business needs</h2>
-<p>Our Custom AI agents connect with the tools you already use, handle the routine work, update systems automatically, and help your business focus on driving growth, improving service, and making faster decisions.</p>
-<a class="cta-btn hide-mobile" href="#services">Discover how our AI agents simplify your work</a>
+<h2 style="font-size:24px;">Practical AI agents built for real business needs</h2>
+<p>Our AI agents connect to the tools you already use, take on routine work, keep systems up to date, and free your business to focus on growth, better service, and faster decisions.</p><p>We build on integration tools like Zapier, Workato, Make, and n8n, powered by leading models like OpenAI (chatGPT), Google Gemini, Anthropic Claude, and Meta Llama. We help you choose the right stack for speed, cost, privacy, and accuracy, then deliver a production-ready agent that automates real work end to end.</p>
+<br><a class="cta-btn" href="#services">Discover how our AI agents simplify your work</a>
 </div>
 <div class="hero-visual">
 <!-- Placeholder image for hero visual; replace src with your own image -->
+ <div class="ai-agents-hero" style="
+    --ink: #98FF98;
+    --muted: #6B7280;
+    --line: #98FF98;
+    --card: #e6e6e6;
+    --accent: #98FF98;
+    --accentStrong: #98FF98;
+    width: 580px;
+    height: 580px;
+    position: relative;
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+">
+    <style>
+        .ai-agents-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .ai-agents-hero .hub-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent)20, transparent 70%);
+            border-radius: 50%;
+            animation: ai-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes ai-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .ai-agents-hero .agent-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--card), #000);
+            border: 3px solid var(--accent);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(123, 227, 157, 0.3),
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .ai-agents-hero .agent-hub::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: conic-gradient(from 0deg, var(--accent), var(--accentStrong), var(--accent));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.4;
+            animation: ai-rotate 8s linear infinite;
+        }
+
+        @keyframes ai-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .ai-agents-hero .hub-icon {
+            width: 60px;
+            height: 60px;
+            fill: var(--accentStrong);
+        }
+
+        .ai-agents-hero .workflow-tile {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--card), #ffffff);
+            border: 2px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-agents-hero .tile-icon {
+            width: 36px;
+            height: 36px;
+            fill: var(--muted);
+        }
+
+        .ai-agents-hero .tile-1 { top: 80px; left: 50%; transform: translateX(-50%); }
+        .ai-agents-hero .tile-2 { top: 140px; right: 80px; }
+        .ai-agents-hero .tile-3 { bottom: 140px; right: 80px; }
+        .ai-agents-hero .tile-4 { bottom: 80px; left: 50%; transform: translateX(-50%); }
+        .ai-agents-hero .tile-5 { bottom: 140px; left: 80px; }
+        .ai-agents-hero .tile-6 { top: 140px; left: 80px; }
+
+        .ai-agents-hero .connection-line {
+            position: absolute;
+            stroke: var(--line);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 8, 4;
+            z-index: 1;
+        }
+
+        .ai-agents-hero .connection-flow {
+            position: absolute;
+            stroke: var(--accent);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 8, 4;
+            z-index: 2;
+            opacity: 0;
+            animation: ai-flowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes ai-flowPulse {
+            0%, 100% { opacity: 0; stroke-dashoffset: 0; }
+            50% { opacity: 0.8; stroke-dashoffset: -12; }
+        }
+    </style>
+    <!-- Background glow -->
+    <div class="hub-glow"></div>
+    
+    <!-- Connection lines SVG -->
+    <svg width="580" height="580" style="position: absolute; top: 0; left: 0;">
+        <!-- Base connection lines -->
+        <path class="connection-line" d="M 290 230 Q 290 120 290 120" marker-end="url(#arrowhead-gray)"/>
+        <path class="connection-line" d="M 350 270 Q 450 200 460 180" marker-end="url(#arrowhead-gray)"/>
+        <path class="connection-line" d="M 350 310 Q 450 380 460 400" marker-end="url(#arrowhead-gray)"/>
+        <path class="connection-line" d="M 290 350 Q 290 460 290 460" marker-end="url(#arrowhead-gray)"/>
+        <path class="connection-line" d="M 230 310 Q 130 380 120 400" marker-end="url(#arrowhead-gray)"/>
+        <path class="connection-line" d="M 230 270 Q 130 200 120 180" marker-end="url(#arrowhead-gray)"/>
+        
+        <!-- Animated flow lines -->
+        <path class="connection-flow" d="M 290 230 Q 290 120 290 120" marker-end="url(#arrowhead-mint)" style="animation-delay: 0s;"/>
+        <path class="connection-flow" d="M 350 270 Q 450 200 460 180" marker-end="url(#arrowhead-mint)" style="animation-delay: 0.5s;"/>
+        <path class="connection-flow" d="M 350 310 Q 450 380 460 400" marker-end="url(#arrowhead-mint)" style="animation-delay: 1s;"/>
+        <path class="connection-flow" d="M 290 350 Q 290 460 290 460" marker-end="url(#arrowhead-mint)" style="animation-delay: 1.5s;"/>
+        <path class="connection-flow" d="M 230 310 Q 130 380 120 400" marker-end="url(#arrowhead-mint)" style="animation-delay: 2s;"/>
+        <path class="connection-flow" d="M 230 270 Q 130 200 120 180" marker-end="url(#arrowhead-mint)" style="animation-delay: 2.5s;"/>
+        
+        <!-- Arrow markers -->
+        <defs>
+            <marker id="arrowhead-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#E5E7EB"/>
+            </marker>
+            <marker id="arrowhead-mint" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#7BE39D"/>
+            </marker>
+        </defs>
+    </svg>
+    
+    <!-- Central Agent Hub -->
+    <div class="agent-hub">
+        <svg class="hub-icon" viewBox="0 0 24 24">
+            <path d="M12,2A2,2 0 0,1 14,4V8A2,2 0 0,1 12,10A2,2 0 0,1 10,8V4A2,2 0 0,1 12,2M12,10.5C13.25,10.5 14.45,10.81 15.5,11.38L16.5,9.64C17.34,10.14 18.04,10.79 18.64,11.5L16.88,12.5C17.44,13.54 17.75,14.75 17.75,16H19.5C19.5,17.38 19.22,18.67 18.72,19.81L17,19.25C16.22,20.48 15.04,21.42 13.63,21.91L14,23.5C12.68,23.83 11.32,23.83 10,23.5L10.38,21.91C8.96,21.42 7.78,20.48 7,19.25L5.28,19.81C4.78,18.67 4.5,17.38 4.5,16H6.25C6.25,14.75 6.56,13.54 7.13,12.5L5.36,11.5C5.96,10.79 6.66,10.14 7.5,9.64L8.5,11.38C9.55,10.81 10.75,10.5 12,10.5M12,13A3,3 0 0,0 9,16A3,3 0 0,0 12,19A3,3 0 0,0 15,16A3,3 0 0,0 12,13Z"/>
+        </svg>
+    </div>
+    
+    <!-- Workflow Tiles -->
+    <!-- 1. Discover (Checklist) -->
+    <div class="workflow-tile tile-1">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+            <path d="M10.5,12.5L9,11L7.5,12.5L9,14L10.5,12.5M10.5,16.5L9,15L7.5,16.5L9,18L10.5,16.5M15,13H17V11H15V13M15,17H17V15H15V17Z"/>
+        </svg>
+    </div>
+    
+    <!-- 2. Connect (Hub with spokes) -->
+    <div class="workflow-tile tile-2">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M12,8.5L16.5,12L12,15.5L7.5,12L12,8.5M6,10.5V13.5L3,12L6,10.5M18,10.5L21,12L18,13.5V10.5M12,18A2,2 0 0,1 14,20A2,2 0 0,1 12,22A2,2 0 0,1 10,20A2,2 0 0,1 12,18Z"/>
+        </svg>
+    </div>
+    
+    <!-- 3. Configure (Sliders/Settings) -->
+    <div class="workflow-tile tile-3">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
+        </svg>
+    </div>
+    
+    <!-- 4. Automate (Gear/Process) -->
+    <div class="workflow-tile tile-4">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.22,15.05 2.27,14.78 2.46,14.63L4.57,12.97C4.53,12.65 4.5,12.33 4.5,12C4.5,11.67 4.53,11.34 4.57,11L2.46,9.37C2.27,9.22 2.22,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.78,8.95 21.73,9.22 21.54,9.37L19.43,11C19.47,11.34 19.5,11.67 19.5,12C19.5,12.33 19.47,12.65 19.43,12.97L21.54,14.63C21.73,14.78 21.78,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.03 19.05,18.95L16.56,17.94C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.64L7.85,15.61C8.62,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.64L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z"/>
+        </svg>
+    </div>
+    
+    <!-- 5. Measure (Analytics) -->
+    <div class="workflow-tile tile-5">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M22,21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M16,8H18V15H16V8M12,2H14V15H12V2M8,13H10V15H8V13M4,15H6V17H4V15Z"/>
+        </svg>
+    </div>
+    
+    <!-- 6. Scale (Upward trend) -->
+    <div class="workflow-tile tile-6">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+            <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
+        </svg>
+    </div>
+</div>
+
 <!-- Animated shapes overlay -->
 <div class="shape shape1"></div>
 <div class="shape shape2"></div>
@@ -174,7 +399,7 @@
 </div>
 </section>
 <!-- Data & AI Network Section -->
-<section class="network-section reveal hide-mobile" id="data-network">
+<section class="network-section reveal hide-mobile" id="data-network" style="display: none;">
 <div class="container">
 <div class="data-network">
 <div class="ai-header-title"><h2 class="section-title" style="margin-top:0;">AI Agents That Link It All Together</h2></div>
@@ -245,7 +470,7 @@
 <!-- Services Preview Section -->
 <section class="services-preview-section" id="services">
   <div class="container">
-    <h2 class="section-title">Your Essential AI Agents</h2>
+    <h2 class="section-title">Your essential AI Agents</h2>
     <p class="section-intro">These AI agents do the heavy lifting behind the scenes. They organize, automate, and optimize so your business can grow faster, serve customers better, and focus on what matters most.</p>
 
     <div class="services-list">
@@ -294,17 +519,13 @@
 
 
 <!-- About Section (brief on home) -->
-<section class="about-section reveal" id="about">
+<section class="about-preview-section reveal" id="about">
   <div class="container">
     <h2 class="section-title" style="margin-top:20px;">About <span class="accent-letter">e</span>leoro</h2>
     <p class="section-intro"><span class="accent-letter">e</span>leoro is led by a founder with 15+ years building marketing operations and data systems for well known tech companies. We learned what scales in the real world: clear processes, trustworthy data, and tools that help people work faster instead of replacing them.<br><br>Today’s AI lets us bring those lessons to everyday work. We build private AI agents that connect with the tools you already use, handle routine tasks, recommend next steps, and surface insights. You stay in control at every step, and nothing publishes without human approval.<br><br>Our approach is hands on. We start by understanding how your business works today, then introduce agents gradually so nothing breaks. The goal is outcomes you can feel: faster launches, fewer mistakes, clearer reporting, and more relevant customer experiences.</p>
 
-    <h2 class="section-title">How it works</h2>
-    <p class="section-intro">Our agents integrate seamlessly with popular tools like HubSpot, Klaviyo, Outlook, WhatsApp, Google, QuickBooks, Facebook, and TikTok. We customize each agent or workflow to use the right language model for your business needs, or connect through automation tools when complex processes span multiple systems. This approach lets your business get started quickly, optimize what you already have, and deliver results without building everything from scratch.</p>
-  </div>
+   </div>
 </section>
-
-
 
 <!-- Contact CTA Section -->
 <section class="contact-cta-section reveal" id="contact-cta">

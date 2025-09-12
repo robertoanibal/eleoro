@@ -52,7 +52,7 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-primary);
-  background-color: var(--color-light);
+  background-color: #000000;
 }
 
 a {
@@ -284,9 +284,8 @@ nav.scrolled {
 /* Hero section */
 .hero {
   /* Dark gradient for the hero. Use two close shades to create depth on dark mode. */
-  background: linear-gradient(135deg, #1f1f1f, #272727);
-  padding: var(--spacing-lg) 0;
-  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(155deg, #272727,  #000000 );
+  padding: var(--spacing-md) 0;
   /* Increase the height of the hero so there is more room for content on larger screens */
   /* Increase the hero height to provide more breathing room for the expanded
      heading and content. */
@@ -413,7 +412,7 @@ nav.scrolled {
   padding: var(--spacing-lg) 0;
   /* Use the surface colour for the connectivity section so the network graphic
      stands out against the page background */
-  background: var(--color-surface);
+  background: #000000;
   border-bottom: 1px solid var(--color-border);
 }
 .connectivity-steps {
@@ -453,7 +452,7 @@ nav.scrolled {
 /* Services preview section */
 .services-preview-section {
   padding: var(--spacing-lg) 0;
-  background: var(--color-light);
+  background: #000000;
   border-bottom: 1px solid var(--color-border);
 }
 /* Services preview list on the homepage.  Replace the older grid layout with a two‑column
@@ -620,8 +619,7 @@ nav.scrolled {
 .contact-cta-section {
   padding: var(--spacing-lg) 0;
   text-align: center;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  background: #000000;
 }
 .about-preview-section p,
 .contact-cta-section p {
