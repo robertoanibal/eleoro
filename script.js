@@ -103,4 +103,132 @@ document.addEventListener('DOMContentLoaded', () => {
       roadmap.scrollLeft = scrollRatio * maxScroll;
     });
   }
+  /* --------------------------------------
+   * Additional scripts migrated from index.html
+   *
+   * The following sections implement behaviour that
+   * was previously defined inline in the HTML. They
+   * update dynamic content such as the current year,
+   * position visual nodes in the hero network, generate
+   * the scrolling ticker, and manage the progress
+   * indicator for the AI adoption roadmap on smaller
+   * screens.
+   * -------------------------------------- */
+
+  // Set the current year in the footer
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  // Position satellite nodes around the central node in the network hub
+  function positionNodes() {
+    const container = document.querySelector('#agent-network-hub .network-container');
+    const nodes = document.querySelectorAll('#agent-network-hub .satellite-node');
+    if (!container || nodes.length === 0) return;
+    // Use 75% of the container's radius to leave space between nodes
+    const radius = (container.offsetWidth / 2) * 0.75;
+    nodes.forEach(node => {
+      const angleDeg = parseFloat(node.getAttribute('data-angle'));
+      if (Number.isNaN(angleDeg)) return;
+      // Convert degrees to radians; subtract 90° so 0° starts at the top
+      const angle = (angleDeg - 90) * Math.PI / 180;
+      const rect = node.getBoundingClientRect();
+      const nodeWidth = rect.width;
+      const nodeHeight = rect.height;
+      const x = container.clientWidth / 2 + radius * Math.cos(angle) - nodeWidth / 2;
+      const y = container.clientHeight / 2 + radius * Math.sin(angle) - nodeHeight / 2;
+      node.style.left = `${x}px`;
+      node.style.top = `${y}px`;
+    });
+  }
+  positionNodes();
+  window.addEventListener('resize', positionNodes);
+
+  // Generate ticker content with randomized phrases and styles
+  function initTicker() {
+    const wrapper = document.getElementById('eleoro-ticker-unique');
+    if (!wrapper) return;
+    wrapper.innerHTML = '';
+    const phrases = [
+      'Follow-up', 'Chat', 'Orders', 'Documentation', 'Integrations', 'Reports',
+      'Customer 360', 'Growth', 'Analytics', 'Automation', 'Data Sync', 'AI Agents'
+    ];
+    const styleClasses = [
+      'eleoro-style-heavy',
+      'eleoro-style-semi',
+      'eleoro-style-italic',
+      'eleoro-style-wide'
+    ];
+    // Durstenfeld shuffle
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    // Repeat the sequence twice for continuous scroll
+    for (let rep = 0; rep < 2; rep++) {
+      const shuffled = shuffle([...phrases]);
+      shuffled.forEach((text, idx) => {
+        const span = document.createElement('span');
+        span.classList.add('eleoro-ticker-item');
+        span.classList.add(styleClasses[idx % styleClasses.length]);
+        span.textContent = text;
+        wrapper.appendChild(span);
+      });
+    }
+  }
+  initTicker();
+
+  // Roadmap progress indicator for smaller screens
+  const roadmapContainer = document.querySelector('.from-ai-to-adoption .roadmap');
+  const progressIndicator = document.querySelector('.from-ai-to-adoption .progress-indicator');
+  const progressDots = document.querySelectorAll('.from-ai-to-adoption .progress-dot');
+  const steps = roadmapContainer ? roadmapContainer.querySelectorAll('.step') : [];
+  if (roadmapContainer && progressIndicator && progressDots.length === steps.length) {
+    // Show or hide the progress indicator based on viewport width
+    function toggleIndicator() {
+      if (window.innerWidth <= 900) {
+        progressIndicator.style.display = 'flex';
+      } else {
+        progressIndicator.style.display = 'none';
+      }
+    }
+    toggleIndicator();
+    window.addEventListener('resize', toggleIndicator);
+
+    // Update which dot is active based on scroll or element visibility
+    function updateProgress() {
+      if (window.innerWidth > 900) {
+        // Horizontal layout: compute index from scroll position
+        const maxScroll = roadmapContainer.scrollWidth - roadmapContainer.clientWidth;
+        if (maxScroll <= 0) return;
+        const ratio = roadmapContainer.scrollLeft / maxScroll;
+        const index = Math.round(ratio * (steps.length - 1));
+        progressDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      } else {
+        // Vertical layout: determine which step is nearest to the top portion of viewport
+        let activeIndex = 0;
+        steps.forEach((step, idx) => {
+          const rect = step.getBoundingClientRect();
+          const threshold = window.innerHeight * 0.4;
+          if (rect.top <= threshold) {
+            activeIndex = idx;
+          }
+        });
+        progressDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIndex);
+        });
+      }
+    }
+    roadmapContainer.addEventListener('scroll', updateProgress);
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  }
 });
+
+

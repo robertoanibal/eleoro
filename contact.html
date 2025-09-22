@@ -7,6 +7,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-pacXY3CzvNlC1XhGT66lvF7sn1eAOlaOiWK5P3E2jzAGg4A+iv2MSJt8HcJViS7+2JGnVu+vlEec1yKmzUJ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
+  <!-- Inline styles for dark theme and booking module layout -->
+  <style>
+    :root {
+      /* Colour palette consistent with eleoro agent pages */
+      --color-primary: #e6e6e6;
+      --color-secondary: #a3a3a3;
+      --color-accent: #98FF98;
+      --color-light: #000000;
+      --color-dark: #0c0c0c;
+      --color-surface: #242424;
+      --color-border: #333333;
+      --font-heading: 'Manrope', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    body {
+      margin: 0;
+      background-color: var(--color-light);
+      color: var(--color-primary);
+      font-family: var(--font-body);
+    }
+    /* Contact section */
+    .contact-page { padding: 3rem 0; }
+    .contact-page h1 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-accent); }
+    .contact-page p { color: var(--color-secondary); line-height: 1.6; }
+    /* Layout for booking and contact forms */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    /* Assign proportional widths: booking takes two thirds, contact takes one third on larger screens */
+    .contact-grid > .booking-module { flex: 2 1 0; }
+    .contact-grid > .contact-form { flex: 1 1 0; }
+    /* On small screens stack the sections */
+    @media (max-width: 768px) {
+      .contact-grid { flex-direction: column; }
+      .contact-grid > .booking-module,
+      .contact-grid > .contact-form {
+        flex: 1 1 100%;
+      }
+    }
+    /* Booking module styling */
+    .booking-module { background: var(--color-surface); padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.4); }
+    .booking-module h2 { font-family: var(--font-heading); color: var(--color-accent); margin-top: 0; }
+    .booking-module p { color: var(--color-secondary); margin-bottom: 1rem; }
+    .booking-module label { display: block; font-size: 0.875rem; color: var(--color-secondary); margin-bottom: 0.25rem; }
+    .booking-module input,
+    .booking-module textarea,
+    .booking-module select { width: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 6px; background: var(--color-light); color: var(--color-primary); border: 1px solid var(--color-border); font-family: var(--font-body); margin-bottom: 1rem; }
+    .booking-module textarea { resize: vertical; min-height: 80px; }
+    .booking-module .timeslots { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .booking-module .timeslot { padding: 0.5rem 0.75rem; border-radius: 6px; background: var(--color-light); color: var(--color-primary); border: 1px solid var(--color-border); cursor: pointer; font-size: 0.875rem; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+    .booking-module .timeslot:hover { background: var(--color-border); }
+    .booking-module .timeslot.selected { background: var(--color-accent); color: #000; box-shadow: 0 0 6px var(--color-accent); }
+    .booking-module button { background: var(--color-accent); color: #000; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+    .booking-module button:disabled { opacity: 0.6; cursor: default; }
+    .booking-module button:hover:not(:disabled) { background: #b2ffb2; }
+    /* Contact form styling */
+    .contact-form .form-group { margin-bottom: 1rem; }
+    .contact-form label { display: block; margin-bottom: 0.25rem; color: var(--color-secondary); font-size: 0.875rem; }
+    .contact-form input,
+    .contact-form textarea { width: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 6px; background: var(--color-light); color: var(--color-primary); border: 1px solid var(--color-border); font-family: var(--font-body); }
+    .contact-form textarea { resize: vertical; }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--color-secondary); }
+    .contact-form .cta-btn { background: var(--color-accent); color: #000; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+    .contact-form .cta-btn:hover { background: #b2ffb2; }
+    /* Navigation and footer styling */
+    nav, footer { background-color: var(--color-dark); color: var(--color-primary); }
+    nav a, footer a { color: var(--color-primary); }
+    .accent-letter { color: var(--color-accent); }
+  </style>
 </head>
 <body>
 <nav>
@@ -16,6 +88,8 @@
 <a class="capabilities-mobile" href="index.html#services">AI Agents</a>
 <ul class="nav-links">
 <li><a class="dropdown-toggle hide-mobile capabilities-desktop" href="index.html#services">AI Agents</a></li>
+<li><a href="index.html#pricing">Pricing</a></li>
+<li><a href="index.html#about">About</a></li>
 </ul>
 <div class="burger">
 <span></span>
@@ -28,36 +102,61 @@
     <div class="container">
       <h1>Contact Us</h1>
       <p>Tell us about your business and we’ll get back to you shortly.</p>
-      <div class="contact-layout">
-        <div class="contact-form">
-  <form id="contact-form" action="https://formspree.io/f/xpwlelbn" method="POST" autocomplete="off">
-  <!-- real fields -->
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" required maxlength="120">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required maxlength="160">
-  </div>
-  <div class="form-group">
-    <label for="subject">Subject</label>
-    <input id="subject" name="subject" type="text" required maxlength="160">
-  </div>
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="6" required maxlength="5000"></textarea>
-  </div>
-
-  <button type="submit" class="cta-btn">Send Message</button>
-</form>
-
+      <div class="contact-grid">
+        <!-- Booking module on the left for larger screens -->
+        <div class="booking-module">
+          <h2>Book a free consultation</h2>
+          <p style="text-align: left;">Select a weekday and time slot that works for you. Meetings are scheduled in 15‑minute blocks. Provide your details below, and we'll send a confirmation via email.</p>
+          <form id="booking-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="booking-name">Your Name<span style="color: var(--color-accent);"> *</span></label>
+              <input type="text" id="booking-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="booking-email">Your Email<span style="color: var(--color-accent);"> *</span></label>
+              <input type="email" id="booking-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="date-select">Select Date</label>
+              <select id="date-select"></select>
+            </div>
+            <div class="form-group">
+              <label>Available Time Slots</label>
+              <div class="timeslots" id="timeslots"></div>
+            </div>
+            <div class="form-group">
+              <label for="booking-reason">Reason for meeting & phone number</label>
+              <textarea id="booking-reason" placeholder="Project discussion, demo request, 910-000-0000, etc." required></textarea>
+            </div>
+            <div class="form-group">
+              <button id="book-button" type="button" disabled>Book Meeting</button>
+            </div>
+            <!-- Container to display booking response messages -->
+            <div id="booking-message" class="booking-message" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+          </form>
         </div>
-        <div class="booking">
-          <h2>Book a Meeting</h2>
-          <p>Prefer to chat live? Use the link below to schedule a call at a time that works for you.</p>
-          <!-- Placeholder booking link; replace with your calendar link -->
-          <a href="https://calendar.app.google/DFCpxMrYb4P7kCSY9" target="_blank" class="booking-link">Schedule via Google Calendar</a>
+        <!-- Contact form on the right -->
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+          <form id="contact-form" action="https://formspree.io/f/xpwlelbn" method="POST" autocomplete="off">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required maxlength="120">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required maxlength="160">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" required maxlength="160">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required maxlength="5000"></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Message</button>
+          </form>
         </div>
       </div>
     </div>
@@ -78,6 +177,224 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <!-- Booking module script. Configuration is defined at the top for easy editing. -->
+<script>
+  /*
+   * === Booking Configuration ===
+   */
+  const bookingConfig = {
+    weeksAhead: 2,
+    dailyTimeRanges: {
+      Mon: [ { start: '13:00', end: '17:00' } ],
+      Tue: [ { start: '13:00', end: '17:00' } ],
+      Wed: [ { start: '13:00', end: '17:00' } ],
+      Thu: [ { start: '13:00', end: '17:00' } ],
+      Fri: [ ],
+      Sat: [],
+      Sun: []
+    }
+  };
+
+  // Utility functions
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const fullDayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function formatDateDisplay(date) {
+    const dayName = fullDayNames[date.getDay()];
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${dayName}, ${month} ${day}, ${year}`;
+  }
+
+  function formatDateForApi(date) {
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  }
+
+  function formatTimeDisplay(time24) {
+    const [h, m] = time24.split(':').map(Number);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const hr12 = h % 12 || 12;
+    return `${hr12}:${m.toString().padStart(2,'0')} ${ampm}`;
+  }
+
+  // Generate weekday dates
+  function getWeekdayDates(startDate, weeksAhead) {
+    const dates = [];
+    const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    for (let i = 0; i < weeksAhead * 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const day = d.getDay();
+      if (day >= 1 && day <= 5) { dates.push(d); }
+    }
+    return dates;
+  }
+
+  // Generate 15-min slots
+  function generateTimeSlotsForDate(date) {
+    const dayAbbrev = dayNames[date.getDay()];
+    const ranges = bookingConfig.dailyTimeRanges[dayAbbrev];
+    const times = [];
+    if (!ranges || ranges.length === 0) return times;
+    ranges.forEach(range => {
+      const [startH, startM] = range.start.split(':').map(Number);
+      const [endH, endM] = range.end.split(':').map(Number);
+      let startMinutes = startH * 60 + startM;
+      const endMinutes = endH * 60 + endM;
+      while (startMinutes < endMinutes) {
+        const h = Math.floor(startMinutes / 60);
+        const m = startMinutes % 60;
+        const timeStr = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+        times.push(timeStr);
+        startMinutes += 15;
+      }
+    });
+    return times;
+  }
+
+  // Populate date select (skip same-day)
+  function populateDateSelector() {
+    const select = document.getElementById('date-select');
+    if (!select) return;
+    select.innerHTML = '';
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0,10);
+    const dates = getWeekdayDates(new Date(), bookingConfig.weeksAhead);
+    let hasOptions = false;
+    dates.forEach(date => {
+      const dateStr = date.toISOString().slice(0,10);
+      if (dateStr === todayStr) return;
+      const times = generateTimeSlotsForDate(date);
+      if (times.length === 0) return;
+      const option = document.createElement('option');
+      option.value = dateStr;
+      option.textContent = formatDateDisplay(date);
+      select.appendChild(option);
+      hasOptions = true;
+    });
+    if (!hasOptions) {
+      const option = document.createElement('option');
+      option.value = '';
+      option.textContent = 'No available dates';
+      option.disabled = true;
+      option.selected = true;
+      select.appendChild(option);
+    }
+  }
+
+  // Render slots
+  function updateTimeSlots() {
+    const select = document.getElementById('date-select');
+    const container = document.getElementById('timeslots');
+    const dateString = select ? select.value : null;
+    if (!container) return;
+    container.innerHTML = '';
+    if (!dateString) {
+      const msg = document.createElement('p');
+      msg.textContent = 'No available dates at this time.';
+      msg.style.color = 'var(--color-secondary)';
+      container.appendChild(msg);
+      selectedTimeSlot = null;
+      document.getElementById('book-button').disabled = true;
+      return;
+    }
+    const date = new Date(dateString + 'T00:00:00');
+    const times = generateTimeSlotsForDate(date);
+    if (times.length === 0) {
+      const msg = document.createElement('p');
+      msg.textContent = 'No slots available for this day.';
+      msg.style.color = 'var(--color-secondary)';
+      container.appendChild(msg);
+    } else {
+      times.forEach(time => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'timeslot';
+        btn.textContent = formatTimeDisplay(time);
+        btn.dataset.time24 = time;
+        btn.onclick = () => selectTimeSlot(btn);
+        container.appendChild(btn);
+      });
+    }
+    selectedTimeSlot = null;
+    document.getElementById('book-button').disabled = true;
+  }
+
+  let selectedTimeSlot = null;
+  function selectTimeSlot(btn) {
+    document.querySelectorAll('.timeslot').forEach(el => el.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedTimeSlot = btn.dataset.time24;
+    document.getElementById('book-button').disabled = false;
+  }
+
+  // Book meeting via Zoho subEventReq.do
+  function bookMeeting() {
+    const nameEl = document.getElementById('booking-name');
+    const emailEl = document.getElementById('booking-email');
+    const reasonEl = document.getElementById('booking-reason');
+    const dateSelect = document.getElementById('date-select');
+    if (!selectedTimeSlot || !nameEl || !emailEl || !dateSelect) {
+      alert('Please complete all required fields.');
+      return;
+    }
+    const name = nameEl.value.trim();
+    const email = emailEl.value.trim();
+    if (!name || !email) {
+      alert('Please enter your name and email.');
+      return;
+    }
+    const reason = reasonEl ? reasonEl.value.trim() : '';
+    if (!reason) {
+      alert('Please enter a reason for the meeting.');
+      return;
+    }
+    const date = new Date(dateSelect.value + 'T00:00:00');
+    const dateParam = formatDateForApi(date);
+    const timeParam = selectedTimeSlot;
+
+    const baseUrl = 'https://calendar.zoho.com/subEventReq.do';
+    const ckey = 'zz080112306f26c9b57956037231e8627dde73778afc08870af73c143b628e8b1bb30fff16b471ff3734988676b49b17f8ca237199';
+    const url = `${baseUrl}?name=${encodeURIComponent(name)}&mailId=${encodeURIComponent(email)}&tz=America/New_York&dur=900000&reason=${encodeURIComponent(reason)}&date=${encodeURIComponent(dateParam)}&time=${encodeURIComponent(timeParam)}&ckey=${ckey}`;
+
+    const messageEl = document.getElementById('booking-message');
+    if (messageEl) messageEl.textContent = '';
+
+    fetch(url, { method: 'GET', mode: 'no-cors' })
+      .then(() => {
+        if (messageEl) {
+          messageEl.style.color = 'var(--color-accent)';
+          messageEl.textContent = 'Thank you! Your request has been submitted.';
+        }
+        document.getElementById('book-button').disabled = true;
+        selectedTimeSlot = null;
+      })
+      .catch(() => {
+        if (messageEl) {
+          messageEl.style.color = 'var(--color-accent)';
+          messageEl.textContent = 'Thank you! Your request has been submitted.';
+        }
+        document.getElementById('book-button').disabled = true;
+        selectedTimeSlot = null;
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    populateDateSelector();
+    updateTimeSlots();
+    document.getElementById('date-select').addEventListener('change', updateTimeSlots);
+    document.getElementById('book-button').addEventListener('click', bookMeeting);
+  });
+</script>
+
+
+
 
 </body>
 </html>

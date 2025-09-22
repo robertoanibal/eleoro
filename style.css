@@ -16,7 +16,7 @@
   --color-secondary: #a3a3a3;   /* Secondary text colour */
   --color-accent: #98FF98;      /* Teal accent colour for buttons and highlights */
   /* Dark mode palette: adjust these values to explore different colour schemes. */
-  --color-light: #1b1b1b;       /* Base background colour */
+  --color-light: #000000;       /* Base background colour */
   --color-dark: #0c0c0c;        /* Darker backgrounds (footer, nav) */
   --color-surface: #242424;     /* Surface colour for cards and forms */
   --color-notice: #62A362;      /* Announcement bar background */
@@ -473,7 +473,7 @@ nav.scrolled {
 }
 .service-item h3 {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin-bottom: 6px;
   font-weight: 500;
   color: var(--color-primary);
@@ -482,6 +482,7 @@ nav.scrolled {
   font-size: 0.95rem;
   color: var(--color-secondary);
   margin-bottom: 10px;
+  margin-left: 25px !important;
 }
 .service-item .read-more {
   font-size: 0.9rem;
@@ -1164,14 +1165,13 @@ footer {
     align-items: center;
     flex: 1;
     max-width: 180px;
-    cursor: pointer;
     transition: all 0.3s ease;
     z-index: 2;
 }
 .from-ai-to-adoption .step:hover { transform: translateY(-8px); }
 .from-ai-to-adoption .step:hover .step-node {
     box-shadow: 0 20px 40px rgba(79, 70, 229, 0.25);
-    border-color: #6366f1;
+    border-color: var(--color-accent);
 }
 .from-ai-to-adoption .step:hover .step-badge {
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
@@ -1179,9 +1179,9 @@ footer {
 .from-ai-to-adoption .step-node {
     width: 110px;
     height: 110px;
-    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    background: var(--color-surface);
     border-radius: 20px;
-    border: 2px solid #6b7280;
+    border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1207,6 +1207,7 @@ footer {
     background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
     box-shadow: 0 4px 12px rgba(79,70,229,.4);
     transition: all .3s ease;
+    
 }
 .from-ai-to-adoption .step-icon { font-size: 1.6rem; color: #e5e7eb; transition: all .3s ease; }
 .from-ai-to-adoption .step:hover .step-icon { color: #fff; transform: scale(1.08); }
@@ -1573,3 +1574,897 @@ footer {
 .is-visible[data-reveal][data-accordion] {
   /* max-height is set in JS to the element's scrollHeight */
 }
+
+
+        .followup-agent-module {
+            all: initial;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: block;
+        }
+        
+        .followup-agent-module * {
+            box-sizing: border-box;
+        }
+        
+        .followup-agent-module .followup-agent {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000;
+            color: #e6e6e6;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px #98FF98;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .followup-agent-module .tabs-container {
+            padding: 24px 24px 0;
+            background: #000000;
+        }
+        
+        .followup-agent-module .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .tabs-grid {
+                gap: 16px;
+            }
+        }
+        
+        .followup-agent-module .tab-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 2px solid #333333;
+            border-radius: 12px;
+            padding: 12px 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .tab-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .followup-agent-module .tab-card {
+                transition: none;
+            }
+        }
+        
+        .followup-agent-module .tab-card:hover {
+            border-color: #98FF98;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(152, 255, 152, 0.1);
+        }
+        
+        .followup-agent-module .tab-card.active {
+            border-color: #98FF98;
+            background: #242424;
+            box-shadow: 0 0 0 1px #98FF98, 0 4px 16px rgba(152, 255, 152, 0.2);
+        }
+        
+        .followup-agent-module .tab-card.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #98FF98, #62A362);
+        }
+        
+        .followup-agent-module .tab-card:focus-visible {
+            outline: 2px solid #98FF98;
+            outline-offset: 2px;
+        }
+        
+        .followup-agent-module .tab-icon {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 6px;
+            opacity: 0.8;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .tab-icon {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 12px;
+            }
+        }
+        
+        .followup-agent-module .tab-card.active .tab-icon {
+            opacity: 1;
+        }
+        
+        .followup-agent-module .tab-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e6e6e6;
+            margin: 0;
+            line-height: 1.3;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .tab-title {
+                font-size: 18px;
+                margin: 0 0 8px 0;
+                text-align: left;
+            }
+        }
+        
+        .followup-agent-module .tab-subtitle {
+            font-size: 14px;
+            color: #a3a3a3;
+            line-height: 1.5;
+            margin: 0;
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .tab-subtitle {
+                display: block;
+            }
+        }
+        
+        .followup-agent-module .content-panel {
+            background: #242424;
+            margin: 0 24px;
+            border-radius: 12px;
+            padding: 32px;
+            min-height: 300px;
+            border: 1px solid #333333;
+        }
+        
+        .followup-agent-module .panel-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .followup-agent-module .panel-content {
+                transition: none;
+                transform: none;
+            }
+        }
+        
+        .followup-agent-module .panel-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .followup-agent-module .panel-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #e6e6e6;
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+        
+        .followup-agent-module .panel-description {
+            font-size: 16px;
+            color: #a3a3a3;
+            line-height: 1.6;
+            margin: 0 0 32px 0;
+        }
+        
+        .followup-agent-module .workflow-steps {
+            display: grid;
+            gap: 20px;
+            counter-reset: step-counter;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .workflow-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .followup-agent-module .workflow-step {
+            background: #000000;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .followup-agent-module .workflow-step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #98FF98;
+            color: #000000;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .followup-agent-module .step-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #e6e6e6;
+            margin: 8px 0 0 0;
+            line-height: 1.4;
+        }
+        
+        .followup-agent-module .privacy-control {
+            background: #000000;
+            border-top: 2px solid #98FF98;
+            padding: 20px 24px;
+            margin-top: 32px;
+        }
+        
+        .followup-agent-module .privacy-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #98FF98;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .followup-agent-module .privacy-items {
+            display: grid;
+            gap: 8px;
+            font-size: 14px;
+            color: #a3a3a3;
+            line-height: 1.5;
+        }
+        
+        @media (min-width: 768px) {
+            .followup-agent-module .privacy-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+        
+        .followup-agent-module .privacy-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .followup-agent-module .privacy-item::before {
+            content: '•';
+            color: #98FF98;
+            font-weight: bold;
+        }
+
+/* -----------------------------------------------------------------
+   Additional component styles extracted from index.html
+   These styles were previously defined inline within the HTML and
+   have been moved here to centralize styling and improve maintainability.
+------------------------------------------------------------------- */
+
+/* Agent network hub styles */
+#agent-network-hub {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#agent-network-hub .network-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#agent-network-hub .network-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(152, 255, 152, 0.3) 1px, transparent 0);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+#agent-network-hub .center-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(80px, 16vw, 100px);
+    height: clamp(80px, 16vw, 100px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(152, 255, 152, 0.3);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 1vw, 8px);
+    padding: clamp(8px, 2vw, 12px);
+    box-shadow:
+        0 0 20px rgba(152, 255, 152, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+#agent-network-hub .center-node img {
+    width: clamp(32px, 6vw, 48px);
+    height: clamp(32px, 6vw, 48px);
+    border-radius: 4px;
+}
+
+#agent-network-hub .satellite-node {
+    position: absolute;
+    width: clamp(70px, 14vw, 90px);
+    height: clamp(70px, 14vw, 70px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2px, 1vw, 4px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+}
+
+#agent-network-hub .satellite-node svg {
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
+}
+
+#agent-network-hub .satellite-node[data-color="green"] svg {
+    color: #4ade80;
+    filter: drop-shadow(0 0 8px #4ade80);
+}
+
+#agent-network-hub .satellite-node[data-color="blue"] svg {
+    color: #60a5fa;
+    filter: drop-shadow(0 0 8px #60a5fa);
+}
+
+#agent-network-hub .satellite-node[data-color="yellow"] svg {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 8px #fbbf24);
+}
+
+#agent-network-hub .node-text {
+    font-size: clamp(8px, 1.5vw, 10px);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+#agent-network-hub .satellite-node[data-color="green"] .node-text {
+    color: #4ade80;
+    text-shadow: 0 0 8px #4ade80;
+}
+
+#agent-network-hub .satellite-node[data-color="blue"] .node-text {
+    color: #60a5fa;
+    text-shadow: 0 0 8px #60a5fa;
+}
+
+#agent-network-hub .satellite-node[data-color="yellow"] .node-text {
+    color: #fbbf24;
+    text-shadow: 0 0 8px #fbbf24;
+}
+
+#agent-network-hub .satellite-node:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(152, 255, 152, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(152, 255, 152, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #agent-network-hub .satellite-node {
+        transition: none;
+    }
+    #agent-network-hub .satellite-node:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    #agent-network-hub .node-text {
+        font-size: 8px;
+    }
+}
+
+/* Ticker styles */
+.eleoro-ticker-section {
+    width: 100%;
+    padding: 2rem 0;
+    overflow: hidden;
+    position: relative;
+}
+.eleoro-ticker-section .eleoro-ticker-wrapper {
+    display: flex;
+    width: max-content;
+    animation: eleoro-scroll 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .eleoro-ticker-section .eleoro-ticker-wrapper {
+        animation: none;
+    }
+}
+.eleoro-ticker-section .eleoro-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 2px #98FF98;
+    text-stroke: 2px #98FF98;
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-heavy {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+}
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-semi {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-italic {
+    font-weight: 700;
+    font-style: italic;
+}
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-wide {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+@keyframes eleoro-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+@media (max-width: 768px) {
+    .eleoro-ticker-section {
+        padding: 1.5rem 0;
+    }
+    .eleoro-ticker-section .eleoro-ticker-item {
+        padding: 0 1.5rem;
+        -webkit-text-stroke: 1.5px #98FF98;
+        text-stroke: 1.5px #98FF98;
+    }
+}
+
+/* Services list styles */
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+.service-item {
+    align-items: flex-start;
+    background: #0c0c0c;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+}
+.service-item:hover {
+    background: #111111;
+}
+.agent-icon {
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.agent-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: #98FF98;
+    stroke-width: 2;
+    fill: none;
+}
+.agent-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 0.4rem;
+    text-transform: uppercase;
+}
+.agent-label.standard {
+    background: #98FF98;
+    color: #0c0c0c;
+}
+.agent-label.enterprise {
+    background: #60A5FA;
+    color: #0c0c0c;
+}
+.agent-label.custom {
+    background: #FBBF24;
+    color: #0c0c0c;
+}
+
+/* AI services module styles */
+.ai-services-module * {
+    box-sizing: border-box;
+}
+.ai-services-module .services-container {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+.ai-services-module .services-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.ai-services-module .services-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+.ai-services-module .services-subtitle {
+    color: #d1d5db;
+    font-size: 1.125rem;
+    max-width: 42rem;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+.ai-services-module .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .ai-services-module .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .ai-services-module .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.ai-services-module .service-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: inherit;
+}
+.ai-services-module .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(152, 255, 152, 0.1);
+    border-color: #98FF98;
+    text-decoration: none;
+}
+.ai-services-module .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.ai-services-module .card-icon {
+    width: 2rem;
+    height: 2rem;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+.ai-services-module .card-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+}
+.ai-services-module .badge-standard {
+    background: linear-gradient(135deg, #98FF98, #7FE57F);
+    color: #1a5a1a;
+}
+.ai-services-module .badge-enterprise {
+    background: linear-gradient(135deg, #60A5FA, #3B82F6);
+    color: #1e3a8a;
+}
+.ai-services-module .badge-custom {
+    background: linear-gradient(135deg, #FBBF24, #F59E0B);
+    color: #92400e;
+}
+.ai-services-module .card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    font-family: var(--font-heading);
+}
+.ai-services-module .card-description {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.5;
+}
+.ai-services-module .icon-standard {
+    color: #4ade80;
+}
+.ai-services-module .icon-enterprise {
+    color: #60a5fa;
+}
+.ai-services-module .icon-custom {
+    color: #fbbf24;
+}
+
+/* Pricing module styles */
+.eleoro-pricing-module {
+    --color-primary: #e6e6e6;
+    --color-secondary: #a3a3a3;
+    --color-accent: #98FF98;
+    --color-light: #000000;
+    --color-dark: #0c0c0c;
+    --color-surface: #242424;
+    --color-notice: #62A362;
+    --color-request: #161616;
+    --color-border: #333333;
+}
+.eleoro-pricing-module *,
+.eleoro-pricing-module *::before,
+.eleoro-pricing-module *::after {
+    box-sizing: border-box;
+}
+.eleoro-pricing-module .pricing-section {
+    width: 100%;
+    background: #000000;
+    padding: 4rem 1rem;
+}
+.eleoro-pricing-module .pricing-container {
+    max-width: 1200px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+.eleoro-pricing-module .pricing-title {
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.eleoro-pricing-module .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .eleoro-pricing-module .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .eleoro-pricing-module .pricing-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.eleoro-pricing-module .pricing-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+    .eleoro-pricing-module .pricing-card {
+        transition: none;
+    }
+}
+.eleoro-pricing-module .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+.eleoro-pricing-module .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(152, 255, 152, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.eleoro-pricing-module .pricing-card.most-popular {
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(152, 255, 152, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent);
+}
+.eleoro-pricing-module .pricing-card.most-popular::after {
+    content: 'Most Popular';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-accent);
+    color: var(--color-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.eleoro-pricing-module .card-body {
+    flex-grow: 1;
+}
+.eleoro-pricing-module .card-footer {
+    margin-top: auto;
+}
+.eleoro-pricing-module .plan-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+.eleoro-pricing-module .lightning-icon {
+    width: 14px;
+    height: 14px;
+    fill: var(--color-accent);
+}
+.eleoro-pricing-module .plan-name {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+.eleoro-pricing-module .plan-subtitle {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+.eleoro-pricing-module .plan-price {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.eleoro-pricing-module .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+.eleoro-pricing-module .feature-list li {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    position: relative;
+}
+.eleoro-pricing-module .feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+.eleoro-pricing-module .hosted-line {
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-style: italic;
+}
+.eleoro-pricing-module .cta-button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-notice) 100%);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(152, 255, 152, 0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.eleoro-pricing-module .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(152, 255, 152, 0.4);
+    background: linear-gradient(135deg, #a8ffa8 0%, #72b372 100%);
+}
+.eleoro-pricing-module .cta-button:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .eleoro-pricing-module .cta-button:hover {
+        transform: none;
+    }
+}
+@media (max-width: 767px) {
+    .eleoro-pricing-module .pricing-title {
+        font-size: 2rem;
+    }
+    .eleoro-pricing-module .pricing-card {
+        padding: 1.5rem;
+    }
+    .eleoro-pricing-module .plan-name {
+        font-size: 1.25rem;
+    }
+}
+@media (min-width: 1024px) {
+    .eleoro-pricing-module .plan-name {
+        font-size: 1.25rem;
+    }
+    .eleoro-pricing-module .plan-subtitle {
+        font-size: 0.875rem;
+    }
+    .eleoro-pricing-module .feature-list li {
+        font-size: 0.85rem;
+    }
+}
+  
