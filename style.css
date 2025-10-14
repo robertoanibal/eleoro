@@ -96,13 +96,15 @@ img {
 
 /* Announcement bar */
 .announcement-bar {
-  background: var(--color-notice);
-  color: var(--color-dark);
+  background: var(--color-accent);
+  color: var(--color-light);
   text-align: center;
   padding: 6px 10px;
   font-size: 0.85rem;
   border-bottom: 1px solid var(--color-border);
 }
+
+.announcement-bar a:hover { color: var(--color-light); }
 
 /* Request bar */
 .request-bar {
@@ -629,65 +631,54 @@ nav.scrolled {
   color: var(--color-secondary);
 }
 
-/* Footer */
-footer {
+/* New footer */
+.new-footer {
   background: var(--color-dark);
-  color: #ffffff;
+  color: var(--color-primary);
   padding: var(--spacing-lg) 0 var(--spacing-md);
+  border-top: 1px solid var(--color-border);
 }
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
+.new-footer .footer-container {
+  display: grid;
   gap: var(--spacing-lg);
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-.footer-col {
-  flex: 1 1 220px;
-  text-align:center;
-}
-.footer-col h4 {
+.new-footer .footer-col h4 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   margin-bottom: 8px;
-  color: #ffffff;
+  color: var(--color-primary);
 }
-.footer-col p {
-  font-size: 0.9rem;
-  color: #cccccc;
-  margin-bottom: var(--spacing-sm);
+.new-footer .footer-col p,
+.new-footer .footer-col ul li {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
 }
-.footer-col ul {
+.new-footer .footer-col ul {
   list-style: none;
+  padding-left: 0;
 }
-.footer-col ul li a {
-  color: #cccccc;
-  font-size: 0.9rem;
-  display: block;
-  margin-bottom: 6px;
+.new-footer .footer-col ul li a {
+  color: var(--color-secondary);
   transition: color 0.2s ease;
 }
-.footer-col ul li a:hover {
-  color: #ffffff;
+.new-footer .footer-col ul li a:hover {
+  color: var(--color-accent);
 }
-.social-icons {
-  display: flex;
-  gap: 12px;
+.new-footer .footer-summary {
+  margin-top: var(--spacing-md);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
 }
-.social-icons a {
-  color: #cccccc;
-  font-size: 1.2rem;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.social-icons a:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-}
+
 .footer-bottom {
   text-align: center;
   margin-top: var(--spacing-md);
   font-size: 0.8rem;
   color: #aaaaaa;
 }
+
 
 /* Network section showing how customer data and AI connect around eleoro */
 .network-section {
@@ -2163,6 +2154,17 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+@media (min-width: 1024px) {
+   .ai-services-module .services-grid.process-grid, .ai-services-module .services-grid.expertise-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+@media (min-width: 1024px) {
+   .ai-services-module .services-grid.founders-grid, .ai-services-module .services-grid.expertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 .ai-services-module .service-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     backdrop-filter: blur(10px);
@@ -2248,6 +2250,63 @@ footer {
     --color-request: #161616;
     --color-border: #333333;
 }
+
+/* ============================================================
+   New section styling for updated homepage
+   ============================================================ */
+/* Increase padding between sections by 50% */
+.section {
+  padding: 6rem 0;
+}
+/* Vertical list layout for Ongoing Costs, Differences, Security */
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vertical-list hr { color: #161616; background: #161616; height:1px; margin: 1rem 0; }
+
+/* Features list for service cards */
+.card-features {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+.card-features li {
+  position: relative;
+  padding-left: 20px;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #98FF98;
+  font-weight: 600;
+}
+
+.expertise-grid .card-features li::before {
+  content: '✎';
+}
+
+/* Contact CTA new sections */
+.contact-cta-section.section {
+  text-align: center;
+}
+.contact-cta-section.section h2 {
+  color: #e6e6e6;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.contact-cta-section.section p {
+  color: #a3a3a3;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .eleoro-pricing-module *,
 .eleoro-pricing-module *::before,
 .eleoro-pricing-module *::after {
@@ -2422,7 +2481,7 @@ footer {
     color: var(--color-dark);
     text-decoration: none;
     padding: 1rem 1.5rem;
-    border-radius: 12px;
+    border-radius: 4px;
     font-weight: 600;
     text-align: center;
     transition: all 0.3s ease;
@@ -2467,4 +2526,243 @@ footer {
         font-size: 0.85rem;
     }
 }
-  
+
+/* FAQ styles */
+.faq-section .faq-list {
+  margin-top: var(--spacing-md);
+}
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+}
+.faq-item:hover {
+  border-color: var(--color-accent);
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.faq-toggle-icon {
+  margin-left: var(--spacing-sm);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.faq-answer {
+  display: none;
+  margin-top: var(--spacing-sm);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+:root {
+  --page-bg: #000;
+  --g1: #12121a;
+  --g2: #1a2440;
+  --g3: #163a3a;
+  --g4: #2a1e44;
+  --wave: rgba(255, 255, 255, 0.08);
+
+  /* Adjusted animation speeds (slightly slower) */
+  --t-gradient: 12s;
+  --t-wave-1: 10s;
+  --t-wave-2: 16s;
+  --t-wave-3: 18s;
+
+  /* Fade size for stronger separation */
+  --fade-height: 160px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--page-bg);
+  color: #e6e6e6;
+}
+
+/* Apply only to <section class="section"> */
+section.section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    315deg,
+    var(--g1) 3%,
+    var(--g2) 38%,
+    var(--g3) 68%,
+    var(--g4) 98%
+  );
+  background-size: 400% 400%;
+  animation: section-gradient var(--t-gradient) ease infinite;
+  border: none;
+  border-radius: 16px;
+}
+
+/* Deeper black fades at top and bottom */
+section.section::before,
+section.section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--fade-height);
+  pointer-events: none;
+  z-index: 2;
+}
+
+section.section::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--page-bg) 0%, rgba(12, 12, 12, 0.9) 30%, transparent 100%);
+}
+
+section.section::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--page-bg) 0%, rgba(12, 12, 12, 0.9) 30%, transparent 100%);
+}
+
+/* Waves */
+section.section .wave {
+  background: var(--wave);
+  border-radius: 1000% 1000% 0 0;
+  position: absolute;
+  width: 200%;
+  height: 12em;
+  animation: wave var(--t-wave-1) -2s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: -50%;
+  z-index: 0;
+}
+
+section.section .wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave var(--t-wave-2) linear reverse infinite;
+  opacity: 0.7;
+}
+
+section.section .wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave var(--t-wave-3) -1s reverse infinite;
+  opacity: 0.9;
+}
+
+/* Keep content visible above fades and waves */
+section.section > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Animations */
+@keyframes section-gradient {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes wave {
+  2%   { transform: translateX(1%); }
+  25%  { transform: translateX(-25%); }
+  50%  { transform: translateX(-50%); }
+  75%  { transform: translateX(-25%); }
+  100% { transform: translateX(1%); }
+}
+
+/* Accessibility for motion */
+@media (prefers-reduced-motion: reduce) {
+  section.section {
+    animation: none;
+    background-position: 50% 50%;
+  }
+  section.section .wave {
+    animation: none;
+  }
+}
+
+// Firefly configuration
+$quantity: 15;
+
+// Base styles
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000;
+  color: #e6e6e6;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// Scoped to sections with class firefly that have no background image
+section.firefly:not([style*="background-image"]) {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0b0b0b 0%, #000 100%);
+
+  // Generate multiple fireflies dynamically
+  @for $i from 1 through $quantity {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0.4vw;
+      height: 0.4vw;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    // Create multiple layers (each loop iteration)
+    &::before:nth-of-type(#{$i}),
+    &::after:nth-of-type(#{$i}) {
+      // random color hue
+      $hue: random(360);
+      background: hsl($hue, 100%, 70%);
+      box-shadow: 0 0 2vw 0.4vw hsl($hue, 100%, 70%);
+
+      // randomized positioning and animation
+      animation: move#{$i} random(12) + 10s ease-in-out infinite,
+                 flash#{$i} random(4000) + 6000ms ease-in-out infinite alternate;
+    }
+
+    // Each firefly moves in a unique path
+    @keyframes move#{$i} {
+      0% {
+        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
+                   scale(random(50) / 100 + 0.5);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
+                   scale(random(50) / 100 + 0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
+                   scale(random(50) / 100 + 0.5);
+        opacity: 0.7;
+      }
+    }
+
+    // Flicker / glow variation
+    @keyframes flash#{$i} {
+      0%, 30%, 100% {
+        opacity: 0.2;
+        box-shadow: 0 0 0vw 0vw hsl(random(360), 100%, 70%);
+      }
+      5%, 25%, 50%, 75% {
+        opacity: 1;
+        box-shadow: 0 0 2vw 0.4vw hsl(random(360), 100%, 70%);
+      }
+    }
+  }
+}

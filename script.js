@@ -150,10 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('eleoro-ticker-unique');
     if (!wrapper) return;
     wrapper.innerHTML = '';
-    const phrases = [
-      'Follow-up', 'Chat', 'Orders', 'Documentation', 'Integrations', 'Reports',
-      'Customer 360', 'Growth', 'Analytics', 'Automation', 'Data Sync', 'AI Agents'
-    ];
+    const phrases = ['Agent Builder','Zapier', 'n8n', 'Make', 'Workato','OpenAI GPT', 'Anthropic Claude', 'Google Gemini', 'Meta LLaMA'];
     const styleClasses = [
       'eleoro-style-heavy',
       'eleoro-style-semi',
@@ -229,6 +226,28 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateProgress);
     updateProgress();
   }
+  
+  /* FAQ toggle functionality
+   * Expand or collapse FAQ answers when a question is clicked.
+   * The plus/minus icon updates accordingly. */
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-toggle-icon');
+    if (question && answer && icon) {
+      question.addEventListener('click', () => {
+        const isOpen = answer.style.display === 'block';
+        if (isOpen) {
+          answer.style.display = 'none';
+          icon.textContent = '+';
+        } else {
+          answer.style.display = 'block';
+          icon.textContent = '−';
+        }
+      });
+    }
+  });
 });
 
 

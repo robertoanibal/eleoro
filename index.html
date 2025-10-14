@@ -40,13 +40,15 @@
 <script crossorigin="anonymous" src="https://kit.fontawesome.com/b632618dd6.js"></script>
 </head>
 <body>
+<div class="announcement-bar">
+<b>Latest AI News:</b> <a href="contact.html">OpenAI just released Agent Builder, making custom AI agents easier than ever. Now’s the time to automate your workflows; schedule your eleoro setup call and deploy your first agent in days, not months.</a>
+</div>
 <!-- Request bar for quick actions -->
 <div class="request-bar" style="display:none;">
 <div class="container">
-<a class="request-link" href="contact.html">Book a Consultation</a>
-<a class="request-link" href="#services">Custom AI Agents</a>
-<!-- Link to the About section within this page rather than a separate page -->
-<a class="request-link" href="#about">Our Story</a>
+<a class="request-link" href="contact.html">Book a free consultation</a>
+<a class="request-link" href="#services">AI Agents</a>
+<a class="request-link" href="about.html">Our Story</a>
 </div>
 </div>
 <!-- Navigation bar -->
@@ -58,7 +60,7 @@
 <ul class="nav-links">
 <li><a class="dropdown-toggle hide-mobile capabilities-desktop" href="#services">AI Agents</a></li>
 <li><a href="#pricing">Pricing</a></li>
-<li><a href="#about">About</a></li>
+<li><a href="about.html">Our Story</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 <div class="burger">
@@ -72,10 +74,59 @@
 <header class="hero" id="home">
 <div class="container hero-container reveal">
 <div class="hero-text">
-<h1><span class="accent-letter">e</span>leoro</h1>
-<h2 style="font-size:24px;">Practical AI agents built for real business needs</h2>
-<p>Our AI agents connect to the tools you already use, take on routine work, keep systems up to date, and free your business to focus on growth, better service, and faster decisions.</p><p>We build on integration tools like Zapier, Workato, Make, and n8n, powered by leading models like OpenAI (chatGPT), Google Gemini, Anthropic Claude, and Meta Llama. We help you choose the right stack for speed, cost, privacy, and accuracy, then deliver a production-ready agent that automates real work end to end.</p>
-<br><a class="cta-btn" href="#services">Discover how our AI agents simplify your work</a>
+<section id="ai-agents-module" style="box-sizing:border-box; width:100%; max-width:600px; margin:0; padding:28px; color:#e6e6e6; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;">
+    <!-- Small announcement line -->
+    <div style="display:inline-flex; align-items:center; padding:6px 10px; border:1px solid #333333; border-radius:999px; background: rgba(152,255,152,0.10);">
+      <span style="display:inline-block; width:6px; height:6px; background:#98FF98; border-radius:50%; margin-right:8px;"></span>
+      <span style="color:#98FF98; font-size:13px; font-weight:600; letter-spacing:0.01em; line-height:1;">Start automating in weeks, not months.</span>
+    </div>
+
+    <!-- Main headline -->
+    <h2 style="margin:16px 0 0 0; font-family:'Manrope', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight:800; font-size:clamp(28px, 5vw, 52px); line-height:1.1; color:#e6e6e6;">
+      Automate your business tasks
+      <span style="color:#98FF98; text-shadow:0 0 8px rgba(152,255,152,0.45), 0 0 2px rgba(152,255,152,0.75);">with AI Agents</span>
+      that work 24/7
+    </h2>
+
+    <!-- Subhead -->
+    <p style="margin:16px 0 0 0; font-size:20px; line-height:1.65; color:#a3a3a3;">
+We setup AI agents that help you focus on growth, service, and faster decisions with proven platforms and models.</p>
+
+    <!-- Bullets -->
+    <ul style="list-style:none; padding:0; margin:24px 0 0 0;">
+      <li style="display:flex; align-items:flex-start; margin:0 0 12px 0;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:999px; border:1px solid rgba(152,255,152,0.35); background:rgba(152,255,152,0.10); margin-right:12px; flex:0 0 20px; margin-top:4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" stroke="#98FF98" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <p style="margin:0; font-size:14px; line-height:1.6; color:#e6e6e6;">
+          <strong style="font-weight:700;">Pre-Built Agents</strong>: Pick from agents designed for sales, support, operations, and more.
+        </p>
+      </li>
+      <li style="display:flex; align-items:flex-start; margin:0 0 12px 0;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:999px; border:1px solid rgba(152,255,152,0.35); background:rgba(152,255,152,0.10); margin-right:12px; flex:0 0 20px; margin-top:4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" stroke="#98FF98" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <p style="margin:0; font-size:14px; line-height:1.6; color:#e6e6e6;">
+          <strong style="font-weight:700;">Fast Setup</strong>: Be up and running in weeks.
+        </p>
+      </li>
+      <li style="display:flex; align-items:flex-start; margin:0;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:999px; border:1px solid rgba(152,255,152,0.35); background:rgba(152,255,152,0.10); margin-right:12px; flex:0 0 20px; margin-top:4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" stroke="#98FF98" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <p style="margin:0; font-size:14px; line-height:1.6; color:#e6e6e6;">
+          <strong style="font-weight:700;">Cost-Friendly</strong>: Runs on reliable platforms that keep costs under control.
+        </p>
+      </li>
+    </ul>
+    <br><br><a class="cta-btn" href="contact.html">Book a free consultation</a>
+  </section>
 </div>
 <div class="hero-visual">
 <!-- Placeholder image for hero visual; replace src with your own image -->
@@ -181,7 +232,6 @@
             <div class="node-text">Analytics</div>
         </a>
     </div>
-
     <!-- Script for positioning network nodes has been moved to script.js -->
 </section>
 
@@ -200,770 +250,669 @@
     <!-- Ticker functionality has been moved to script.js -->
 </section>
 </header>
-<!-- Connectivity Section -->
-<section class="connectivity-section" id="connectivity">
-<div class="container">
-<h2 class="section-title">AI Agents, Step by Step</h2>
-<p class="section-intro">We walk through each stage of bringing AI into your business; making it simple to adopt, easy to run, and focused on results.</p><div class="from-ai-to-adoption"><div class="roadmap">
-<div class="roadmap-line"></div>
-<div class="step" data-step="1">
-<div class="step-node">
-<div class="step-badge">1</div>
-<div class="step-icon"><i class="fa-solid fa-eye"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Review</div>
-<div class="step-description">We look at your systems and workflows.</div>
-</div>
-</div>
-<div class="step" data-step="2">
-<div class="step-node">
-<div class="step-badge">2</div>
-<div class="step-icon"><i class="fa-solid fa-address-card"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Connect</div>
-<div class="step-description">We link your tools for a complete view of customers and activity.</div>
-</div>
-</div>
-<div class="step" data-step="3">
-<div class="step-node">
-<div class="step-badge">3</div>
-<div class="step-icon"><i class="fa-solid fa-share-from-square"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Configure</div>
-<div class="step-description">We set up AI agents to handle routine work.</div>
-</div>
-</div>
-<div class="step" data-step="4">
-<div class="step-node">
-<div class="step-badge">4</div>
-<div class="step-icon"><i class="fa-solid fa-person-rays"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Automate</div>
-<div class="step-description">Agents send updates, reminders, and real-time messages.</div>
-</div>
-</div>
-<div class="step" data-step="5">
-<div class="step-node">
-<div class="step-badge">5</div>
-<div class="step-icon"><i class="fa-solid fa-chart-column"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Measure</div>
-<div class="step-description">Agents track performance and share insights you can act on.</div>
-</div>
-</div>
-<div class="step" data-step="6">
-<div class="step-node">
-<div class="step-badge">6</div>
-<div class="step-icon"><i class="fa-solid fa-arrows-spin"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Grow</div>
-<div class="step-description">AI agents support sales, service, and operations to drive growth.</div>
-</div>
-</div>
-<div class="step" data-step="7">
-<div class="step-node">
-<div class="step-badge">7</div>
-<div class="step-icon"><i class="fa-regular fa-user"></i></div>
-</div>
-<div class="step-content">
-<div class="step-title">Optimize</div>
-<div class="step-description">We provide training and updates so your business keeps improving.</div>
-</div>
-</div>
-<div class="progress-indicator" style="display: none;">
-<div class="progress-dot active"></div>
-<div class="progress-dot"></div>
-<div class="progress-dot"></div>
-<div class="progress-dot"></div>
-<div class="progress-dot"></div>
-<div class="progress-dot"></div>
-<div class="progress-dot"></div>
-</div>
-</div></div>
-</div>
-<!-- Styles for the services list have been moved to style.css -->
-      <!-- Services list styles were previously defined inline. They have been removed from the HTML and are now located in style.css -->
-<!-- End services list styles -->
-<!-- Data & AI Network Section -->
-<section class="network-section reveal" id="data-network" style="display:none;>
-<div class="container">
-<div class="data-network">
-<div class="ai-header-title"><h2 class="section-title" style="margin-top:0;">AI Agents That Link It All Together</h2></div>
-<!-- AI Ecosystem Infographic Module -->
-<div class="ai-ecosystem-module">
-<!-- AI Systems Header -->
-<div class="ai-header glow-blue node-pulse">
-<div class="ai-header-content">
-<div>
-<div class="ai-header-subtitle"><p class="section-intro" style="padding-top:40px;color:white;"><span class="accent-letter">e</span>leoro AI agents connect the moving parts of your business—each one focused on a specific job you can add as needed.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Main Content Grid -->
-<div class="ecosystem-grid">
-  <div>
-    <div class="node-container">
-  <div class="node node-green glow-teal floating">
-    <div class="node-text">
-      <strong>Customer Agent</strong><br>
-      Organizes customer records → Accurate data<br><br>
-      <i>Keeps profiles updated across your tools so you always know your customers.</i>
-    </div>
-  </div>
-
-  <div class="node node-blue glow-blue floating" style="animation-delay: 0.7s;">
-    <div class="node-text">
-      <strong>Orders Agent</strong><br>
-      Tracks and sorts purchases → Smooth operations<br><br>
-      <i>Automates invoices, payments, and order handling so nothing slows you down.</i>
-    </div>
-  </div>
-
-  <div class="node node-orange glow-orange floating" style="animation-delay: 1.4s;">
-    <div class="node-text">
-      <strong>Chat Agent</strong><br>
-      Manages messages and reviews → Happier customers<br><br>
-      <i>Handles chats, social replies, and feedback with quick, clear responses.</i>
-    </div>
-  </div>
-
-  <div class="node node-purple glow-purple floating" style="animation-delay: 2.1s;">
-    <div class="node-text">
-      <strong>Follow-Up Agent</strong><br>
-      Automates reminders and updates → Repeat business<br><br>
-      <i>Sends timely thank-yous, updates, and reminders that bring customers back.</i>
-    </div>
-  </div>
-
-  <div class="node node-teal glow-teal floating" style="animation-delay: 2.8s;">
-    <div class="node-text">
-      <strong>Growth Agent</strong><br>
-      Suggests next steps → Steady growth<br><br>
-      <i>Looks at trends and activity, then points you toward the best opportunities.</i>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Services Preview Section -->
-<!-- Services Preview Section -->
-<!-- Services Preview Section -->
-<section class="services-preview-section" id="services">
-<!-- AI Agent Services Section - Self-contained module -->
-<section class="ai-services-module">
-    <div class="services-container">
-        <!-- Section Header -->
-        <div class="services-header">
-            <h2 class="section-title">AI Agents, Configured</h2>
-            <p class="section-intro">Powerful AI agents designed to automate and enhance every aspect of your business operations</p>
+<!-- ========== New Main Sections Start ========== -->
+<!-- Services Section using original card style -->
+<section id="services" class="ai-services-module section">
+  <div class="container">
+    <h2 class="section-title">Agents Built for Business Needs</h2>
+    <p class="section-intro">Our AI Agents handle everyday tasks across different areas of your business. We set them up to match your workflow so you can see results right away.</p>
+    <div class="services-grid">
+      <!-- Follow-Up Agent -->
+      <a href="/follow-up-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            <path d="M3 8l9 6 9-6" stroke-width="1"/>
+          </svg>
+          <span class="card-badge badge-standard">Standard</span>
         </div>
-        
-        <!-- Services Grid -->
-        <div class="services-grid">
-                
-            <!-- STANDARD AGENTS -->
-            
-            <!-- Follow-Up Agent -->
-            <a href="/follow-up-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        <path d="M3 8l9 6 9-6" stroke-width="1"/>
-                    </svg>
-                    <span class="card-badge badge-standard">Standard</span>
-                </div>
-                <h3 class="card-title">Follow-Up Agent</h3>
-                <p class="card-description">Automatically nurtures leads and maintains customer relationships through intelligent follow-up sequences</p>
-            </a>
-            
-            <!-- Chat Agent -->
-            <a href="/chat-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        <circle cx="9" cy="10" r="1"/>
-                        <circle cx="12" cy="10" r="1"/>
-                        <circle cx="15" cy="10" r="1"/>
-                    </svg>
-                    <span class="card-badge badge-standard">Standard</span>
-                </div>
-                <h3 class="card-title">Chat Agent</h3>
-                <p class="card-description">Engages website visitors with intelligent conversations to qualify leads and answer questions</p>
-            </a>
-            
-            <!-- Orders Agent -->
-            <a href="/orders-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-                        <path d="M3.29 7 12 12l8.71-5"/>
-                        <path d="M12 22V12"/>
-                    </svg>
-                    <span class="card-badge badge-standard">Standard</span>
-                </div>
-                <h3 class="card-title">Orders Agent</h3>
-                <p class="card-description">Streamlines order processing, tracking, and fulfillment with automated workflow management</p>
-            </a>
-            
-            <!-- Document Processing Agent -->
-            <a href="/document-processing-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14,2 14,8 20,8"/>
-                        <circle cx="11.5" cy="14.5" r="2.5"/>
-                        <path d="M13.25 16.25L15 18"/>
-                    </svg>
-                    <span class="card-badge badge-standard">Standard</span>
-                </div>
-                <h3 class="card-title">Document Processing Agent</h3>
-                <p class="card-description">Extracts, analyzes, and processes documents with intelligent data recognition and validation</p>
-            </a>
-            
-            <!-- ENTERPRISE AGENTS -->
-            
-            <!-- Integration Agent -->
-            <a href="/integration-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-enterprise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="3"/>
-                        <circle cx="6" cy="6" r="2"/>
-                        <circle cx="18" cy="6" r="2"/>
-                        <circle cx="6" cy="18" r="2"/>
-                        <circle cx="18" cy="18" r="2"/>
-                        <path d="M9 9l6 6"/>
-                        <path d="M15 9l-6 6"/>
-                        <path d="M8 6h8"/>
-                        <path d="M6 8v8"/>
-                        <path d="M18 8v8"/>
-                        <path d="M8 18h8"/>
-                    </svg>
-                    <span class="card-badge badge-enterprise">Enterprise</span>
-                </div>
-                <h3 class="card-title">Integration Agent</h3>
-                <p class="card-description">Connects and synchronizes data across multiple platforms and systems seamlessly</p>
-            </a>
-            
-            <!-- Reporting Agent -->
-            <a href="/reporting-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-enterprise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 3v18h18"/>
-                        <path d="M18 17V9"/>
-                        <path d="M13 17V5"/>
-                        <path d="M8 17v-3"/>
-                        <path d="M3 17l6-6 4 4 8-8"/>
-                    </svg>
-                    <span class="card-badge badge-enterprise">Enterprise</span>
-                </div>
-                <h3 class="card-title">Reporting Agent</h3>
-                <p class="card-description">Generates comprehensive reports and insights with automated data visualization and scheduling</p>
-            </a>
-            
-            <!-- CUSTOM AGENTS -->
-            
-            <!-- Customer 360 Agent -->
-            <a href="/customer360-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                        <path d="M16 11l2 2 4-4" stroke-width="1"/>
-                    </svg>
-                    <span class="card-badge badge-custom">Custom</span>
-                </div>
-                <h3 class="card-title">Customer 360 Agent</h3>
-                <p class="card-description">Creates a single source of truth by consolidating data across tools, updating records in real time, and managing segments effortlessly.</p>
-            </a>
-            
-            <!-- Growth Agent -->
-            <a href="/growth-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 17l6-6 4 4 8-8"/>
-                        <path d="M21 7v6h-6"/>
-                        <path d="M3 21h18"/>
-                    </svg>
-                    <span class="card-badge badge-custom">Custom</span>
-                </div>
-                <h3 class="card-title">Growth Agent</h3>
-                <p class="card-description">Identifies growth opportunities and optimizes strategies through predictive analytics and recommendations</p>
-            </a>
-            
-            <!-- Analytics & Quant Agent -->
-            <a href="/analytics-agent.html" class="service-card">
-                <div class="card-header">
-                    <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 3v18h18"/>
-                        <path d="M7 12l3-3 3 3 5-5"/>
-                        <path d="M7 16l2-2 2 2 3-3 3 3"/>
-                        <path d="M9 8l2-2 2 2 4-4"/>
-                    </svg>
-                    <span class="card-badge badge-custom">Custom</span>
-                </div>
-                <h3 class="card-title">Analytics & Quant Agent</h3>
-                <p class="card-description">Performs advanced quantitative analysis and statistical modeling for data-driven decision making</p>
-            </a>
+        <h3 class="card-title">Follow-Up Agent</h3>
+        <p class="card-description">Sends reminders, thank-yous, and customer updates automatically.</p>
+        <ul class="card-features">
+          <li>Increase repeat business</li>
+          <li>Reduce manual outreach</li>
+          <li>Keep customer contact consistent</li>
+        </ul>
+      </a>
+      <!-- Chat Agent -->
+      <a href="/chat-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <circle cx="9" cy="10" r="1"/>
+            <circle cx="12" cy="10" r="1"/>
+            <circle cx="15" cy="10" r="1"/>
+          </svg>
+          <span class="card-badge badge-standard">Standard</span>
         </div>
+        <h3 class="card-title">Chat Agent</h3>
+        <p class="card-description">Chats with visitors on your site or channels, answers questions, and qualifies leads.</p>
+        <ul class="card-features">
+          <li>Always available for customers</li>
+          <li>Capture leads faster</li>
+          <li>Friendly, consistent support</li>
+        </ul>
+      </a>
+      <!-- Orders Agent -->
+      <a href="/orders-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none">
+            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+            <path d="M3.29 7 12 12l8.71-5"/>
+            <path d="M12 22V12"/>
+          </svg>
+          <span class="card-badge badge-standard">Standard</span>
+        </div>
+        <h3 class="card-title">Orders Agent</h3>
+        <p class="card-description">Handles orders, tracking, and fulfillment.</p>
+        <ul class="card-features">
+          <li>Reduce order mistakes</li>
+          <li>Speed up delivery</li>
+          <li>Keep customers informed</li>
+        </ul>
+      </a>
+      <!-- Documentation Agent -->
+      <a href="/document-processing-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <circle cx="11.5" cy="14.5" r="2.5"/>
+            <path d="M13.25 16.25L15 18"/>
+          </svg>
+          <span class="card-badge badge-standard">Standard</span>
+        </div>
+        <h3 class="card-title">Documentation Agent</h3>
+        <p class="card-description">Creates invoices, receipts, contracts, and other documents.</p>
+        <ul class="card-features">
+          <li>Save time on project documentation</li>
+          <li>Ensure accuracy on contracts</li>
+          <li>Keep records audit-ready</li>
+        </ul>
+      </a>
+      <!-- Integration Agent -->
+      <a href="/integration-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-enterprise" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+            <circle cx="6" cy="18" r="2"/>
+            <circle cx="18" cy="18" r="2"/>
+            <path d="M9 9l6 6"/>
+            <path d="M15 9l-6 6"/>
+            <path d="M8 6h8"/>
+            <path d="M6 8v8"/>
+            <path d="M18 8v8"/>
+            <path d="M8 18h8"/>
+          </svg>
+          <span class="card-badge badge-enterprise">Enterprise</span>
+        </div>
+        <h3 class="card-title">Integration Agent</h3>
+        <p class="card-description">Connects your apps and systems so data stays synced.</p>
+        <ul class="card-features">
+          <li>No duplicate entries</li>
+          <li>Consistent data</li>
+          <li>Better team workflows</li>
+        </ul>
+      </a>
+      <!-- Reporting Agent -->
+      <a href="/reporting-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-enterprise" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v18h18"/>
+            <path d="M18 17V9"/>
+            <path d="M13 17V5"/>
+            <path d="M8 17v-3"/>
+            <path d="M3 17l6-6 4 4 8-8"/>
+          </svg>
+          <span class="card-badge badge-enterprise">Enterprise</span>
+        </div>
+        <h3 class="card-title">Reporting Agent</h3>
+        <p class="card-description">Builds dashboards and sends reports automatically.</p>
+        <ul class="card-features">
+          <li>Real-time insights</li>
+          <li>Automated reports</li>
+          <li>Faster decisions</li>
+        </ul>
+      </a>
+      <!-- Customer 360 Agent -->
+      <a href="/customer360-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M16 11l2 2 4-4" stroke-width="1"/>
+          </svg>
+          <span class="card-badge badge-custom">Custom</span>
+        </div>
+        <h3 class="card-title">Customer 360 Agent</h3>
+        <p class="card-description">Combines data from different tools into one customer view.</p>
+        <ul class="card-features">
+          <li>Single view of customer data</li>
+          <li>Profiles updated everywhere</li>
+          <li>Smarter targeting</li>
+        </ul>
+      </a>
+      <!-- Growth Agent -->
+      <a href="/growth-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17l6-6 4 4 8-8"/>
+            <path d="M21 7v6h-6"/>
+            <path d="M3 21h18"/>
+          </svg>
+          <span class="card-badge badge-custom">Custom</span>
+        </div>
+        <h3 class="card-title">Growth Agent</h3>
+        <p class="card-description">Finds opportunities and gives recommendations.</p>
+        <ul class="card-features">
+          <li>Spot upsell chances</li>
+          <li>Forecast trends</li>
+          <li>Grow revenue</li>
+        </ul>
+      </a>
+      <!-- Analytics & Quant Agent -->
+      <a href="/analytics-agent.html" class="service-card">
+        <div class="card-header">
+          <svg class="card-icon icon-custom" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3v18h18"/>
+            <path d="M7 12l3-3 3 3 5-5"/>
+            <path d="M7 16l2-2 2 2 3-3 3 3"/>
+            <path d="M9 8l2-2 2 2 4-4"/>
+          </svg>
+          <span class="card-badge badge-custom">Custom</span>
+        </div>
+        <h3 class="card-title">Analytics &amp; Quant Agent</h3>
+        <p class="card-description">Provides detailed data analysis for strategy.</p>
+        <ul class="card-features">
+          <li>Clear insights from data</li>
+          <li>Support strategy with facts</li>
+          <li>Advanced analytics without hiring a team</li>
+        </ul>
+      </a>
     </div>
+  </div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
 </section>
-<!-- Cloudflare script removed -->
+
+<!-- Agent Examples CTA -->
+<section id="agent-demo" class="contact-cta-section">
+  <div class="container">
+    <h2 class="section-title">Want to see an AI Agent in action?</h2>
+    <p class="section-intro">Reach out and we’ll walk you through a live demo tailored to your business.</p>
+    <a href="contact.html" class="cta-btn">Book a Live Demo</a>
+  </div>
 </section>
+
+<!-- Process Section -->
+<section id="process" class="ai-services-module section">
+  <div class="container">
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-intro">Our agents are already built. We set them up for your business and get them running fast.</p>
+    <div class="services-grid process-grid">
+      <div class="service-card">
+        <div class="card-header">
+          <span class="card-badge badge-standard">1–2 weeks</span>
+        </div>
+        <h3 class="card-title">Configuration</h3>
+        <p class="card-description">We match the agents to your processes and data.</p>
+        <ul class="card-features">
+          <li>Configured agents</li>
+          <li>Connected accounts</li>
+          <li>Mapped steps</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="card-header">
+          <span class="card-badge badge-standard">2–4 weeks</span>
+        </div>
+        <h3 class="card-title">Pilot</h3>
+        <p class="card-description">Agents run in a trial phase to make sure they fit.</p>
+        <ul class="card-features">
+          <li>Pilot results</li>
+          <li>Adjustments</li>
+          <li>Early savings</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="card-header">
+          <span class="card-badge badge-standard">4–6 weeks</span>
+        </div>
+        <h3 class="card-title">Deployment</h3>
+        <p class="card-description">Agents go live with training and monitoring.</p>
+        <ul class="card-features">
+          <li>Live agents</li>
+          <li>Training</li>
+          <li>Support</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="card-header">
+          <span class="card-badge badge-standard">Ongoing</span>
+        </div>
+        <h3 class="card-title">Ongoing Updates</h3>
+        <p class="card-description">We keep checking and improving.</p>
+        <ul class="card-features">
+          <li>Dashboards</li>
+          <li>Reports</li>
+          <li>Updates & support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
 <div class="eleoro-pricing-module">
-    <!-- Styles for pricing module moved to style.css
-        .eleoro-pricing-module {
-            --color-primary: #e6e6e6;
-            --color-secondary: #a3a3a3;
-            --color-accent: #98FF98;
-            --color-light: #000000;
-            --color-dark: #0c0c0c;
-            --color-surface: #242424;
-            --color-notice: #62A362;
-            --color-request: #161616;
-            --color-border: #333333;
-        }
-
-        .eleoro-pricing-module *,
-        .eleoro-pricing-module *::before,
-        .eleoro-pricing-module *::after {
-            box-sizing: border-box;
-        }
-
-        .eleoro-pricing-module .pricing-section {
-            width: 100%;
-            background: #000000;
-            padding: 4rem 1rem;
-        }
-
-        .eleoro-pricing-module .pricing-container {
-            max-width: 1200px;
-            min-width: 320px;
-            margin: 0 auto;
-        }
-
-        .eleoro-pricing-module .pricing-title {
-            text-align: center;
-            color: var(--color-primary);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .eleoro-pricing-module .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .eleoro-pricing-module .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .eleoro-pricing-module .pricing-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .eleoro-pricing-module .pricing-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .eleoro-pricing-module .pricing-card {
-                transition: none;
-            }
-        }
-
-        .eleoro-pricing-module .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .eleoro-pricing-module .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(152, 255, 152, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .eleoro-pricing-module .pricing-card.most-popular {
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(152, 255, 152, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .eleoro-pricing-module .pricing-card.most-popular::after {
-            content: 'Most Popular';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--color-accent);
-            color: var(--color-dark);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .eleoro-pricing-module .card-body {
-            flex-grow: 1;
-        }
-
-        .eleoro-pricing-module .card-footer {
-            margin-top: auto;
-        }
-
-        .eleoro-pricing-module .plan-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .eleoro-pricing-module .lightning-icon {
-            width: 14px;
-            height: 14px;
-            fill: var(--color-accent);
-        }
-
-        .eleoro-pricing-module .plan-name {
-            color: var(--color-primary);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .eleoro-pricing-module .plan-subtitle {
-            color: var(--color-secondary);
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-        }
-
-        .eleoro-pricing-module .plan-price {
-            color: var(--color-accent);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .eleoro-pricing-module .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .eleoro-pricing-module .feature-list li {
-            color: var(--color-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 0.75rem;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .eleoro-pricing-module .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-            font-weight: 600;
-        }
-
-        .eleoro-pricing-module .hosted-line {
-            color: var(--color-secondary);
-            font-size: 0.8rem;
-            margin-bottom: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--color-border);
-            font-style: italic;
-        }
-
-        .eleoro-pricing-module .cta-button {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-notice) 100%);
-            color: var(--color-dark);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(152, 255, 152, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .eleoro-pricing-module .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(152, 255, 152, 0.4);
-            background: linear-gradient(135deg, #a8ffa8 0%, #72b372 100%);
-        }
-
-        .eleoro-pricing-module .cta-button:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .eleoro-pricing-module .cta-button:hover {
-                transform: none;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .eleoro-pricing-module .pricing-title {
-                font-size: 2rem;
-            }
-            
-            .eleoro-pricing-module .pricing-card {
-                padding: 1.5rem;
-            }
-            
-            .eleoro-pricing-module .plan-name {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .eleoro-pricing-module .plan-name {
-                font-size: 1.25rem;
-            }
-            
-            .eleoro-pricing-module .plan-subtitle {
-                font-size: 0.875rem;
-            }
-            
-            .eleoro-pricing-module .feature-list li {
-                font-size: 0.85rem;
-            }
-        }
-    -->
-    
-    <section class="pricing-section" role="region" aria-labelledby="pricing-title" id="pricing">
-        <div class="pricing-container">
-            <h2 class="section-title">Pricing</h2>
-    <p class="section-intro">Pick your plan, connect your apps, start saving hours each week.</p>
-            
-            <div class="pricing-grid">
-                <!-- Starter Card -->
-                <article class="pricing-card" aria-labelledby="starter-title">
-                    <div class="card-body">
-                        <div class="plan-label">
-                            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
-                                <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
-                            </svg>
-                            Starter
-                        </div>
-                        <h3 id="starter-title" class="plan-name">AI Starter</h3>
-                        <p class="plan-subtitle">Includes 2 agents from our standard set</p>
-                        <div class="plan-price">$2,500*</div>
-                        
-                        <ul class="feature-list">
-                            <li>Choose any 2 agents from the standard set: Follow-Up, Chat, Orders, Documentation</li>
-                            <li>Customer data stays in sync across key apps</li>
-                            <li>Light integrations for inbox, CRM, and forms</li>
-                            <li>Weekly reporting</li>
-                            <li>Setup, onboarding, and documentation</li>
-                            <li>Friendly support during rollout</li>
-                        </ul>
-                        
-                        <div class="hosted-line">Platform-agnostic: Zapier, Make, Workato, n8n, Botpress</div>
-                    </div>
-                    
-                    <div class="card-footer">
-                        <a href="contact.html" class="cta-button" role="button" aria-label="Start free consultation for Small Business Starter plan">
-                            Start free consult
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Pro Card (Most Popular) -->
-                <article class="pricing-card most-popular" aria-labelledby="pro-title">
-                    <div class="card-body">
-                        <div class="plan-label">
-                            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
-                                <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
-                            </svg>
-                            Pro
-                        </div>
-                        <h3 id="pro-title" class="plan-name">AI Operations</h3>
-                        <p class="plan-subtitle">Includes all 4 agents from our standard set</p>
-                        <div class="plan-price">$5,000*</div>
-                        
-                        <ul class="feature-list">
-                            <li>4 agents configured for your core workflows (Follow-Up, Chat, Orders, Documentation)</li>
-                            <li>Multi-team automation across sales, support, and finance</li>
-                            <li>Scheduled reporting and status updates</li>
-                            <li>Deeper integrations across your stack</li>
-                            <li>Training for team leads and success check-ins</li>
-                            <li>Onboarding and documentation</li>
-                        </ul>
-                        
-                        <div class="hosted-line">Platform-agnostic: Zapier, Make, Workato, n8n</div>
-                    </div>
-                    
-                    <div class="card-footer">
-                        <a href="contact.html" class="cta-button" role="button" aria-label="Get proposal for Business Operations Package plan">
-                            Get proposal
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Enterprise Card -->
-                <article class="pricing-card" aria-labelledby="enterprise-title">
-                    <div class="card-body">
-                        <div class="plan-label">
-                            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
-                                <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
-                            </svg>
-                            Enterprise
-                        </div>
-                        <h3 id="enterprise-title" class="plan-name">Enterprise AI</h3>
-                        <p class="plan-subtitle">Includes up to 6 agents with advanced governance</p>
-                        <div class="plan-price">$10,000*</div>
-                        
-                        <ul class="feature-list">
-                            <li>All 4 agents from the standard set, tailored for scale</li>
-                            <li>Integrations agent to connect your email, CRM, accounting, booking system, and more</li>
-                            <li>Reporting agent with scheduled dashboards and anomaly alerts</li>
-                            <li>Advanced integrations, security reviews, and audit-ready logging</li>
-                            <li>Compliance support and environment options</li>
-                            <li>Dedicated support for 3 months</li>
-                            <li>Roadmap planning and executive reporting</li>
-                        </ul>
-                        
-                        <div class="hosted-line">Private cloud or on-prem options available</div>
-                    </div>
-                    
-                    <div class="card-footer">
-                        <a href="contact.html" class="cta-button" role="button" aria-label="Contact us for Enterprise AI Suite plan">
-                            Contact Us
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Custom Card -->
-                <article class="pricing-card" aria-labelledby="custom-title">
-                    <div class="card-body">
-                        <div class="plan-label">
-                            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
-                                <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
-                            </svg>
-                            Custom
-                        </div>
-                        <h3 id="custom-title" class="plan-name">Custom AI</h3>
-                        <p class="plan-subtitle">6+ agents and fully custom solutions</p>
-                        <div class="plan-price">Scope-based price</div>
-                        
-                        <ul class="feature-list">
-                            <li>Discovery and solution design</li>
-                            <li>New agent development or major extensions</li>
-                            <li>Private LLM and RAG within your environment</li>
-                            <li>Complex integrations and data orchestration</li>
-                            <li>Pilot, validation, and rollout plan</li>
-                            <li>Team training and documentation</li>
-                            <li>Post-launch optimization</li>
-                        </ul>
-                        
-                        <div class="hosted-line">Built for your stack and data</div>
-                    </div>
-                    
-                    <div class="card-footer">
-                        <a href="contact.html" class="cta-button" role="button" aria-label="Book discovery call">
-                            Book discovery call
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div><br><br>
-        <p class="section-intro">
-  *Pricing shown covers design, setup, and delivery of AI agents. Integration platform costs (e.g., Zapier, Make, Workato, n8n hosting) and Large Language Model (LLM) API costs (e.g., OpenAI, Anthropic, Google, Meta) are billed separately by their respective providers. We work with each client to select the most cost-effective combination of platforms and models for their needs, balancing speed, accuracy, privacy, and budget.
-</p>
-
-    </section>
+<section class="pricing-section" role="region" aria-labelledby="pricing-title" id="pricing">
+  <div class="pricing-container">
+    <h2 class="section-title">Pricing</h2>
+    <p class="section-intro">These are one-time setup fees to get your agents running.</p>
+    <div class="pricing-grid">
+      <!-- Starter Card -->
+      <article class="pricing-card" aria-labelledby="starter-title">
+        <div class="card-body">
+          <div class="plan-label">
+            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
+            </svg>
+            Starter
+          </div>
+          <h3 id="starter-title" class="plan-name">AI Starter</h3>
+          <p class="plan-subtitle">Setup for 2 core agents</p>
+          <div class="plan-price">$2,500*</div>
+          <ul class="feature-list">
+            <li>Setup, onboarding, and documentation</li>
+            <li>Friendly support during rollout</li>
+            <li>Basic configuration and light integrations</li>
+            <li>Weekly reporting</li>
+          </ul>
+          <div class="hosted-line">Works with: Agent Builder, Zapier, Make, Workato, n8n, Botpress</div>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="cta-button" role="button" aria-label="Start free consultation for Small Business Starter plan">
+            Start free consult
+          </a>
+        </div>
+      </article>
+      <!-- Pro Card -->
+      <article class="pricing-card most-popular" aria-labelledby="pro-title">
+        <div class="card-body">
+          <div class="plan-label">
+            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
+            </svg>
+            Pro
+          </div>
+          <h3 id="pro-title" class="plan-name">AI Operations</h3>
+          <p class="plan-subtitle">Setup for all 4 standard agents</p>
+          <div class="plan-price">$5,000*</div>
+          <ul class="feature-list">
+            <li>Team workflows across sales, support, and finance</li>
+            <li>Scheduled reporting and status updates</li>
+            <li>Deeper integrations across your stack</li>
+            <li>Training for team leads and success check-ins</li>
+          </ul>
+          <div class="hosted-line">Works with: Agent Builder, Zapier, Make, Workato, n8n</div>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="cta-button" role="button" aria-label="Get proposal for Business Operations Package plan">
+            Get proposal
+          </a>
+        </div>
+      </article>
+      <!-- Enterprise Card -->
+      <article class="pricing-card" aria-labelledby="enterprise-title">
+        <div class="card-body">
+          <div class="plan-label">
+            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
+            </svg>
+            Enterprise
+          </div>
+          <h3 id="enterprise-title" class="plan-name">Enterprise AI</h3>
+          <p class="plan-subtitle">Setup for up to 6 agents with advanced governance</p>
+          <div class="plan-price">$10,000*</div>
+          <ul class="feature-list">
+            <li>Advanced integrations, security reviews, and audit-ready logging</li>
+            <li>Compliance support and environment options</li>
+            <li>Dedicated support for 3 months</li>
+            <li>Roadmap planning and executive reporting</li>
+          </ul>
+          <div class="hosted-line">Works with: Private cloud or on-premise, Workato or n8n</div>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="cta-button" role="button" aria-label="Contact us for Enterprise AI Suite plan">
+            Contact Us
+          </a>
+        </div>
+      </article>
+      <!-- Custom Card -->
+      <article class="pricing-card" aria-labelledby="custom-title">
+        <div class="card-body">
+          <div class="plan-label">
+            <svg class="lightning-icon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M13 0L6 12h5l-1 12 7-12h-5l1-12z"/>
+            </svg>
+            Custom
+          </div>
+          <h3 id="custom-title" class="plan-name">Custom AI</h3>
+          <p class="plan-subtitle">Setup for 6+ agents, built for your stack</p>
+          <div class="plan-price">Scope-based price</div>
+          <ul class="feature-list">
+            <li>Discovery and solution design</li>
+            <li>New agent development or major extensions</li>
+            <li>Private LLM and RAG options</li>
+            <li>Complex integrations and data orchestration</li>
+            <li>Pilot, validation, and rollout plan</li>
+            <li>Team training and documentation</li>
+            <li>Post-launch optimization</li>
+          </ul>
+          <div class="hosted-line">Works with: Your stack</div>
+        </div>
+        <div class="card-footer">
+          <a href="contact.html" class="cta-button" role="button" aria-label="Book discovery call">
+            Book discovery call
+          </a>
+        </div>
+      </article>
+    </div>
+    <p class="section-intro"><br><strong>Note:</strong> Prices above cover setup only. Monthly usage fees are billed separately.</p>
+  </div>
+</section>
 </div>
 
-
-<!-- About Section (brief on home) -->
-<section class="about-preview-section reveal" id="about">
+<!-- Ongoing Costs Section -->
+<section id="fees" class="ai-services-module">
   <div class="container">
-    <h2 class="section-title" style="margin-top:20px;">About <span class="accent-letter">e</span>leoro</h2>
-    <p class="section-intro"><span class="accent-letter">e</span>leoro is led by a founder with 15+ years building marketing operations and data systems for well known tech companies. We learned what scales in the real world: clear processes, trustworthy data, and tools that help people work faster instead of replacing them.<br><br>Today’s AI lets us bring those lessons to everyday work. We build private AI agents that connect with the tools you already use, handle routine tasks, recommend next steps, and surface insights. You stay in control at every step, and nothing publishes without human approval.<br><br>Our approach is hands on. We start by understanding how your business works today, then introduce agents gradually so nothing breaks. The goal is outcomes you can feel: faster launches, fewer mistakes, clearer reporting, and more relevant customer experiences.</p>
-
-   </div>
-</section>
-
-<!-- Contact CTA Section -->
-<section class="contact-cta-section reveal" id="contact-cta">
-  <div class="container">
-    <h2 class="section-title">Ready to put AI agents to work?</h2>
-    <p class="section-intro">Tell us about your business. We will review your setup and recommend the first agent to deliver value quickly.</p>
-    <a class="cta-btn" href="contact.html">Book a free consultation</a>
+    <h2 class="section-title">Ongoing Costs</h2>
+    <p class="section-intro">After setup, there are monthly or usage fees for the platforms and AI models your agents run on.</p>
+    <div class="vertical-list">
+      <div class="service-card">
+        <h3 class="card-title">Platforms</h3>
+        <p class="card-description"><strong>Agent Builder / Zapier / Make / Workato / n8n</strong>; Usually $20–$200+ per month, depending on tasks and features.</p>
+		<hr>
+		<h3 class="card-title">AI Models</h3>
+        <p class="card-description"><strong>OpenAI, Anthropic, Google, Meta</strong>; Charged by usage. For example, OpenAI GPT-4 Turbo is about $0.01–$0.03 per 1,000 tokens.</p>
+		<hr>
+		<h3 class="card-title">Hosting</h3>
+        <p class="card-description"><strong>Hosting</strong>; Optional, if you choose private cloud or on-prem.</p>
+		<hr>
+		<div class="estimated-range"><strong>Estimated Range:</strong> Most businesses spend $2,500–$10,000 upfront, plus $50–$500 per month for ongoing costs.</div>
+      </div>
+    </div>
+    
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-<div class="container footer-container">
-<div class="footer-col">
-<h4><span class="accent-letter">e</span>leoro</h4>
-<p>We empower businesses to turn everyday work into smarter processes and lasting growth with AI agents.</p>
-</div>
-</div>
-<div class="footer-bottom">
-      © <span id="year"></span> eleoro. All rights reserved.
+<!-- Consultation CTA -->
+<section id="consultation" class="contact-cta-section">
+  <div class="container">
+    <h2 class="section-title">Want to see how AI Agents can help your business?</h2>
+    <p class="section-intro">Tell us your goals and we’ll show you how our ready-made agents can deliver results quickly.</p>
+    <a href="contact.html" class="cta-btn">Book a free consultation</a>
+  </div>
+</section>
+
+<!-- What Makes Us Different Section -->
+<section id="difference" class="ai-services-module section">
+  <div class="container">
+    <h2 class="section-title">What Makes Us Different</h2>
+    <div class="vertical-list">
+      <div class="service-card">
+        <h3 class="card-title"><span style="color:#98FF98;">✓</span> Ready to Go</h3>
+        <p class="card-description">Pre-built agents and simple processes let us launch fast.</p>
+		<hr>
+		<h3 class="card-title"><span style="color:#98FF98;">✓</span> You Stay in Control</h3>
+        <p class="card-description">Your data and workflows stay yours.</p>
+		<hr>
+		<h3 class="card-title"><span style="color:#98FF98;">✓</span> Safe &amp; Secure</h3>
+        <p class="card-description">Strong security with encryption and role-based access.</p>
+		<hr>
+		<h3 class="card-title"><span style="color:#98FF98;">✓</span> Platform Know-How</h3>
+        <p class="card-description">We have experience working with Agent Builder, Zapier, Make, n8n, Workato and many others.</p>
+		<hr>
+		<h3 class="card-title"><span style="color:#98FF98;">✓</span> Trackable Results</h3>
+        <p class="card-description">Every agent includes ways to measure success.</p>
+		<hr>
+		<h3 class="card-title"><span style="color:#98FF98;">✓</span> Industry Knowledge</h3>
+        <p class="card-description">We adapt agents to your business area.</p>
+      </div>
     </div>
-<a aria-label="Book a meeting" class="floating-tab" href="contact.html" target="_blank">Book a free 15 mins consultation</a>
-</footer>
+  </div>
+</section>
+
+<!-- Industry Expertise Section -->
+<section id="industry" class="ai-services-module section">
+  <div class="container">
+    <h2 class="section-title">Industry Expertise</h2>
+    <p class="section-intro">Our agents work across many industries. We adapt them so they fit the way you do business.</p>
+    <div class="services-grid expertise-grid">
+	<div class="service-card">
+        <h3 class="card-title">Financial &amp; Healthcare</h3>
+        <p class="card-description">Our agents reduce paperwork and routine tasks so professionals can focus on serving clients and patients.</p>
+		<br><h4 style="color:#98FF98;">Use Cases</h4>
+        <ul class="card-features">
+          <li><b>Law Firms:</b> automate client intake, contracts, and updates</li>
+          <li><b>CPA Firms:</b> automate bookkeeping, invoices, and reports</li>
+          <li><b>Healthcare Providers:</b> automate scheduling, documentation, and reminders</li>
+        </ul><br>
+		<h4 style="color:#98FF98;">Expected Results:</h4> 
+        <p class="card-description">Smoother workflows and improved customer experiences.</p>
+      </div>
+	  <div class="service-card">
+        <h3 class="card-title">Consumer Services</h3>
+        <p class="card-description">Our agents improve customer interactions by automating scheduling, reminders, and communications.</p>
+		<br><h4 style="color:#98FF98;">Use Cases</h4>
+        <ul class="card-features">
+          <li><b>Automated scheduling:</b> keep calendars full with smart booking tools</li>
+          <li><b>Customer reminders:</b> reduce no-shows with automatic notifications</li>
+          <li><b>Feedback collection:</b> gather and organize customer input automatically</li>
+        </ul><br>
+		<h4 style="color:#98FF98;">Expected Results:</h4> 
+        <p class="card-description">Stronger customer relationships and higher satisfaction.</p>
+      </div>
+      <div class="service-card">
+        <h3 class="card-title">Startups</h3>
+        <p class="card-description">Our agents help young companies grow faster by taking on core work across operations, sales, and marketing.</p>
+		<br><h4 style="color:#98FF98;">Use Cases</h4>
+        <ul class="card-features">
+          <li><b>Automate operations:</b> project intake, task tracking, and internal reporting</li>
+          <li><b>Sales support:</b> lead follow-ups, reminders, and pipeline updates</li>
+          <li><b>Marketing help:</b> customer updates, campaign reporting, and content delivery</li>
+        </ul><br>
+		<h4 style="color:#98FF98;">Expected Results:</h4> 
+        <p class="card-description">Faster growth with lean teams.</p>
+      </div>
+      <div class="service-card">
+        <h3 class="card-title">Enterprise</h3>
+        <p class="card-description">Our agents support large organizations with complex data and workflows, connecting systems and improving reporting.</p>
+		<br><h4 style="color:#98FF98;">Use Cases</h4>
+        <ul class="card-features">
+          <li><b>Unify customer data:</b> build a single customer view across multiple platforms</li>
+          <li><b>Advanced reporting:</b> automated dashboards with custom KPIs</li>
+          <li><b>Analytics support:</b> deep analysis for strategy and forecasting</li>
+        </ul><br>
+		<h4 style="color:#98FF98;">Expected Results:</h4> 
+        <p class="card-description">Less manual work, clearer insights, and greater efficiency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Story CTA -->
+<section id="story-cta" class="contact-cta-section">
+  <div class="container">
+    <h2 class="section-title">Want to know our story?</h2>
+    <p class="section-intro">We started eleoro to make work simpler and faster with trustworthy automation. Our co-founders configure AI Agents that connect to your existing stack, keep you in control, and improve outcomes you can measure.</p>
+    <a href="about.html" class="cta-btn">Read our story</a>
+  </div>
+</section>
+
+<!-- Security & Trust Section -->
+<section id="security" class="ai-services-module section">
+  <div class="container">
+    <h2 class="section-title">Security &amp; Trust</h2>
+    <p class="section-intro">Your automations run on proven, secure platforms; including OpenAI’s Agent Builder, Zapier, Make, n8n, and Workato; trusted by thousands of businesses worldwide.</p>
+    <div class="vertical-list">
+  <div class="service-card">
+    <h3 class="card-title">Data Ownership</h3>
+    <p class="card-description">
+      You always own your data and workflows. Eleoro doesn’t store or resell your information; all data stays within your connected platforms such as Salesforce, HubSpot, or Shopify.
+    </p>
+    <hr>
+
+    <h3 class="card-title">Encryption</h3>
+    <p class="card-description">
+      All connections use TLS 1.2+ encryption in transit and AES-256 encryption at rest. For example, Zapier encrypts authentication tokens and Workato encrypts customer payloads before storage.
+    </p>
+    <hr>
+
+    <h3 class="card-title">Compliance</h3>
+    <p class="card-description">
+      Platforms like OpenAI’s Agent Builder, Zapier, Make, n8n, and Workato maintain SOC 2 Type II, GDPR, and CCPA compliance. HIPAA-eligible plans are available when required.
+    </p>
+    <hr>
+
+    <h3 class="card-title">Access Control</h3>
+    <p class="card-description">
+      Role-based permissions ensure that only authorised team members can modify workflows or credentials. Example: n8n supports per-user roles and Workato provides granular workspace access.
+    </p>
+    <hr>
+
+    <h3 class="card-title">Audits</h3>
+    <p class="card-description">
+      Each connected platform undergoes regular third-party security assessments and updates. You can view individual audit reports directly from each provider’s Trust or Security portal.
+    </p>
+    <hr>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section section">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-intro">Answers to common questions about configuring and running AI Agents with Eleoro.</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">How do I know which agents I need?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          We start with a short discovery call to map your processes; such as handling leads, managing orders, or automating follow-ups. Based on that, we recommend a small set of pre-built agents that match your tools (like HubSpot, Shopify, or QuickBooks). Each agent can later be customized as your workflows evolve.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How fast will I see results?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          Most small-business clients launch their first agents within 4–8 weeks. Pilot results; such as reduced manual tasks or faster response times; are usually visible within the first 30 days of deployment. Larger enterprise projects may include extended testing and approval phases.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do I need any technical skills?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          No technical background is required. eleoro handles setup, integration, and testing on your preferred platforms. Once live, you’ll have access to an intuitive dashboard where you can monitor activity and request changes with a single click.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Is it secure?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          Yes. Your data stays within the platforms you already use. We build on trusted tools like OpenAI’s Agent Builder, Zapier, Make, n8n, and Workato; each offering enterprise-grade encryption, audit logs, and SOC 2 or GDPR compliance. Eleoro does not store or retain customer data.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can I start small and expand later?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          Absolutely. Most clients begin with one or two agents, such as a Follow-Up or Orders Agent, and add more as they see results. Because every workflow runs on modular integrations, scaling to additional agents or departments is straightforward and low-risk.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Which tools and platforms do you support?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          We integrate with major business systems including HubSpot, Salesforce, Shopify, QuickBooks, Google Workspace, and Slack; plus over 5,000 apps supported by Zapier, Make, n8n, and Workato. During setup, we confirm compatibility and provide documentation for your exact tech stack.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What happens after launch?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          After deployment, you’ll receive a 30-day performance review to ensure your agents meet expected outcomes. We also offer optional monthly health checks and updates to keep automations aligned with your evolving processes.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can you help with compliance or legal documentation?<span class="faq-toggle-icon">+</span></div>
+        <div class="faq-answer">
+          We provide a Data Processing Agreement (DPA) template for review and reference. Formal legal approval should be completed by your counsel. All connected platforms maintain published compliance certifications and can provide their respective reports on request.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Still Have Questions CTA -->
+<section id="final-cta" class="contact-cta-section">
+  <div class="container">
+    <h2 class="section-title">Still have questions?</h2>
+    <p class="section-intro">
+      Whether you’re exploring what AI Agents can do or need help choosing the right workflow,
+      we’re here to guide you. Get clear answers and a personalized setup plan; no pressure, no jargon.
+    </p>
+    <a href="contact.html" class="cta-btn">Book a free consultation</a>
+  </div>
+</section>
+
+<!-- New Footer -->
+<footer class="new-footer">
+      <div class="container footer-container">
+        <div class="footer-col">
+          <h4><span class="accent-letter">e</span>leoro</h4>
+          <p>We help businesses turn daily work into smoother processes with AI Agents that reduce costs and support growth.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Agents</h4>
+          <ul>
+            <li><a href="/follow-up-agent.html">Follow-Up Agent</a></li>
+            <li><a href="/chat-agent.html">Chat Agent</a></li>
+            <li><a href="/orders-agent.html">Orders Agent</a></li>
+            <li><a href="/document-processing-agent.html">Documentation Agent</a></li>
+            <li><a href="/integration-agent.html">Integration Agent</a></li>
+            <li><a href="/reporting-agent.html">Reporting Agent</a></li>
+            <li><a href="/customer360-agent.html">Customer 360 Agent</a></li>
+            <li><a href="/growth-agent.html">Growth Agent</a></li>
+            <li><a href="/analytics-quant-agent.html">Analytics & Quant Agent</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <!--<li><a href="#">AI News</a></li>-->
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="#security">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="year"></span> eleoro. All rights reserved.</div>
+    </footer>
+<!-- ========== New Main Sections End ========== -->
+
 <!-- Scripts -->
 <script src="script.js"></script>
 <!-- Footer year handled in external script.js -->
