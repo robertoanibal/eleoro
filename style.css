@@ -2154,16 +2154,17 @@ nav.scrolled {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
+/* Corrected nested media queries for service grids.  At desktop sizes (min-width:1024px),
+   process grids use four columns while expertise and founders grids use two columns.
+   The original code had mismatched braces which prevented these rules from applying. */
 @media (min-width: 1024px) {
-   .ai-services-module .services-grid.process-grid, .ai-services-module .services-grid.expertise-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-@media (min-width: 1024px) {
-   .ai-services-module .services-grid.founders-grid, .ai-services-module .services-grid.expertise-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .ai-services-module .services-grid.process-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ai-services-module .services-grid.expertise-grid,
+  .ai-services-module .services-grid.founders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .ai-services-module .service-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -2690,79 +2691,32 @@ section.section > * {
   }
 }
 
-// Firefly configuration
-$quantity: 15;
+/* ------------------------------------------------------------------------
+   Mobile-specific tweaks
 
-// Base styles
-html, body {
-  height: 100%;
-  margin: 0;
-  background: #000;
-  color: #e6e6e6;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-// Scoped to sections with class firefly that have no background image
-section.firefly:not([style*="background-image"]) {
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at center, #0b0b0b 0%, #000 100%);
-
-  // Generate multiple fireflies dynamically
-  @for $i from 1 through $quantity {
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0.4vw;
-      height: 0.4vw;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0.9;
-    }
-
-    // Create multiple layers (each loop iteration)
-    &::before:nth-of-type(#{$i}),
-    &::after:nth-of-type(#{$i}) {
-      // random color hue
-      $hue: random(360);
-      background: hsl($hue, 100%, 70%);
-      box-shadow: 0 0 2vw 0.4vw hsl($hue, 100%, 70%);
-
-      // randomized positioning and animation
-      animation: move#{$i} random(12) + 10s ease-in-out infinite,
-                 flash#{$i} random(4000) + 6000ms ease-in-out infinite alternate;
-    }
-
-    // Each firefly moves in a unique path
-    @keyframes move#{$i} {
-      0% {
-        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
-                   scale(random(50) / 100 + 0.5);
-        opacity: 0.6;
-      }
-      50% {
-        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
-                   scale(random(50) / 100 + 0.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(random(100) * 1vw - 50vw, random(100) * 1vh - 50vh)
-                   scale(random(50) / 100 + 0.5);
-        opacity: 0.7;
-      }
-    }
-
-    // Flicker / glow variation
-    @keyframes flash#{$i} {
-      0%, 30%, 100% {
-        opacity: 0.2;
-        box-shadow: 0 0 0vw 0vw hsl(random(360), 100%, 70%);
-      }
-      5%, 25%, 50%, 75% {
-        opacity: 1;
-        box-shadow: 0 0 2vw 0.4vw hsl(random(360), 100%, 70%);
-      }
-    }
+   These overrides improve the legibility and layout of the site on smaller
+   screens.  They remove unnecessary indentation, center key content and
+   provide breathing room between stacked elements.  Desktop styles are
+   preserved at larger breakpoints.
+------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* On small screens the service card descriptions should align with the
+     card heading.  The desktop style uses a left margin to separate text
+     from the list icons; remove it here. */
+  .service-item p {
+    margin-left: 0 !important;
   }
 }
+
+@media (max-width: 992px) {
+  /* Stack and centre the hero content on tablets and phones.  The hero
+     container already becomes columnar via existing CSS; these rules
+     centre the text and add top margin to the visual for better spacing. */
+  .hero-text {
+    text-align: center;
+  }
+  .hero-visual {
+    margin-top: var(--spacing-md);
+  }
+}
+
