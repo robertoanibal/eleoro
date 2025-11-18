@@ -45,9 +45,14 @@
 
   <!-- Hero Section: Agent Title & Summary -->
   <header class="service-page" id="customer-agent">
-    <div class="container">
-      <h1>Customer 360 Agent: Unify customer profiles across every system</h1>
-      <p class="service-summary">Build a single, trusted customer profile by unifying data from all your tools. Customer 360 Agent listens for new data from multiple sources, resolves identities and duplicates, and syncs a <em>golden record</em> so every app stays consistent.</p>
+    <div class="container" style="display: grid; gap: 1.75rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 720px;">
+        <h1>Customer 360 Agent: Unify customer profiles across every system</h1>
+        <p class="service-summary">Build a single, trusted customer profile by unifying data from all your tools. Customer 360 Agent listens for new data from multiple sources, resolves identities and duplicates, and syncs a <em>golden record</em> so every app stays consistent.</p>
+      </div>
+      <div style="justify-self: end; width: 100%; max-width: 540px;">
+        <img src="n8n-cpa-sample-workflow.png" alt="Customer 360 follow-up workflow" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 48px rgba(0,0,0,0.35), 0 0 24px rgba(152,255,152,0.12); border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));" />
+      </div>
     </div>
   </header>
 
@@ -93,44 +98,54 @@
   </section>
 
   <!-- Deliverables / What You Get Section (styled like homepage service cards) -->
-  <section class="services-preview-section">
-    <div class="container">
-      <h2 class="section-title">What You Get</h2>
-      <p class="section-intro">Delivered ready to run, documented, and easy to maintain.</p>
-      <div class="services-list">
-        <div class="service-item reveal" id="deliverable-data-sync" style="background: var(--color-surface); color: var(--color-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border);">
-          <h3 style="margin: 0; display: flex; align-items: center; color: var(--color-primary);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#98FF98" viewBox="0 0 24 24"><path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z"/></svg>
-            <span style="margin-left: 0.5rem;">Unified Data Sync</span>
-          </h3>
-          <p style="margin: 0.5rem 0 0; color: var(--color-secondary);">
+  <section class="services-preview-section ai-services-module section">
+    <div class="container services-container">
+      <div class="services-header">
+        <h2 class="services-title">What You Get</h2>
+        <p class="services-subtitle">Delivered ready to run, documented, and easy to maintain.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal" id="deliverable-data-sync">
+          <div class="card-header">
+            <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z" fill="#98FF98"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Unified Data Sync</h3>
+          <p class="card-description">
             A consolidated 360° customer profile maintained across all your systems, with continuous syncing of updates.
           </p>
         </div>
-        <div class="service-item reveal" id="deliverable-segmentation" style="background: var(--color-surface); color: var(--color-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border);">
-          <h3 style="margin: 0; display: flex; align-items: center; color: var(--color-primary);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#98FF98" viewBox="0 0 24 24"><path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z"/></svg>
-            <span style="margin-left: 0.5rem;">Segmentation Rules</span>
-          </h3>
-          <p style="margin: 0.5rem 0 0; color: var(--color-secondary);">
+        <div class="service-card reveal" id="deliverable-segmentation">
+          <div class="card-header">
+            <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z" fill="#98FF98"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Segmentation Rules</h3>
+          <p class="card-description">
             Defined audience segments and tags applied uniformly (e.g. VIP customers, lifecycle stages) across tools for consistent targeting.
           </p>
         </div>
-        <div class="service-item reveal" id="deliverable-data-quality" style="background: var(--color-surface); color: var(--color-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border);">
-          <h3 style="margin: 0; display: flex; align-items: center; color: var(--color-primary);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#98FF98" viewBox="0 0 24 24"><path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z"/></svg>
-            <span style="margin-left: 0.5rem;">Data Quality & Identity</span>
-          </h3>
-          <p style="margin: 0.5rem 0 0; color: var(--color-secondary);">
+        <div class="service-card reveal" id="deliverable-data-quality">
+          <div class="card-header">
+            <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z" fill="#98FF98"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Data Quality &amp; Identity</h3>
+          <p class="card-description">
             Automated deduplication and standardization of customer data to ensure accuracy and completeness of each profile.
           </p>
         </div>
-        <div class="service-item reveal" id="deliverable-training" style="background: var(--color-surface); color: var(--color-primary); padding: 1rem; border-radius: 8px; border: 1px solid var(--color-border);">
-          <h3 style="margin: 0; display: flex; align-items: center; color: var(--color-primary);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#98FF98" viewBox="0 0 24 24"><path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z"/></svg>
-            <span style="margin-left: 0.5rem;">Documentation & Training</span>
-          </h3>
-          <p style="margin: 0.5rem 0 0; color: var(--color-secondary);">
+        <div class="service-card reveal" id="deliverable-training">
+          <div class="card-header">
+            <svg class="card-icon icon-standard" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.192 9.204-4.243-4.243a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l10-10z" fill="#98FF98"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Documentation &amp; Training</h3>
+          <p class="card-description">
             Runbook and onboarding session for your team, plus full audit logs of agent actions to maintain transparency and control.
           </p>
         </div>
