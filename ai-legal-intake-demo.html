@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>AI-Assisted Legal Intake Workflow Demo | Eleoro</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Eleoro main stylesheet -->
+<link href="https://eleoro.com/style.css" rel="stylesheet"/>
+<style>
+    /* Minimal inline enhancements for demo polish */
+    body {
+      background-color: #0c0c0c;
+      color: #f5f5f5;
+      font-family: sans-serif;
+	  
+    }
+    .section {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+	  border: 1px solid rgba(255, 255, 255, 0.1);
+	  backdrop-filter: blur(10px);
+      border-radius: 0.75rem;
+      display: none;
+	  transition:all 0.3s ease;
+    }
+    .section.active {
+      display: block;
+    }
+    h2 {
+      margin-top: 0;
+      color: #98FF98;
+    }
+	h3 { margin-top:20px; display:block;  } 
+	p { margin: 20px auto; font-size: 24px; color: #c1c1c1; }
+	.progress-container p { font-size: 16px; }
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    /* progress bar for initialization */
+    #initProgressContainer {
+      width: 60%;
+      background: #222;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    #initProgress {
+      width: 0%;
+      height: 8px;
+      background: #98FF98;
+      transition: width 3s linear;
+    }
+    .progress-container {
+      margin: 30px 0;
+    }
+    .progress-bar {
+      width: 0;
+      height: 10px;
+      background: #98FF98;
+      transition: width 2s linear;
+    }
+    .roi-text {
+      color: #7fff7f;
+      font-size: 14px;
+      margin-top: 8px;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    /* document list styling */
+    .document-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .doc-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .doc-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .doc-icon {
+      width: 60px;
+      height: 80px;
+      background: #000;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #98FF98;
+      font-size: 20px;
+    }
+    .doc-title {
+      margin-left: 12px;
+      font-size: 16px;
+      color: #f5f5f5;
+    }
+    /* buttons */
+    .btn {
+      background: #222;
+      border: 1px solid #98FF98;
+      color: #98FF98;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn:hover {
+      background: #98FF98;
+      color: #111 !important;
+    }
+    /* controls below demo */
+    .controls {
+      max-width: 800px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    /* review checklist */
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .checkmark {
+      width: 40px;
+  height: 40px;
+  border: 2px solid #98FF98;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  margin-right: 6px;
+    }
+    .checkmark.checked::after {
+      content: '';
+  position: absolute;
+  left: 21px;
+  top: -10px;
+  width: 15px;
+  height: 32px;
+  border: solid #98FF98;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+    }
+    .review-roi {
+      color: #7fff7f;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+	  margin-bottom:20px;
+    }
+    .review-roi.show {
+      opacity: 1;
+    }
+    .email-mock {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 14px;
+    }
+	.email-mock p { font-size:14px !important; }
+    .summary-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .summary-list li {
+      margin-bottom: 8px;
+    }
+    /* CTA button */
+    .cta-btn {
+      background: #98FF98;
+      color: #111;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background: #7fff7f;
+	        color: #111;
+
+    }
+    /* Global progress indicator */
+    .global-progress {
+      display: flex;
+      gap: 4px;
+      margin-top: 20px;
+    }
+    .global-progress .gp-segment {
+      flex: 1;
+      height: 4px;
+      background: #333;
+      border-radius: 2px;
+    }
+    .global-progress .gp-segment.active {
+      background: #98FF98;
+    }
+	
+	/* Smooth fade for show/hide */
+.global-progress {
+  transition: opacity 0.8s ease;
+}
+
+/* Base segment */
+.global-progress .gp-segment {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fill animation layer */
+.global-progress .gp-segment::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #98FF98;
+  transition: width 0.6s ease;
+}
+
+/* Active segment fills left to right */
+.global-progress .gp-segment.active::after {
+  width: 100%;
+}
+
+/* Stronger, more noticeable glow */
+@keyframes gpGlow {
+  0% {
+    box-shadow:
+      0 0 4px rgba(152, 255, 152, 0.4),
+      0 0 10px rgba(152, 255, 152, 0.35),
+      inset 0 0 2px rgba(152, 255, 152, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 8px rgba(152, 255, 152, 0.9),
+      0 0 18px rgba(152, 255, 152, 0.7),
+      inset 0 0 6px rgba(152, 255, 152, 0.8);
+  }
+  100% {
+    box-shadow:
+      0 0 4px rgba(152, 255, 152, 0.4),
+      0 0 10px rgba(152, 255, 152, 0.35),
+      inset 0 0 2px rgba(152, 255, 152, 0.4);
+  }
+}
+
+/* Apply glow to active segments */
+.global-progress.pulsing .gp-segment.active {
+  animation-name: gpGlow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.global-progress .gp-segment {
+  height: 5px; /* was 4px */
+}
+
+.global-progress.pulsing .gp-segment.active {
+  animation:
+    gpGlow var(--pulse-speed, 2.2s) ease-in-out infinite,
+    scalePulse var(--pulse-speed, 2.2s) ease-in-out infinite;
+}
+
+@keyframes scalePulse {
+  0%   { transform: scaleY(1); }
+  50%  { transform: scaleY(1.15); }
+  100% { transform: scaleY(1); }
+}
+
+/* Completed segments: dimmed but visible */
+.global-progress .gp-segment.completed {
+  background: #98FF98;
+  opacity: 0.35;
+}
+
+/* Current segment base */
+.global-progress .gp-segment.current {
+  background: #98FF98;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Strong glow only on current segment */
+.global-progress.pulsing .gp-segment.current {
+  animation-name: gpGlow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Prevent completed segments from glowing */
+.global-progress .gp-segment.completed {
+  animation: none !important;
+  box-shadow: none !important;
+}
+
+.global-progress .gp-segment.completed {
+  transform: scaleY(0.9);
+}
+
+	
+	
+  </style>
+  <!-- Open source fonts similar to Datavant -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/b632618dd6.js"></script>
+</head>
+<body>
+    
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <h2>Initializing demo…</h2>
+    <p>Setting up an AI-assisted legal intake workflow.</p>
+    <div id="initProgressContainer">
+      <div id="initProgress"></div>
+    </div>
+  </div>
+
+  <!-- Client Intake Section -->
+  <div class="section" id="intakeSection">
+    <h2>Client Intake</h2>
+    <p>This example shows how an AI agent collects and structures intake information for attorney review.</p>
+    <form id="intakeForm">
+      <label>
+        Full name<br/>
+        <input id="fullName" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;" type="text"/>
+      </label><br/><br/>
+      <label>
+        Email<br/>
+        <input id="email" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;" type="email"/>
+      </label><br/><br/>
+      <label>
+        Phone<br/>
+        <input id="phone" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;" type="tel"/>
+      </label><br/><br/>
+      <label>
+        Matter type<br/>
+        <input id="matterType" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;" type="text"/>
+      </label><br/><br/>
+      <label>
+        Incident date<br/>
+        <input id="incidentDate" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;" type="date"/>
+      </label><br/><br/>
+      <label>
+        Description of issue<br/>
+        <textarea id="issueDescription" rows="4" style="width:100%; padding:8px; margin-top:4px; background:#222; border:1px solid #444; color:#fff;"></textarea>
+      </label><br/><br/>
+      <label style="display:flex; align-items:center;">
+        <input id="consent" style="margin-right:8px;" type="checkbox"/>
+        I acknowledge and consent to data processing for intake purposes.
+      </label><br/>
+      <button class="btn" id="submitIntake" type="button">Submit Intake</button>
+    </form>
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Document Section (appears before processing) -->
+  <div class="section" id="documentSection">
+    <h2>AI-Assisted Document Preparation</h2>
+    <p>Based on the intake details, the AI agent prepares draft documents and organizes them for review.</p>
+    <ul class="document-list" id="documentList">
+<li class="doc-item" id="doc1"><div class="doc-icon">PDF</div><div class="doc-title">Intake Summary.pdf</div></li><li class="doc-item" id="doc2"><div class="doc-icon">PDF</div><div class="doc-title">Retainer Agreement.pdf</div></li><li class="doc-item" id="doc3"><div class="doc-icon">PDF</div><div class="doc-title">Incident Report.pdf</div></li><li class="doc-item" id="doc4"><div class="doc-icon">PDF</div><div class="doc-title">Medical Records Request.pdf</div></li><li class="doc-item" id="doc5"><div class="doc-icon">PDF</div><div class="doc-title">Authorization to Release Info.pdf</div></li><li class="doc-item" id="doc6"><div class="doc-icon">PDF</div><div class="doc-title">Client Information Packet.pdf</div></li></ul>
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Processing Section -->
+  <div class="section" id="processingSection">
+    <h2>AI Workflow Processing</h2>
+    <p>Organizing matter data, preparing documents, and staging files through an AI agent for systems such as Clio and NetDocuments.</p>
+    <div id="progressSteps"></div>
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Review Section -->
+  <div class="section" id="reviewSection">
+    <h2>Attorney Review</h2>
+    <p>All actions remain reviewable. The AI agent supports preparation, while attorneys retain full control over approvals and decisions.</p>
+	<div class="review-roi" id="reviewRoiMessage"></div>
+    <div class="checkbox-item">
+      <div class="checkmark" id="check1"></div>
+      <span>Intake completeness verification</span>
+    </div>
+    <div class="checkbox-item">
+      <div class="checkmark" id="check2"></div>
+      <span>Matter classification accuracy</span>
+    </div>
+    <div class="checkbox-item">
+      <div class="checkmark" id="check3"></div>
+      <span>Document metadata validation</span>
+    </div>
+    <div class="checkbox-item">
+      <div class="checkmark" id="check4"></div>
+      <span>Client communication approval</span>
+    </div>
+    <div class="checkbox-item">
+      <div class="checkmark" id="check5"></div>
+      <span>Compliance confirmation</span>
+    </div>
+    
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Follow-Up Section -->
+  <div class="section" id="followUpSection">
+    <h2>Automated Follow‑Up</h2>
+    <p>This example shows a draft follow-up message prepared by an AI agent based on the intake details.</p>
+<div class="email-mock">
+  <p><strong>To:</strong> <span id="clientEmail"></span></p>
+  <p><strong>Subject:</strong> Welcome to Our Firm – Next Steps for Your Case</p>
+  <div id="emailBody" style="white-space:pre-wrap;"></div>
+</div>
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Summary Section -->
+  <div class="section" id="summarySection">
+    <h2>Workflow Summary</h2>
+    <p>This demo illustrates an AI-assisted intake workflow where routine steps are handled by an AI agent and reviewed by attorneys before finalization.</p>
+    <h3>What the workflow handles</h3>
+    <ul class="summary-list">
+      <li>✔️ Matters are prepared with structured metadata.</li>
+      <li>✔️ Draft documents are organized and versioned.</li>
+      <li>✔️ Workflow steps are logged for review.</li>
+    </ul>
+    <h3>Where time is reduced</h3>
+    <ul class="summary-list">
+      <li>✔️ Fewer manual intake and document preparation steps.</li>
+      <li>✔️ Less rework caused by missing or inconsistent data.</li>
+      <li>✔️ Reduced coordination between systems.</li>
+    </ul>
+    <h3>How this scales</h3>
+    <ul class="summary-list">
+      <li>✔️ Intake volume can increase without added staff.</li>
+      <li>✔️ Review checkpoints remain consistent.</li>
+      <li>✔️ Oversight is preserved as workload grows.</li>
+    </ul>
+<h3>Attorney Oversight</h3><ul class="summary-list"><li>✔️ AI agents handle administrative tasks, freeing attorneys to focus on legal strategy.</li><li>✔️ Every action is transparent and subject to attorney review.</li><li>✔️ Clients receive consistent communications with attorney approval.</li></ul><a class="cta-btn" href="https://eleoro.com/contact">Request more information</a>
+<div class="global-progress">
+  <div class="gp-segment" data-step="0"></div>
+  <div class="gp-segment" data-step="1"></div>
+  <div class="gp-segment" data-step="2"></div>
+  <div class="gp-segment" data-step="3"></div>
+  <div class="gp-segment" data-step="4"></div>
+  <div class="gp-segment" data-step="5"></div>
+</div>
+  </div>
+
+  <!-- Demo Controls -->
+<div class="controls" id="demoControls">
+  <button class="btn" id="prevBtn">Previous</button>
+  <button class="btn" id="pauseBtn">Pause</button>
+  <button class="btn" id="playBtn" style="display:none;">Resume</button>
+  <button class="btn" id="restartBtn">Restart</button>
+</div>
+  <script>
+/* -------------------------------
+   Typing utilities
+-------------------------------- */
+function typeIntoInput(element, text, delay, callback) {
+  let idx = 0;
+  function typeChar() {
+    if (idx <= text.length) {
+      element.value = text.substring(0, idx++);
+      setDemoTimeout(typeChar, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
+  typeChar();
+}
+
+function typeText(element, text, delay, callback) {
+  let idx = 0;
+  function typeChar() {
+    if (idx <= text.length) {
+      element.textContent = text.substring(0, idx++);
+      setDemoTimeout(typeChar, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
+  typeChar();
+}
+
+/* -------------------------------
+   Timer management
+-------------------------------- */
+let timers = [];
+function setDemoTimeout(fn, delay) {
+  const id = setTimeout(fn, delay);
+  timers.push(id);
+  return id;
+}
+function clearAllTimers() {
+  timers.forEach(t => clearTimeout(t));
+  timers = [];
+}
+
+/* -------------------------------
+   Demo stages
+-------------------------------- */
+let currentStage = -1;
+const stageFunctions = [
+  startIntake,
+  startDocuments,
+  startProcessing,
+  startReview,
+  startFollowUp,
+  startSummary
+];
+
+function getStageDuration(stageIndex) {
+  return [7000, 5000, 6500, 6000, 5500, 0][stageIndex] || 6000;
+}
+
+/* -------------------------------
+   Processing actions
+-------------------------------- */
+const actions = [
+  { label: 'Reviewing prior matters', roi: 'Relevant historical cases identified' },
+  { label: 'Reviewing related communications', roi: 'Key emails and correspondence surfaced' },
+  { label: 'Establishing client context', roi: 'Existing matter context organized' },
+  { label: 'Preparing consolidated documents', roi: 'Documents combined into a single review set' },
+  { label: 'Staging finalized documents', roi: 'Files prepared for secure storage' }
+];
+
+const reviewMessages = [
+  'Intake details verified for completeness.',
+  'Matter classification reviewed.',
+  'Document metadata checked.',
+  'Draft client communication reviewed.',
+  'Compliance requirements confirmed.'
+];
+
+/* -------------------------------
+   Global progress indicator
+-------------------------------- */
+function updateGlobalProgress() {
+  document.querySelectorAll('.global-progress').forEach(indicator => {
+    const segments = indicator.querySelectorAll('.gp-segment');
+
+    segments.forEach((seg, i) => {
+  seg.classList.remove('active', 'current', 'completed');
+
+  if (i < currentStage) {
+    seg.classList.add('completed');
+  } else if (i === currentStage) {
+    seg.classList.add('active', 'current');
+  }
+});
+
+
+    if (currentStage < stageFunctions.length - 1) {
+      indicator.classList.add('pulsing');
+      indicator.style.opacity = '1';
+
+      const duration = getStageDuration(currentStage);
+      segments.forEach(seg => {
+        seg.style.animationDuration = `${duration * 0.6}ms`;
+      });
+    } else {
+      indicator.classList.remove('pulsing');
+    }
+  });
+}
+
+function pauseProgressPulse() {
+  document.querySelectorAll('.global-progress')
+    .forEach(indicator => indicator.classList.remove('pulsing'));
+}
+
+function resumeProgressPulse() {
+  if (currentStage < stageFunctions.length - 1) {
+    document.querySelectorAll('.global-progress')
+      .forEach(indicator => indicator.classList.add('pulsing'));
+  }
+}
+
+/* -------------------------------
+   Stage navigation
+-------------------------------- */
+function goToStage(index) {
+  clearAllTimers();
+  ['intakeSection','documentSection','processingSection','reviewSection','followUpSection','summarySection']
+    .forEach(id => document.getElementById(id)?.classList.remove('active'));
+
+  currentStage = index;
+  updateGlobalProgress();
+  stageFunctions[index]?.();
+}
+
+/* -------------------------------
+   Load
+-------------------------------- */
+window.addEventListener('load', () => {
+  const initBar = document.getElementById('initProgress');
+  setTimeout(() => initBar.style.width = '100%', 50);
+  setDemoTimeout(() => {
+    document.getElementById('loadingScreen').style.display = 'none';
+    goToStage(0);
+  }, 4000);
+});
+
+/* -------------------------------
+   Stage implementations
+-------------------------------- */
+function startIntake() {
+  const s = document.getElementById('intakeSection');
+  s.classList.add('active');
+
+  const f = {
+    name: fullName, email, phone,
+    type: matterType, date: incidentDate,
+    issue: issueDescription, consent
+  };
+
+  Object.values(f).forEach(i => i.value = '');
+  f.consent.checked = false;
+
+  typeIntoInput(f.name, 'Jane Smith', 45, () =>
+    typeIntoInput(f.email, 'jane.smith@example.com', 45, () =>
+      typeIntoInput(f.phone, '(000) 111-1111', 45, () =>
+        typeIntoInput(f.type, 'Motor Vehicle Accident', 45, () => {
+          f.date.value = '2025-11-15';
+          typeIntoInput(f.issue, 'Motor vehicle accident with injuries and vehicle damage.', 30, () => {
+            f.consent.checked = true;
+            setDemoTimeout(() => submitIntake.click(), 1200);
+          });
+        })
+      )
+    )
+  );
+
+  submitIntake.onclick = () => goToStage(1);
+}
+
+function startDocuments() {
+  const s = documentSection;
+  s.classList.add('active');
+  const docs = s.querySelectorAll('.doc-item');
+
+  docs.forEach((d, i) =>
+    setDemoTimeout(() => d.classList.add('show'), 600 + i * (i === 0 ? 1100 : 900))
+  );
+
+  setDemoTimeout(() => goToStage(2), 600 + docs.length * 900 + 1800);
+}
+
+function startProcessing() {
+  const c = processingSection;
+  c.classList.add('active');
+  progressSteps.innerHTML = '';
+  let i = 0;
+
+  (function run() {
+    if (i >= actions.length) return setDemoTimeout(() => goToStage(3), 300);
+
+    const { label, roi } = actions[i++];
+    const d = document.createElement('div');
+    d.className = 'progress-container';
+    d.innerHTML = `<p>${label}</p><div class="progress-bar"></div><div class="roi-text">${roi}</div>`;
+    progressSteps.appendChild(d);
+
+    const bar = d.querySelector('.progress-bar');
+    const r = d.querySelector('.roi-text');
+
+    setDemoTimeout(() => bar.style.width = '100%', 100);
+    setDemoTimeout(() => r.style.opacity = 1, 1200);
+    setDemoTimeout(() => { r.style.opacity = 0; bar.style.opacity = 0; }, 2800);
+    setDemoTimeout(() => { d.remove(); run(); }, 3200);
+  })();
+}
+
+function startReview() {
+  reviewSection.classList.add('active');
+  let i = 0;
+
+  (function step() {
+    if (i >= reviewMessages.length) return setDemoTimeout(() => goToStage(4), 800);
+    document.getElementById(`check${i+1}`).classList.add('checked');
+    reviewRoiMessage.textContent = reviewMessages[i++];
+    reviewRoiMessage.classList.add('show');
+    setDemoTimeout(() => reviewRoiMessage.classList.remove('show'), 1800);
+    setDemoTimeout(step, 2000);
+  })();
+}
+
+function startFollowUp() {
+  const followUpSection = document.getElementById('followUpSection');
+  const fullNameInput = document.getElementById('fullName');
+  const emailInput = document.getElementById('email');
+  const clientNameSpan = document.getElementById('clientName');
+  const clientEmailSpan = document.getElementById('clientEmail');
+  const emailBody = document.getElementById('emailBody');
+
+  if (!followUpSection || !emailBody) {
+    console.error('Follow-up section or email body not found');
+    return;
+  }
+
+  followUpSection.classList.add('active');
+
+  const clientName =
+    (fullNameInput && fullNameInput.value) ? fullNameInput.value : 'Client';
+  const clientEmail =
+    (emailInput && emailInput.value) ? emailInput.value : '';
+
+  if (clientNameSpan) clientNameSpan.textContent = clientName;
+  if (clientEmailSpan) clientEmailSpan.textContent = clientEmail;
+
+  emailBody.textContent = '';
+
+  const emailText = `Dear ${clientName},
+
+Thank you for providing the details of your matter. An initial consultation is scheduled for January 10, 2026 to discuss next steps. Relevant documents or materials should be gathered by January 12, 2026.
+
+Sincerely,
+The Legal Team`;
+
+  typeText(emailBody, emailText, 25, () => {
+    setDemoTimeout(() => goToStage(5), 2500);
+  });
+}
+
+
+function startSummary() {
+  summarySection.classList.add('active');
+  document.querySelectorAll('.global-progress').forEach(p => {
+    p.classList.remove('pulsing');
+    p.style.opacity = '0';
+  });
+}
+
+/* -------------------------------
+   Controls
+-------------------------------- */
+pauseBtn.onclick = () => {
+  clearAllTimers();
+  pauseProgressPulse();
+  pauseBtn.style.display = 'none';
+  playBtn.style.display = 'inline-block';
+};
+
+playBtn.onclick = () => {
+  playBtn.style.display = 'none';
+  pauseBtn.style.display = 'inline-block';
+  resumeProgressPulse();
+  stageFunctions[currentStage]?.();
+};
+
+prevBtn.onclick = () => currentStage > 0 && goToStage(currentStage - 1);
+restartBtn.onclick = () => location.reload();
+</script>
+<!-- New Footer -->
+<footer class="new-footer">
+      <div class="container footer-container">
+        <div class="footer-col">
+          <h4><span class="accent-letter">e</span>leoro</h4>
+          <p>We help businesses turn daily work into smoother processes with AI Agents that reduce costs and support growth.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Agents</h4>
+          <ul>
+            <li><a href="/follow-up-agent.html">Follow-Up Agent</a></li>
+            <li><a href="/chat-agent.html">Chat Agent</a></li>
+            <li><a href="/orders-agent.html">Orders Agent</a></li>
+            <li><a href="/document-processing-agent.html">Documentation Agent</a></li>
+            <li><a href="/voice-agent.html">Voice Agent</a></li>
+            <li><a href="/customer360-agent.html">Customer 360 Agent</a></li>
+            <li><a href="/business-intelligence-agent.html">Business Intelligence Agent</a></li>
+            <li><a href="/custom-agents.html">Custom Agents</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="index.html#security">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="year"></span> eleoro. All rights reserved.</div>
+    </footer>
+</body>
+</html>
