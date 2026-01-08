@@ -328,7 +328,18 @@
   transform: scaleY(0.9);
 }
 
-	
+.counter-grid {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.counter-grid strong {
+  display: block;
+  font-size: 32px;
+  color: #98FF98;
+}	
 	
   </style>
   <!-- Open source fonts similar to Datavant -->
@@ -479,8 +490,12 @@
 
   <!-- Summary Section -->
   <div class="section" id="summarySection">
-    <h2>Workflow Summary</h2>
-    <p>This demo illustrates an AI-assisted intake workflow where routine steps are handled by an AI agent and reviewed by attorneys before finalization.</p>
+	  <div class="counter-grid">
+          <div><strong>12&nbsp;hrs</strong>Before</div>
+          <div><strong>4&nbsp;hrs</strong>After</div>
+          <div><strong>8&nbsp;hrs</strong>Saved</div>
+	</div>
+	
     <h3>What the workflow handles</h3>
     <ul class="summary-list">
       <li>✔️ Matters are prepared with structured metadata.</li>
