@@ -11,6 +11,29 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  /* Theme toggle logic */
+  const themeToggle = document.getElementById('theme-toggle');
+  const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // Change default theme to 'dark', unless explicitly saved as 'light' in local storage
+  let currentTheme = localStorage.getItem('theme') || 'dark';
+
+  if (currentTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  }
+
   /* Sticky navigation styling on scroll */
   const nav = document.querySelector('nav');
   if (nav) {
@@ -145,12 +168,43 @@ document.addEventListener('DOMContentLoaded', () => {
   positionNodes();
   window.addEventListener('resize', positionNodes);
 
+  // Hero Video Sequence Logic
+  const heroVideo = document.getElementById('hero-video');
+  if (heroVideo) {
+    const videoSequence = [
+      'documents_video.mp4',
+      'followup_video.mp4',
+      'reviews_video.mp4',
+      'general_video.mp4'
+    ];
+    let currentVideoIndex = 0;
+
+    // Set initial video
+    heroVideo.src = videoSequence[currentVideoIndex];
+    heroVideo.load();
+
+    heroVideo.addEventListener('ended', () => {
+      currentVideoIndex = (currentVideoIndex + 1) % videoSequence.length;
+      heroVideo.src = videoSequence[currentVideoIndex];
+      heroVideo.play().catch(e => console.error("Video autoplay blocked:", e));
+    });
+  }
+
   // Generate ticker content with randomized phrases and styles
   function initTicker() {
     const wrapper = document.getElementById('eleoro-ticker-unique');
     if (!wrapper) return;
     wrapper.innerHTML = '';
-    const phrases = ['Agent Builder','Zapier', 'n8n', 'Make', 'Workato','OpenAI GPT', 'Anthropic Claude', 'Google Gemini', 'Meta LLaMA'];
+    const phrases = [
+      'Automatic Follow-ups',
+      '24/7 Lead Capture',
+      'AI-Powered Outreach',
+      'Zero-Effort Documentation',
+      'Smart Google Reviews',
+      'Human-First AI',
+      'Always-On Support',
+      'Paperwork on Autopilot'
+    ];
     const styleClasses = [
       'eleoro-style-heavy',
       'eleoro-style-semi',
@@ -226,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateProgress);
     updateProgress();
   }
-  
+
   /* FAQ toggle functionality
    * Expand or collapse FAQ answers when a question is clicked.
    * The plus/minus icon updates accordingly. */
@@ -251,3 +305,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// Modal Functions
+function openModal(modalId) {
+  var modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  }
+}
+
+function closeModal(modalId) {
+  var modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Restore background scrolling
+  }
+}
+
+// Close modal if user clicks outside of the modal content
+window.addEventListener('click', function (event) {
+  if (event.target.classList.contains('modal-overlay')) {
+    event.target.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
