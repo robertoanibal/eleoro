@@ -3334,6 +3334,7 @@ section.section>* {
 /* Ensure mobile styles to refactored components take precedence */
 @media (max-width: 992px) {
   .hero-container {
+    display: block;
     padding-left: 0;
     padding-right: 0;
   }
