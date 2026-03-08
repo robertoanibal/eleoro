@@ -87,6 +87,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -3163,7 +3165,7 @@ section.section>* {
   }
 
   .hero-visual {
-    margin-top: var(--spacing-md);
+    margin: var(--spacing-md) auto 0 auto;
   }
 }
 
