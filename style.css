@@ -95,6 +95,7 @@ body {
   line-height: var(--line-height-base);
   color: var(--color-primary);
   background-color: var(--color-light);
+  overflow-x: hidden;
 }
 
 a {
@@ -316,42 +317,29 @@ nav.scrolled {
 
 /* Remove styling for nested links in dropdown items because the entire item is an anchor */
 
-/* Hamburger menu for mobile */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.burger span {
-  width: 25px;
-  height: 3px;
-  background: var(--color-primary);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+/* Hamburger menu for mobile removed */
 
 @media (max-width: 768px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+
   .nav-links {
-    position: fixed;
-    top: var(--nav-height);
-    left: -100%;
-    flex-direction: column;
-    background: var(--color-light);
-    width: 100%;
-    padding: var(--spacing-md);
-    gap: var(--spacing-md);
-    height: calc(100vh - var(--nav-height));
-    overflow-y: auto;
-    transition: left 0.3s ease;
+    gap: 8px;
   }
 
-  .nav-links.open {
-    left: 0;
+  .nav-links li a {
+    padding: 6px 8px;
+    font-size: 0.9rem;
   }
 
-  .burger {
-    display: flex;
+  .theme-toggle {
+    padding: 6px;
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
   }
 
   .dropdown:hover .dropdown-menu {
@@ -2601,6 +2589,8 @@ nav.scrolled {
 /* Increase padding between sections by 50% */
 .section {
   padding: 6rem 0;
+  overflow: hidden;
+  position: relative;
 }
 
 /* Vertical list layout for Ongoing Costs, Differences, Security */
@@ -2689,21 +2679,13 @@ nav.scrolled {
 }
 
 .eleoro-pricing-module .pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .eleoro-pricing-module .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .eleoro-pricing-module .pricing-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.eleoro-pricing-module .pricing-card {
+  width: 100%;
+  max-width: 900px;
 }
 
 .eleoro-pricing-module .pricing-card {
@@ -2820,27 +2802,43 @@ nav.scrolled {
   border-bottom: 1px solid var(--color-border);
 }
 
-.eleoro-pricing-module .feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
+.eleoro-pricing-module .pricing-features-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem 0;
+  text-align: left;
 }
 
-.eleoro-pricing-module .feature-list li {
+.eleoro-pricing-module .pricing-features-table th,
+.eleoro-pricing-module .pricing-features-table td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eleoro-pricing-module .pricing-features-table th {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.eleoro-pricing-module .pricing-features-table td {
   color: var(--color-secondary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.5;
-  margin-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  position: relative;
 }
 
-.eleoro-pricing-module .feature-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
+.eleoro-pricing-module .pricing-features-table td:first-child {
   font-weight: 600;
+  color: var(--color-accent);
+  width: 45%;
+  vertical-align: top;
+}
+
+.eleoro-pricing-module .pricing-features-table td:last-child {
+  vertical-align: top;
 }
 
 .eleoro-pricing-module .hosted-line {
@@ -3126,6 +3124,40 @@ section.section>* {
   /* Stack and centre the hero content on tablets and phones.  The hero
      container already becomes columnar via existing CSS; these rules
      centre the text and add top margin to the visual for better spacing. */
+  .hero-container {
+    justify-content: center;
+  }
+
+  .hero-header-full {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .hero-content-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 28px 0;
+  }
+
+  .hero-features-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-feature-icon-wrapper {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
   .hero-text {
     text-align: center;
   }
@@ -3213,7 +3245,7 @@ section.section>* {
 }
 
 .hero-subtitle-text {
-  margin: 16px 0 0 0;
+  margin: 8px 0 0 0;
   font-size: 16px;
   line-height: 1.65;
   color: var(--color-secondary);
@@ -3297,6 +3329,44 @@ section.section>* {
   color: var(--color-accent);
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Ensure mobile styles to refactored components take precedence */
+@media (max-width: 992px) {
+  .hero-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero-header-full,
+  .hero-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .hero-subtitle-text {
+    margin-top: 0;
+  }
+
+  .hero-features-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-feature-icon-wrapper {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
 }
 
 .modal-body h2,
