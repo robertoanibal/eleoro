@@ -109,13 +109,22 @@ rel="stylesheet" />
   .pricing-grid-3col {
     align-items: stretch;
   }
-  .pricing-grid-3col .pricing-card {
+  .pricing-grid-3col > article {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100%;
+  }
+  .pricing-grid-3col > article .card-body {
+    flex: 1 1 auto !important;
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
-  .pricing-grid-3col .pricing-card .card-body {
-    flex: 1;
+  .pricing-grid-3col > article .card-body table {
+    flex: 1 1 auto;
+  }
+  .pricing-grid-3col > article .card-footer {
+    margin-top: auto;
+    padding-top: 1.25rem;
   }
 
   /* Nav: push contact + toggle to the right */
@@ -1234,16 +1243,16 @@ systems and improving reporting.</p>
 
 <div class="container">
 
-<h2 class="section-title">Client Results</h2>
+<h2 class="section-title">What This Looks Like in Practice</h2>
 
-<p class="section-intro">Real workflows, real outcomes. Here's what happened when two firms stopped managing their operations manually.</p>
+<p class="section-intro">These are hypothetical engagements based on the types of problems we solve and the workflows we deploy. They reflect real processes, real tools, and realistic outcomes — not specific client engagements.</p>
 
 <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
 
 <div class="service-card" style="cursor:pointer; border-top: 3px solid var(--color-accent);" onclick="openModal('modal-case1')">
-<div class="card-header"><span class="card-badge badge-standard">Law Firm</span></div>
-<h3 class="card-title">A 9-Attorney Litigation Firm Recaptured 18 Billable Hours Per Week</h3>
-<p class="card-description">Manual intake, paper-based document management, and missed follow-ups were costing the firm real revenue. Here's how that changed in 6 weeks.</p>
+<div class="card-header"><span class="card-badge badge-standard">Hypothetical · Law Firm</span></div>
+<h3 class="card-title">How a 9-Attorney Litigation Firm Could Recapture 18 Billable Hours Per Week</h3>
+<p class="card-description">Manual intake, paper-based document management, and missed follow-ups eating into billable time — and how AI workflows would change that in 6 weeks.</p>
 <div style="display:flex; gap:1.5rem; margin-top:1rem;">
 <div style="text-align:center;">
 <div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">18 hrs</div>
@@ -1258,13 +1267,13 @@ systems and improving reporting.</p>
 <div style="font-size:0.75rem; opacity:0.7;">saved monthly</div>
 </div>
 </div>
-<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">Read case study →</p>
+<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">See how it works →</p>
 </div>
 
 <div class="service-card" style="cursor:pointer; border-top: 3px solid var(--color-accent);" onclick="openModal('modal-case2')">
-<div class="card-header"><span class="card-badge badge-standard">Real Estate Brokerage</span></div>
-<h3 class="card-title">A 34-Agent Brokerage Cut Transaction Coordination Time by 71%</h3>
-<p class="card-description">Every closed deal triggered a cascade of manual tasks across 6 different tools. Agents were spending Friday afternoons on paperwork instead of clients.</p>
+<div class="card-header"><span class="card-badge badge-standard">Hypothetical · Real Estate Brokerage</span></div>
+<h3 class="card-title">How a 34-Agent Brokerage Could Cut Transaction Coordination Time by 71%</h3>
+<p class="card-description">Every closed deal triggering a cascade of manual tasks across 6 tools — and how automating that cascade would give agents their Friday afternoons back.</p>
 <div style="display:flex; gap:1.5rem; margin-top:1rem;">
 <div style="text-align:center;">
 <div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">71%</div>
@@ -1279,7 +1288,7 @@ systems and improving reporting.</p>
 <div style="font-size:0.75rem; opacity:0.7;">missed follow-ups</div>
 </div>
 </div>
-<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">Read case study →</p>
+<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">See how it works →</p>
 </div>
 
 </div>
@@ -1826,9 +1835,13 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 <span class="modal-close" onclick="closeModal('modal-case1')">&times;</span>
 <div class="modal-body" style="text-align:left;">
 
-<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Law Firm · Litigation · 9 Attorneys</span></div>
-<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">A 9-Attorney Litigation Firm Recaptured 18 Billable Hours Per Week</h2>
-<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1.5rem;">Southeast US &nbsp;·&nbsp; Deployed in 6 weeks &nbsp;·&nbsp; Tools: n8n, OpenAI, Google Workspace, Clio</p>
+<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Hypothetical · Law Firm · Litigation · 9 Attorneys</span></div>
+<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">How a 9-Attorney Litigation Firm Could Recapture 18 Billable Hours Per Week</h2>
+<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1rem;">Southeast US &nbsp;·&nbsp; Deployed in 6 weeks &nbsp;·&nbsp; Tools: n8n, OpenAI, Google Workspace, Clio</p>
+
+<div style="background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.25); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom:1.5rem; font-size:0.85rem; line-height:1.5; opacity:0.85;">
+<strong>Hypothetical engagement.</strong> This scenario is based on the types of problems we solve and the workflows we deploy. It reflects real processes, real tools, and realistic outcomes — not a specific client engagement.
+</div>
 
 <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:2rem;">
 <div class="service-card" style="text-align:center; padding:1rem;">
@@ -1847,7 +1860,7 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
 "I didn't realize how much time we were losing until it came back. In the first month after go-live, I billed 14 additional hours that I would have spent on intake paperwork and follow-up emails."
-<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Managing Partner, 9-attorney litigation firm, Southeast US</footer>
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Hypothetical managing partner, 9-attorney litigation firm</footer>
 </blockquote>
 
 <h4 class="accent-subtitle">The Challenge</h4>
@@ -1873,11 +1886,7 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
 "The honest answer is we were skeptical. We'd tried software solutions before and spent more time managing the software than it saved us. What was different here is that nothing changed about how we work — the automation just fills in the gaps we always had. Our paralegal told me it was the first week in years she left on time every day."
-<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Managing Partner, 9-attorney litigation firm, Southeast US</footer>
-</blockquote>
-
-<div style="text-align:center; margin-top:1.5rem;">
-<a href="#contact" onclick="closeModal('modal-case1')" class="cta-btn">Book a free consultation</a>
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Hypothetical managing partner, 9-attorney litigation firm, Southeast US</footer>
 </div>
 
 </div>
@@ -1890,9 +1899,13 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 <span class="modal-close" onclick="closeModal('modal-case2')">&times;</span>
 <div class="modal-body" style="text-align:left;">
 
-<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Real Estate Brokerage · 34 Agents</span></div>
-<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">A 34-Agent Brokerage Cut Transaction Coordination Time by 71%</h2>
-<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1.5rem;">Multi-location brokerage &nbsp;·&nbsp; Deployed in 5 weeks &nbsp;·&nbsp; Tools: Make, OpenAI, Google Workspace, Slack, DocuSign</p>
+<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Hypothetical · Real Estate Brokerage · 34 Agents</span></div>
+<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">How a 34-Agent Brokerage Could Cut Transaction Coordination Time by 71%</h2>
+<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1rem;">Multi-location brokerage &nbsp;·&nbsp; Deployed in 5 weeks &nbsp;·&nbsp; Tools: Make, OpenAI, Google Workspace, Slack, DocuSign</p>
+
+<div style="background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.25); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom:1.5rem; font-size:0.85rem; line-height:1.5; opacity:0.85;">
+<strong>Hypothetical engagement.</strong> This scenario is based on the types of problems we solve and the workflows we deploy. It reflects real processes, real tools, and realistic outcomes — not a specific client engagement.
+</div>
 
 <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:2rem;">
 <div class="service-card" style="text-align:center; padding:1rem;">
@@ -1911,7 +1924,7 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
 "My agents were spending Friday afternoons doing paperwork. Now they spend Friday afternoons with clients. That's the whole story."
-<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Broker-Owner, 34-agent real estate brokerage</footer>
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Hypothetical broker-owner, 34-agent real estate brokerage</footer>
 </blockquote>
 
 <h4 class="accent-subtitle">The Challenge</h4>
@@ -1936,7 +1949,7 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
 "I was nervous about it, honestly. I thought we'd break something that was at least working most of the time. What surprised me is that the setup process itself showed us two things we were doing wrong that had nothing to do with automation. Eleoro caught them during the discovery week. That alone was worth it."
-<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Broker-Owner, 34-agent real estate brokerage</footer>
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Hypothetical broker-owner, 34-agent real estate brokerage</footer>
 </blockquote>
 
 <div style="text-align:center; margin-top:1.5rem;">
