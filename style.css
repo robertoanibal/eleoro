@@ -49,6 +49,20 @@
 
   --cta-text: var(--color-black);
 
+  /* Section animation variables */
+  --page-bg: #000;
+  --page-fade: rgba(12, 12, 12, 0.9);
+  --g1: #12121a;
+  --g2: #1a2440;
+  --g3: #163a3a;
+  --g4: #2a1e44;
+  --wave: rgba(255, 255, 255, 0.08);
+  --t-gradient: 12s;
+  --t-wave-1: 10s;
+  --t-wave-2: 16s;
+  --t-wave-3: 18s;
+  --fade-height: 160px;
+
   /* Spacing units */
   --spacing-sm: 12px;
   --spacing-md: 24px;
@@ -1441,10 +1455,6 @@ nav.scrolled {
 }
 
 /* Moved from index.html: ai_ecosystem */
-400;
-500;
-600;
-700&display=swap');
 
 
 .ai-ecosystem-module {
@@ -2373,68 +2383,6 @@ nav.scrolled {
   }
 }
 
-/* Services list styles */
-.services-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.service-item {
-  align-items: flex-start;
-  background: var(--color-dark);
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s;
-}
-
-.service-item:hover {
-  background: #111111;
-}
-
-.agent-icon {
-  margin-right: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.agent-icon svg {
-  width: 32px;
-  height: 32px;
-  stroke: #98FF98;
-  stroke-width: 2;
-  fill: none;
-}
-
-.agent-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-left: 0.4rem;
-  text-transform: uppercase;
-}
-
-.agent-label.standard {
-  background: #98FF98;
-  color: var(--color-primary);
-}
-
-.agent-label.enterprise {
-  background: #60A5FA;
-  color: var(--color-primary);
-}
-
-.agent-label.custom {
-  background: #FBBF24;
-  color: var(--color-primary);
-}
-
 /* AI services module styles */
 .ai-services-module * {
   box-sizing: border-box;
@@ -2681,14 +2629,20 @@ nav.scrolled {
 }
 
 .eleoro-pricing-module .pricing-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .eleoro-pricing-module .pricing-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .eleoro-pricing-module .pricing-card {
   width: 100%;
-  max-width: 900px;
-}
 
 .eleoro-pricing-module .pricing-card {
   background: var(--color-surface);
@@ -2957,31 +2911,6 @@ nav.scrolled {
   color: var(--color-secondary);
   font-size: 0.9rem;
   line-height: 1.4;
-}
-
-:root {
-  --page-bg: #000;
-  --g1: #12121a;
-  --g2: #1a2440;
-  --g3: #163a3a;
-  --g4: #2a1e44;
-  --wave: rgba(255, 255, 255, 0.08);
-
-  /* Adjusted animation speeds (slightly slower) */
-  --t-gradient: 12s;
-  --t-wave-1: 10s;
-  --t-wave-2: 16s;
-  --t-wave-3: 18s;
-
-  /* Fade size for stronger separation */
-  --fade-height: 160px;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--page-bg);
-  color: var(--color-primary);
 }
 
 /* Apply only to <section class="section"> */
