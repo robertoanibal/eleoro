@@ -91,80 +91,33 @@ rel="stylesheet" />
 <link href="style.css?v=0.8" rel="stylesheet" />
 
 <style>
-  .pricing-grid-3col {
+  /*
+   * Minimal overrides — the main style.css handles everything else.
+   * Only rules genuinely missing from style.css live here.
+   */
+
+  /* Pricing: switch from the default single-card flex layout to a 3-col grid */
+  .eleoro-pricing-module .pricing-grid.pricing-grid-3col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    justify-content: unset;   /* cancel the original justify-content:center */
+    align-items: stretch;     /* stretch rows so all cards hit the same height */
   }
+  /* style.css already sets: .pricing-card { display:flex; flex-direction:column; height:100% }
+     and .card-body { flex-grow:1 } and .card-footer { margin-top:auto }
+     so equal height + pinned footer work automatically inside the grid. */
+
   @media (max-width: 768px) {
-    .pricing-grid-3col {
+    .eleoro-pricing-module .pricing-grid.pricing-grid-3col {
       grid-template-columns: 1fr;
     }
-    .pricing-grid-3col .pricing-card {
-      width: 100%;
-    }
   }
 
-  /* Equal-height pricing cards */
-  .pricing-grid-3col {
-    align-items: stretch;
-  }
-  .pricing-grid-3col > article {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 100%;
-  }
-  .pricing-grid-3col > article .card-body {
-    flex: 1 1 auto !important;
-    display: flex;
-    flex-direction: column;
-  }
-  .pricing-grid-3col > article .card-body table {
-    flex: 1 1 auto;
-  }
-  .pricing-grid-3col > article .card-footer {
-    margin-top: auto;
-    padding-top: 1.25rem;
-  }
-
-  /* Nav: push contact + toggle to the right */
-  nav .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left: auto;
-  }
-
-  /* Theme toggle button visibility */
-  .theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    color: currentColor;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  .theme-toggle svg {
-    display: block;
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-  }
-  /* Show only the relevant icon based on current theme */
-  body:not(.light-mode) .icon-moon { display: none; }
-  body.light-mode .icon-sun { display: none; }
+  /* Theme toggle: style.css uses [data-theme="light"] — align icon rules to match */
+  :not([data-theme="light"]) .icon-moon { display: none; }
+  [data-theme="light"] .icon-sun  { display: none; }
+  [data-theme="light"] .icon-moon { display: block; }
 </style>
 
 <script crossorigin="anonymous" src="https://kit.fontawesome.com/b632618dd6.js"></script>
