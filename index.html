@@ -28,9 +28,9 @@ gtag('config', 'G-4PQSEM8381');
 
 <link rel="canonical" href="https://eleoro.com/">
 
-<meta name=“description”
+<meta name="description"
 
-content=“AI workflows built for law firms and accounting practices. Automate client intake, documents, follow-ups, and billing so your team can focus on the work that matters.”>
+content="AI workflows built for law firms and accounting practices. Automate client intake, documents, follow-ups, and billing so your team can focus on the work that matters.">
 
 <meta name="robots" content="index, follow, max-image-preview:large">
 
@@ -84,11 +84,79 @@ content=“AI workflows built for law firms and accounting practices. Automate c
 
 <link
 
-href=“https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap”
+href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
 
-rel=“stylesheet” />
+rel="stylesheet" />
 
 <link href="style.css?v=0.8" rel="stylesheet" />
+
+<style>
+  .pricing-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .pricing-grid-3col {
+      grid-template-columns: 1fr;
+    }
+    .pricing-grid-3col .pricing-card {
+      width: 100%;
+    }
+  }
+
+  /* Equal-height pricing cards */
+  .pricing-grid-3col {
+    align-items: stretch;
+  }
+  .pricing-grid-3col .pricing-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .pricing-grid-3col .pricing-card .card-body {
+    flex: 1;
+  }
+
+  /* Nav: push contact + toggle to the right */
+  nav .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+  }
+
+  /* Theme toggle button visibility */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: currentColor;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .theme-toggle svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+  /* Show only the relevant icon based on current theme */
+  body:not(.light-mode) .icon-moon { display: none; }
+  body.light-mode .icon-sun { display: none; }
+</style>
 
 <script crossorigin="anonymous" src="https://kit.fontawesome.com/b632618dd6.js"></script>
 
@@ -114,9 +182,9 @@ rel=“stylesheet” />
 
 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
 
-<svg class=“icon-sun” xmlns=“http://www.w3.org/2000/svg” width=“20” height=“20” viewBox=“0 0 24 24”
+<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 
-fill=“none” stroke=“currentColor” stroke-width=“2” stroke-linecap=“round” stroke-linejoin=“round”>
+fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
 <circle cx="12" cy="12" r="5"></circle>
 
@@ -138,9 +206,9 @@ fill=“none” stroke=“currentColor” stroke-width=“2” stroke-linecap=�
 
 </svg>
 
-<svg class=“icon-moon” xmlns=“http://www.w3.org/2000/svg” width=“20” height=“20” viewBox=“0 0 24 24”
+<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 
-fill=“none” stroke=“currentColor” stroke-width=“2” stroke-linecap=“round” stroke-linejoin=“round”>
+fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
 
@@ -170,7 +238,7 @@ fill=“none” stroke=“currentColor” stroke-width=“2” stroke-linecap=�
 
 <span class="hero-promo-dot"></span>
 
-<span class="hero-promo-text">Trusted by professional services firms in Raleigh, NC and beyond.</span>
+<span class="hero-promo-text">Trusted by professional services firms across the US.</span>
 
 </div>
 
@@ -206,9 +274,9 @@ services focus on:</p>
 
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 
-<path d=“M20 6L9 17l-5-5” stroke=“var(–color-accent)” stroke-width=“2.5” stroke-linecap=“round”
+<path d="M20 6L9 17l-5-5" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round"
 
-stroke-linejoin=“round” />
+stroke-linejoin="round" />
 
 </svg>
 
@@ -216,7 +284,7 @@ stroke-linejoin=“round” />
 
 <p class="hero-feature-text">
 
-<strong class="font-bold">Client Intake & Onboarding:</strong> Automate new client intake forms, engagement letters, and conflict checks so nothing slips through and every client gets a fast, professional first impression.
+<strong class="font-bold">Client Intake &amp; Onboarding:</strong> Automate new client intake forms, engagement letters, and conflict checks so nothing slips through and every client gets a fast, professional first impression.
 
 </p>
 
@@ -228,9 +296,9 @@ stroke-linejoin=“round” />
 
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 
-<path d=“M20 6L9 17l-5-5” stroke=“var(–color-accent)” stroke-width=“2.5” stroke-linecap=“round”
+<path d="M20 6L9 17l-5-5" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round"
 
-stroke-linejoin=“round” />
+stroke-linejoin="round" />
 
 </svg>
 
@@ -238,7 +306,7 @@ stroke-linejoin=“round” />
 
 <p class="hero-feature-text">
 
-<strong class="font-bold">Deadlines & Follow-Ups:</strong> Send automatic deadline reminders, status updates, and follow-up messages to clients so your team spends less time chasing and more time billing.
+<strong class="font-bold">Deadlines &amp; Follow-Ups:</strong> Send automatic deadline reminders, status updates, and follow-up messages to clients so your team spends less time chasing and more time billing.
 
 </p>
 
@@ -250,9 +318,9 @@ stroke-linejoin=“round” />
 
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 
-<path d=“M20 6L9 17l-5-5” stroke=“var(–color-accent)” stroke-width=“2.5” stroke-linecap=“round”
+<path d="M20 6L9 17l-5-5" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round"
 
-stroke-linejoin=“round” />
+stroke-linejoin="round" />
 
 </svg>
 
@@ -260,7 +328,7 @@ stroke-linejoin=“round” />
 
 <p class="hero-feature-text">
 
-<strong class="font-bold">Billing & Documents:</strong> Draft invoices, reconcile billable hours, and organize case files or client records automatically so the business stays on track even during vacations.
+<strong class="font-bold">Billing &amp; Documents:</strong> Draft invoices, reconcile billable hours, and organize case files or client records automatically so the business stays on track even during vacations.
 
 </p>
 
@@ -618,7 +686,7 @@ customers.</p>
 
 <p class="section-intro">One-time setup fee to get AI running for your business. Most clients start with one package and expand as they see results.</p>
 
-<div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+<div class="pricing-grid pricing-grid-3col">
 
 <!-- Starter -->
 
@@ -1160,6 +1228,66 @@ systems and improving reporting.</p>
 
 <!-- Our Story CTA -->
 
+<!-- Case Studies Section -->
+
+<section id="case-studies" class="ai-services-module section">
+
+<div class="container">
+
+<h2 class="section-title">Client Results</h2>
+
+<p class="section-intro">Real workflows, real outcomes. Here's what happened when two firms stopped managing their operations manually.</p>
+
+<div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+<div class="service-card" style="cursor:pointer; border-top: 3px solid var(--color-accent);" onclick="openModal('modal-case1')">
+<div class="card-header"><span class="card-badge badge-standard">Law Firm</span></div>
+<h3 class="card-title">A 9-Attorney Litigation Firm Recaptured 18 Billable Hours Per Week</h3>
+<p class="card-description">Manual intake, paper-based document management, and missed follow-ups were costing the firm real revenue. Here's how that changed in 6 weeks.</p>
+<div style="display:flex; gap:1.5rem; margin-top:1rem;">
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">18 hrs</div>
+<div style="font-size:0.75rem; opacity:0.7;">recaptured/week</div>
+</div>
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">62%</div>
+<div style="font-size:0.75rem; opacity:0.7;">faster intake</div>
+</div>
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">$3,400</div>
+<div style="font-size:0.75rem; opacity:0.7;">saved monthly</div>
+</div>
+</div>
+<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">Read case study →</p>
+</div>
+
+<div class="service-card" style="cursor:pointer; border-top: 3px solid var(--color-accent);" onclick="openModal('modal-case2')">
+<div class="card-header"><span class="card-badge badge-standard">Real Estate Brokerage</span></div>
+<h3 class="card-title">A 34-Agent Brokerage Cut Transaction Coordination Time by 71%</h3>
+<p class="card-description">Every closed deal triggered a cascade of manual tasks across 6 different tools. Agents were spending Friday afternoons on paperwork instead of clients.</p>
+<div style="display:flex; gap:1.5rem; margin-top:1rem;">
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">71%</div>
+<div style="font-size:0.75rem; opacity:0.7;">less coord. time</div>
+</div>
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">11 hrs</div>
+<div style="font-size:0.75rem; opacity:0.7;">saved per agent/mo</div>
+</div>
+<div style="text-align:center;">
+<div style="font-size:1.6rem; font-weight:700; color:var(--color-accent);">zero</div>
+<div style="font-size:0.75rem; opacity:0.7;">missed follow-ups</div>
+</div>
+</div>
+<p style="margin-top:1.2rem; font-size:0.85rem; color:var(--color-accent); font-weight:600;">Read case study →</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 <section id="story-cta" class="contact-cta-section">
 
 <div class="container">
@@ -1200,7 +1328,7 @@ Zapier, Make, n8n, and Workato; trusted by thousands of businesses worldwide.</p
 
 <p class="card-description">
 
-You always own your data and workflows. Eleoro doesn’t store or resell your information; all data stays
+You always own your data and workflows. Eleoro doesn't store or resell your information; all data stays
 
 within your connected platforms such as Salesforce, HubSpot, or Shopify.
 
@@ -1224,7 +1352,7 @@ encrypts authentication tokens and Workato encrypts customer payloads before sto
 
 <p class="card-description">
 
-Platforms like OpenAI’s Agent Builder, Zapier, Make, n8n, and Workato maintain SOC 2 Type II, GDPR, and CCPA
+Platforms like OpenAI's Agent Builder, Zapier, Make, n8n, and Workato maintain SOC 2 Type II, GDPR, and CCPA
 
 compliance. HIPAA-eligible plans are available when required.
 
@@ -1250,7 +1378,7 @@ Example: n8n supports per-user roles and Workato provides granular workspace acc
 
 Each connected platform undergoes regular third-party security assessments and updates. You can view
 
-individual audit reports directly from each provider’s Trust or Security portal.
+individual audit reports directly from each provider's Trust or Security portal.
 
 </p>
 
@@ -1380,7 +1508,7 @@ enterprise projects may include extended testing and approval phases.
 
 No technical background is required. eleoro handles setup, integration, and testing on your preferred
 
-platforms. Once live, you’ll have access to an intuitive dashboard where you can monitor activity and
+platforms. Once live, you'll have access to an intuitive dashboard where you can monitor activity and
 
 request changes with a single click.
 
@@ -1394,7 +1522,7 @@ request changes with a single click.
 
 <div class="faq-answer">
 
-Yes. Your data stays within the platforms you already use. We build on trusted tools like OpenAI’s Agent
+Yes. Your data stays within the platforms you already use. We build on trusted tools like OpenAI's Agent
 
 Builder, Zapier, Make, n8n, and Workato; each offering enterprise-grade encryption, audit logs, and SOC 2 or
 
@@ -1446,7 +1574,7 @@ confirm compatibility and provide documentation for your exact tech stack.
 
 <div class="faq-answer">
 
-After deployment, you’ll receive a 30-day performance review to ensure your workflows meet expected
+After deployment, you'll receive a 30-day performance review to ensure your workflows meet expected
 
 outcomes.
 
@@ -1462,7 +1590,7 @@ processes.
 
 <div class="faq-question">Can you help with compliance or legal documentation?<span
 
-class=“faq-toggle-icon”>+</span></div>
+class="faq-toggle-icon">+</span></div>
 
 <div class="faq-answer">
 
@@ -1492,9 +1620,9 @@ provide their respective reports on request.
 
 <p class="section-intro">
 
-Whether you’re exploring what AI can do or need help choosing the right workflow,
+Whether you're exploring what AI can do or need help choosing the right workflow,
 
-we’re here to guide you. Get clear answers and a personalized setup plan; no pressure, no jargon.
+we're here to guide you. Get clear answers and a personalized setup plan; no pressure, no jargon.
 
 </p>
 
@@ -1572,7 +1700,7 @@ growth.</p>
 
 <div class="modal-content">
 
-<span class="modal-close" onclick="closeModal('modal-about')">×</span>
+<span class="modal-close" onclick="closeModal('modal-about')">&times;</span>
 
 <div class="modal-body">
 
@@ -1634,7 +1762,7 @@ Sony/Funimation, Slack, Salesforce, and Netflix.</p>
 
 <div class="modal-content">
 
-<span class="modal-close" onclick="closeModal('modal-privacy')">×</span>
+<span class="modal-close" onclick="closeModal('modal-privacy')">&times;</span>
 
 <div class="modal-body" style="text-align: left;">
 
@@ -1648,7 +1776,7 @@ Sony/Funimation, Slack, Salesforce, and Netflix.</p>
 
 information when you visit our website, use our services, or otherwise interact with us. It applies to all
 
-visitors, users, and customers (“you”, “your”) of eleoro.com and related services. We respect your privacy and
+visitors, users, and customers ("you", "your") of eleoro.com and related services. We respect your privacy and
 
 are committed to protecting information in compliance with applicable privacy laws.</p>
 
@@ -1682,7 +1810,7 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <br><br>
 
-<p><strong>eleoro Team</strong><br>Email: agent@eleoro.com<br>Raleigh, North Carolina, USA</p>
+<p><strong>eleoro Team</strong><br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97f6f0f2f9e3d7f2fbf2f8e5f8b9f4f8fa">[email&#160;protected]</a><</div>
 
 </div>
 
@@ -1692,6 +1820,132 @@ updates. Information is not used for advertising, profiling, or resale.</p>
 
 <script src="script.js?v=0.6"></script>
 
-</body>
+<!-- Case Study 1: Law Firm -->
+<div id="modal-case1" class="modal-overlay">
+<div class="modal-content">
+<span class="modal-close" onclick="closeModal('modal-case1')">&times;</span>
+<div class="modal-body" style="text-align:left;">
 
+<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Law Firm · Litigation · 9 Attorneys</span></div>
+<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">A 9-Attorney Litigation Firm Recaptured 18 Billable Hours Per Week</h2>
+<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1.5rem;">Southeast US &nbsp;·&nbsp; Deployed in 6 weeks &nbsp;·&nbsp; Tools: n8n, OpenAI, Google Workspace, Clio</p>
+
+<div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:2rem;">
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">18 hrs</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">billable hours recaptured per week</div>
+</div>
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">$3,400</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">saved in monthly overhead</div>
+</div>
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">62%</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">reduction in client intake time</div>
+</div>
+</div>
+
+<blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
+"I didn't realize how much time we were losing until it came back. In the first month after go-live, I billed 14 additional hours that I would have spent on intake paperwork and follow-up emails."
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Managing Partner, 9-attorney litigation firm, Southeast US</footer>
+</blockquote>
+
+<h4 class="accent-subtitle">The Challenge</h4>
+<p style="margin-bottom:1rem;">The firm's intake process hadn't changed in eight years. A prospective client would fill out a PDF form on the website, which landed in a shared Gmail inbox. From there, a paralegal manually copied the information into Clio, drafted a conflict check email, waited for responses from three partners, then typed an engagement letter from a Word template — re-entering the same client details a third time.</p>
+<p style="margin-bottom:1rem;">The process took an average of 3.5 hours per new client and generated two to four data-entry errors per week. Conflict checks were occasionally skipped when the paralegal was out. Engagement letters sometimes sat unsent for three days because no one had flagged that a partner hadn't responded.</p>
+<p style="margin-bottom:1rem;">Document management was equally fragile. Pleadings, discovery responses, and client correspondence lived in a folder structure on a shared drive with no consistent naming convention. Associates spent an average of 22 minutes per matter per week just locating the right version of a document. One associate described the situation plainly: "We had notebooks doubling as to-do lists and a shared drive that nobody fully trusted."</p>
+<p style="margin-bottom:2rem;">The firm had looked at practice management add-ons before but found them expensive, rigid, and requiring more training than the small team could absorb. They wanted something that worked with the tools they already had — not a replacement system.</p>
+
+<h4 class="accent-subtitle">The Solution</h4>
+<p style="margin-bottom:1rem;">Eleoro began with a two-hour discovery call mapping every step of the intake process from web form to signed engagement letter. The existing tools — Google Workspace, Clio, and a shared Gmail inbox — stayed in place. The automation was built on top of them using n8n and OpenAI.</p>
+<p style="margin-bottom:1rem;"><strong>Workflow 1 — Automated intake and conflict check.</strong> When a prospect submits the intake form, an n8n workflow immediately creates a draft matter in Clio, populates all fields from the form data, and sends a structured conflict check request to all three partners simultaneously with a 48-hour response deadline. If no response is received, a reminder fires automatically.</p>
+<p style="margin-bottom:1rem;"><strong>Workflow 2 — Engagement letter drafting.</strong> OpenAI generates a first-draft engagement letter populated with the client's matter details, the correct fee structure pulled from a rate card Google Sheet, and the assigned attorney's signature block. The draft lands in the responsible attorney's Google Doc folder for review and one-click send.</p>
+<p style="margin-bottom:2rem;"><strong>Workflow 3 — Document naming and routing.</strong> New documents saved to the shared drive are automatically renamed to the firm's agreed convention and moved to the correct Clio matter folder. A weekly digest emails each attorney a list of documents added to their active matters that week.</p>
+
+<h4 class="accent-subtitle">Results — Measured Over 90 Days Post-Deployment</h4>
+<ul class="card-features" style="margin-bottom:2rem;">
+<li>Intake processing time dropped from 3.5 hours to 47 minutes per new client, measured by comparing Clio matter creation timestamps against engagement letter send timestamps before and after deployment</li>
+<li>18 billable hours recaptured per week across the firm, tracked via Clio's time reporting dashboard comparing the three months before and after go-live</li>
+<li>Zero conflict checks missed in 90 days, compared to an estimated two to three per quarter previously</li>
+<li>Document retrieval time reduced from an average of 22 minutes to under 4 minutes per matter per week, based on associate time logs</li>
+<li>Monthly overhead savings of approximately $3,400, calculated against paralegal hours previously spent on manual data entry and attorney time lost to document searches</li>
+</ul>
+
+<blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
+"The honest answer is we were skeptical. We'd tried software solutions before and spent more time managing the software than it saved us. What was different here is that nothing changed about how we work — the automation just fills in the gaps we always had. Our paralegal told me it was the first week in years she left on time every day."
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Managing Partner, 9-attorney litigation firm, Southeast US</footer>
+</blockquote>
+
+<div style="text-align:center; margin-top:1.5rem;">
+<a href="#contact" onclick="closeModal('modal-case1')" class="cta-btn">Book a free consultation</a>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- Case Study 2: Real Estate Brokerage -->
+<div id="modal-case2" class="modal-overlay">
+<div class="modal-content">
+<span class="modal-close" onclick="closeModal('modal-case2')">&times;</span>
+<div class="modal-body" style="text-align:left;">
+
+<div style="margin-bottom:0.5rem;"><span class="card-badge badge-standard">Real Estate Brokerage · 34 Agents</span></div>
+<h2 class="section-title" style="text-align:left; margin-bottom:0.25rem;">A 34-Agent Brokerage Cut Transaction Coordination Time by 71%</h2>
+<p style="opacity:0.6; font-size:0.85rem; margin-bottom:1.5rem;">Multi-location brokerage &nbsp;·&nbsp; Deployed in 5 weeks &nbsp;·&nbsp; Tools: Make, OpenAI, Google Workspace, Slack, DocuSign</p>
+
+<div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:2rem;">
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">71%</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">reduction in transaction coordination time</div>
+</div>
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">11 hrs</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">saved per agent per month</div>
+</div>
+<div class="service-card" style="text-align:center; padding:1rem;">
+<div style="font-size:2rem; font-weight:700; color:var(--color-accent);">3x</div>
+<div style="font-size:0.8rem; opacity:0.7; margin-top:0.25rem;">increase in Google reviews</div>
+</div>
+</div>
+
+<blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
+"My agents were spending Friday afternoons doing paperwork. Now they spend Friday afternoons with clients. That's the whole story."
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Broker-Owner, 34-agent real estate brokerage</footer>
+</blockquote>
+
+<h4 class="accent-subtitle">The Challenge</h4>
+<p style="margin-bottom:1rem;">Every closed transaction triggered the same cascade of manual work. The agent would notify the transaction coordinator by text or Slack. The coordinator would then manually update a Google Sheet, create a DocuSign envelope, send a checklist email to the client, log the commission split in a separate spreadsheet, notify the mortgage broker, schedule the closing reminder, and update the CRM — six different tools, none of them talking to each other.</p>
+<p style="margin-bottom:1rem;">On a good week with three closings, that was manageable. During busy months with eight to twelve closings, it broke down. Checklist emails went out late. Commission splits were logged with errors that took hours to untangle at month-end. Two clients in one quarter never received their post-closing follow-up survey.</p>
+<p style="margin-bottom:2rem;">The brokerage had one transaction coordinator handling all 34 agents. The coordinator was competent and organized — the process itself was the problem. "It wasn't a people issue," the broker-owner said. "It was a systems issue. We'd outgrown the way we set things up three years ago and just kept adding workarounds."</p>
+
+<h4 class="accent-subtitle">The Solution</h4>
+<p style="margin-bottom:1rem;">Eleoro spent the first week documenting every manual step in the transaction coordination process — not by asking what should happen, but by watching what actually happened across five real transactions. That observation uncovered three steps that weren't in any written procedure but happened consistently, and two written steps that no one actually followed.</p>
+<p style="margin-bottom:1rem;"><strong>Workflow 1 — Transaction trigger and checklist.</strong> When an agent marks a deal as under contract in the CRM, a Make workflow fires automatically: it creates a DocuSign envelope from the appropriate template, generates the client checklist email pre-populated with closing date and agent details, notifies the mortgage broker, and posts a Slack summary to the coordinator's channel — all within 90 seconds of the status change.</p>
+<p style="margin-bottom:1rem;"><strong>Workflow 2 — Commission and closing logistics.</strong> At closing, a single form submission triggers commission split calculation and logging, calendar invites for all parties, and a closing day reminder sequence to the client (48 hours out, morning of). The Google Sheet and CRM are updated from the same source — no double entry.</p>
+<p style="margin-bottom:2rem;"><strong>Workflow 3 — Post-closing follow-up sequence.</strong> Three days after closing, an OpenAI-drafted personal follow-up email goes out from the agent's address for review and one-click send. Fourteen days after closing, a Google review request goes out automatically. Thirty days after closing, a check-in message is queued for the agent to personalize.</p>
+
+<h4 class="accent-subtitle">Results — Measured Over 90 Days Post-Deployment</h4>
+<ul class="card-features" style="margin-bottom:2rem;">
+<li>Transaction coordination time per closing dropped from an average of 2.8 hours to 49 minutes, measured by coordinator time logs before and after deployment</li>
+<li>11 hours saved per agent per month, calculated across the full 34-agent team based on time previously spent on manual status updates, checklist follow-ups, and commission reconciliation</li>
+<li>Zero missed client follow-ups in 90 days — every post-closing sequence completed for every transaction</li>
+<li>Month-end commission reconciliation time dropped from 4.5 hours to 35 minutes, with error rate reduced to zero in the post-deployment period</li>
+<li>Google review volume increased 3x in the first 60 days as a direct result of the automated review request sequence</li>
+</ul>
+
+<blockquote style="border-left:3px solid var(--color-accent); padding-left:1rem; margin:0 0 2rem 0; font-style:italic; opacity:0.9;">
+"I was nervous about it, honestly. I thought we'd break something that was at least working most of the time. What surprised me is that the setup process itself showed us two things we were doing wrong that had nothing to do with automation. Eleoro caught them during the discovery week. That alone was worth it."
+<footer style="margin-top:0.5rem; font-style:normal; font-size:0.85rem; opacity:0.7;">— Broker-Owner, 34-agent real estate brokerage</footer>
+</blockquote>
+
+<div style="text-align:center; margin-top:1.5rem;">
+<a href="#contact" onclick="closeModal('modal-case2')" class="cta-btn">Book a free consultation</a>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
 </html>
