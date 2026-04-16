@@ -1,0 +1,3303 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/*
+ * Global stylesheet for the eleoro website.
+ *
+ * This file defines a neutral base style inspired by modern B2B brands like Datavant. A
+ * simple colour palette and open‑source fonts create a professional feel while
+ * leaving room for experimentation. All key colours and fonts are defined as CSS
+ * variables at the root so you can quickly generate and explore new themes.
+ */
+
+/* Root variables for colours and typography */
+:root {
+  --color-accent-dark: #004e48;
+  --color-accent-muted: #005f58;
+  --color-accent-light: #009b8a;
+  --color-white: #ffffff;
+  --color-black: #0c0c0c;
+  --color-gray-dark: #333333;
+  --color-gray-light: #e5e7eb;
+
+  /* Primary palette (dark mode): adjust these values to explore different colour schemes. The site
+     uses a dark grey background throughout, with subtle variations for content surfaces and
+     accents. */
+  --color-primary: #e6e6e6;
+  /* Main text colour on dark backgrounds */
+  --color-secondary: #a3a3a3;
+  /* Secondary text colour */
+  --color-accent: #98FF98;
+  /* Teal accent colour for buttons and highlights */
+
+  /* Dark mode palette */
+  --color-light: #000000;
+  /* Base dark background colour */
+  --color-dark: #070a13;
+  /* Darker backgrounds (footer, nav) */
+  --color-surface: #1e293b;
+  /* Surface colour for cards and forms */
+  --color-notice: #62A362;
+  /* Announcement bar background */
+  --color-request: #161616;
+  /* Request bar background */
+  --color-border: #334155;
+  /* Border lines on dark backgrounds */
+
+  /* Typography: using open‑source fonts similar to Datavant */
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  --cta-text: var(--color-black);
+
+  /* Spacing units */
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --nav-height: 60px;
+}
+
+:root[data-theme="light"] {
+  --color-primary: #1a1a1a;
+  --color-secondary: #4a4a4a;
+  --color-accent: #008060;
+  --color-light: var(--color-white);
+  --color-dark: #f0f0f0;
+  --color-surface: #f9f9f9;
+  --color-notice: #62A362;
+  --color-request: #161616;
+  --color-border: #e0e0e0;
+  --hero-bg: linear-gradient(155deg, #f9f9f9, var(--color-white));
+  --cta-text: var(--color-white);
+
+  --page-bg: var(--color-white);
+  --page-fade: rgba(255, 255, 255, 0.9);
+  --g1: var(--color-white);
+  --g2: var(--color-white);
+  --g3: var(--color-white);
+  --g4: var(--color-white);
+  --wave: transparent;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  font-size: 100%; /* Ensure base font size is consistent */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px; /* Explicitly set body font size */
+  line-height: var(--line-height-base);
+  color: var(--color-primary);
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Global link hover styling.  Underlines and colour shifts provide subtle feedback without
+   overwhelming the dark palette. */
+/* Anchor hover: apply colour and underline to interactive links except the site logo */
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Remove underlines on hover for navigation links in the capabilities menu and
+   the capabilities cards. These elements change colour or border instead of
+   underlining. */
+.nav-links li a:hover,
+.dropdown-item:hover,
+.service-item:hover,
+.service-item:hover .read-more {
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+/* Images (or containers with background images) slightly scale on hover when they are
+   wrapped in anchor tags.  This effect applies to service cards and hero visuals. */
+a img:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 999;
+}
+
+/* Darken the nav and add a subtle shadow when the page scrolls */
+nav.scrolled {
+  background: var(--color-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  /* Slightly lighter weight for a cleaner, contemporary feel */
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+
+.accent-letter {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.nav-links li a {
+  font-family: var(--font-heading);
+  /* Use a lighter font weight for navigation links to mimic Datavant’s airy typography */
+  font-weight: 400;
+  color: var(--color-primary);
+  /* Increase padding on navigation links for better spacing */
+  padding: 10px 14px;
+  transition: color 0.2s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--color-accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+}
+
+.icon-moon {
+  display: none;
+}
+
+.icon-sun {
+  display: block;
+}
+
+[data-theme="light"] .icon-sun {
+  display: none;
+}
+
+[data-theme="light"] .icon-moon {
+  display: block;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  /* Center the capabilities dropdown beneath the nav so it doesn’t run off the
+     screen on either side.  Use clamp to constrain the width between 600px
+     and 900px or 90% of the viewport. */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(600px, 90vw, 900px);
+  padding: var(--spacing-md);
+  background: var(--color-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  display: none;
+  z-index: 998;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Each capability item in the dropdown is an anchor.  Make it block‑level
+   with padding, rounded corners and a subtle hover. */
+.dropdown-item {
+  display: block;
+  /* Increase padding in dropdown items for consistent spacing */
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--color-request);
+}
+
+.dropdown-item h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  /* Use medium weight for dropdown headings to align with lighter overall typography */
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.dropdown-item p {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  margin-bottom: 6px;
+}
+
+/* Remove styling for nested links in dropdown items because the entire item is an anchor */
+
+/* Hamburger menu for mobile removed */
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links li a {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    padding: 6px;
+  }
+
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none;
+    /* disable hover on mobile */
+  }
+
+  .dropdown .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+/* Hero section */
+.hero {
+  /* Dark gradient for the hero. Use two close shades to create depth on dark mode. */
+  background: var(--hero-bg, linear-gradient(155deg, #272727, #000000));
+  padding: var(--spacing-md) 0;
+  /* Increase the height of the hero so there is more room for content on larger screens */
+  /* Increase the hero height to provide more breathing room for the expanded
+     heading and content. */
+  min-height: 80vh;
+}
+
+.hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.hero-text {
+  flex: 1 1 45%;
+}
+
+.hero-text h1 {
+  font-family: var(--font-heading);
+  /* Increase the heading size to create more impact on larger screens */
+  font-size: 4rem;
+  /* Reduce heading weight to improve balance */
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-text h2 {
+  font-family: var(--font-heading);
+  font-size: 3.3rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-text p {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+  max-width: 100%;
+  font-size: .95rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--color-accent);
+  color: var(--cta-text);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--color-accent-muted);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.cta-btn.secondary:hover {
+  background: var(--color-accent);
+  color: var(--cta-text);
+}
+
+.hero-visual {
+  flex: 1 1 45%;
+  align-self: flex-start;
+  position: relative;
+  max-width: 500px;
+  border-radius: 24px;
+}
+
+.hero-visual video {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 50%, transparent 100%);
+  display: block;
+}
+
+/* Section titles and intros */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+}
+
+.section-intro {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-lg);
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Connectivity section */
+.connectivity-section {
+  padding: var(--spacing-lg) 0;
+  /* Use the surface colour for the connectivity section so the network graphic
+     stands out against the page background */
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.connectivity-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.connectivity-steps .step {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.connectivity-steps .step span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.connectivity-graphic {
+  text-align: center;
+  color: var(--color-secondary);
+  font-style: italic;
+}
+
+/* Services preview section */
+.services-preview-section {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Services preview list on the homepage.  Replace the older grid layout with a two‑column
+   arrangement similar to Datavant’s “Who we serve” section.  Each item has a subtle
+   hover effect and links to a dedicated service page. */
+.services-list {
+  display: grid;
+  /* Default to a single column on small screens; we'll override to two columns on larger screens */
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.service-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.service-item p {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+  margin-left: 25px !important;
+}
+
+.service-item .read-more {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.service-item .read-more i {
+  transition: transform 0.2s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-accent);
+}
+
+.service-item:hover .read-more {
+  color: var(--color-accent-light);
+}
+
+.service-item:hover .read-more i {
+  transform: translateX(4px);
+}
+
+/* Roadmap styling */
+.roadmap {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-md);
+  /* Hide the native scrollbar; scrolling is handled programmatically */
+  overflow-x: hidden;
+  padding-bottom: var(--spacing-md);
+  position: relative;
+  /* Hide native scrollbars across browsers */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+/* Hide scrollbars in WebKit browsers */
+.roadmap::-webkit-scrollbar {
+  display: none;
+}
+
+.roadmap-step {
+  /* Default width for each roadmap step; increases on hover */
+  flex: 1 0 200px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  /* Add extra padding on top and left to offset the numbered badge */
+  padding: 24px 24px 24px 44px;
+  position: relative;
+  cursor: pointer;
+  transition: flex-basis 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.roadmap-step h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.roadmap-step p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+}
+
+.roadmap-step:hover {
+  /* Expand the width further on hover and highlight with a stronger shadow */
+  flex-basis: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border-color: var(--color-accent);
+}
+
+.roadmap-step:hover p {
+  max-height: 200px;
+}
+
+.roadmap-step::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  /* Longer connecting line and lighter stroke for the roadmap */
+  width: 60px;
+  height: 2px;
+  background: rgba(0, 191, 165, 0.6);
+  transform: translateY(-50%);
+}
+
+.roadmap-step:last-child::after {
+  display: none;
+}
+
+/* Step numbers for the roadmap: show a numbered circle in the top‑left of each
+   roadmap card. The number is pulled from the data-step attribute on the
+   element. */
+.roadmap-step::before {
+  content: attr(data-step);
+  position: absolute;
+  /* Position the number inside the card */
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+/* Highlight a service card when navigated to via an anchor link.  The :target pseudo-class
+   matches the element whose id equals the URL fragment. */
+.service-item:target {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+  /* Offset scroll position so the card is not hidden beneath the sticky nav */
+  /* Increase scroll offset so that the targeted capability is fully visible below the sticky nav and request bar */
+  scroll-margin-top: 180px;
+}
+
+/* Larger screens: display the capabilities list in two columns similar to Datavant’s “who we serve” section. */
+@media (min-width: 992px) {
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* About preview & contact CTA sections */
+.about-preview-section,
+.contact-cta-section {
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  background: var(--color-light);
+}
+
+.about-preview-section p,
+.contact-cta-section p {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-md);
+  color: var(--color-secondary);
+}
+
+/* New footer */
+.new-footer {
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.new-footer .footer-container {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.new-footer .footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+}
+
+.new-footer .footer-col p,
+.new-footer .footer-col ul li {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+
+.new-footer .footer-col ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.new-footer .footer-col ul li a {
+  color: var(--color-secondary);
+  transition: color 0.2s ease;
+}
+
+.new-footer .footer-col ul li a:hover {
+  color: var(--color-accent);
+}
+
+.new-footer .footer-summary {
+  margin-top: var(--spacing-md);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: var(--spacing-md);
+  font-size: 0.8rem;
+  color: #aaaaaa;
+}
+
+
+/* Network section showing how customer data and AI connect around eleoro */
+.network-section {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.data-network {
+  position: relative;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+}
+
+.network-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.network-node {
+  position: absolute;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  /* Increase node size and roundness to echo Datavant’s network illustration */
+  border-radius: 9999px;
+  padding: 12px 18px;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.network-node.central {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-accent);
+  color: var(--color-dark);
+  font-weight: 600;
+  /* Make central node larger */
+  padding: 16px 32px;
+  border-color: var(--color-accent);
+  border-radius: 9999px;
+}
+
+.network-node:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Tooltip for network nodes.  Show the data-info attribute above the node on hover. */
+.network-node::after {
+  content: attr(data-info);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.network-node:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Reveal animations
+   Elements with the `reveal` class will be invisible and slightly translated on load.
+   When the `active` class is added via JavaScript, they fade and slide into place.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+/* Redesigned data flow for the "From Audit to Adoption" section.  Instead of circles, each
+   deliverable is represented as a box connected by lines.  The flow uses absolute
+   positioning and a background SVG for connectors.  Hover a box to reveal a tooltip with
+   more details. */
+.connectivity-flow {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.connectivity-flow svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.connectivity-flow svg line {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  opacity: 0.5;
+}
+
+.flow-node {
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  text-align: center;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Ensure the flow nodes sit above the connecting lines so they remain visible */
+  z-index: 1;
+}
+
+.flow-node:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.flow-node::after {
+  content: attr(data-info);
+  position: absolute;
+  left: 50%;
+  bottom: 110%;
+  transform: translateX(-50%);
+  background: var(--color-dark);
+  color: var(--color-primary);
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 220px;
+  text-align: left;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.flow-node:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Service page styles */
+.service-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+
+.service-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  /* Reduce heading weight to align with lighter branding */
+  font-weight: 600;
+}
+
+.service-page .service-summary {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-lg);
+  text-align: center;
+  color: var(--color-secondary);
+}
+
+.service-page h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  /* Medium weight for subheadings */
+  font-weight: 500;
+}
+
+.service-page p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-secondary);
+  line-height: 1.7;
+}
+
+.service-page ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+}
+
+.service-page ul li {
+  margin-bottom: 6px;
+}
+
+/* Contact page layout */
+.contact-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+
+.contact-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.contact-page p {
+  text-align: center;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+.contact-form {
+  flex: 1 1 480px;
+  /* Dark background for the contact form card */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-primary);
+  /* Use the base background for form fields to blend with the dark palette */
+  background: var(--color-light);
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 12px 24px;
+  background: var(--color-accent);
+  color: var(--cta-text);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: var(--color-accent-muted);
+}
+
+.form-message {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.booking {
+  flex: 1 1 300px;
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.booking h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.booking p {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.booking .booking-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.booking .booking-link:hover {
+  background: var(--color-accent-muted);
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+  }
+
+  .hero-text,
+  .hero-visual {
+    flex: 1 1 100%;
+  }
+
+  .connectivity-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .connectivity-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * About page styling
+ * Defines dark backgrounds and light text for the about page.  The content is
+ * centred within a container and uses the same spacing variables as the rest of
+ * the site.
+ */
+.about-page {
+  padding: var(--spacing-lg) 0;
+  background: var(--color-light);
+}
+
+.about-page h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.about-page p {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-sm);
+  color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Back link for service pages */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-accent);
+  transition: color 0.2s ease;
+}
+
+.back-link i {
+  font-size: 0.85rem;
+}
+
+.back-link:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+/* ===== Inline styles moved from index.html ===== */
+/* Moved from index.html: from_ai_to_adoption */
+.from-ai-to-adoption {
+  position: relative;
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.from-ai-to-adoption .roadmap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 0;
+  min-width: 1100px;
+}
+
+.from-ai-to-adoption .roadmap-line {
+  position: absolute;
+  top: 60px;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 50%, #10b981 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.from-ai-to-adoption .step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 180px;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.from-ai-to-adoption .step:hover {
+  transform: translateY(-8px);
+}
+
+.from-ai-to-adoption .step:hover .step-node {
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.25);
+  border-color: var(--color-accent);
+}
+
+.from-ai-to-adoption .step:hover .step-badge {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.from-ai-to-adoption .step-node {
+  width: 110px;
+  height: 110px;
+  background: var(--color-surface);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.from-ai-to-adoption .step-node::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, .10) 0%, rgba(139, 92, 246, .10) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.from-ai-to-adoption .step:hover .step-node::before {
+  opacity: 1;
+}
+
+.from-ai-to-adoption .step-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--color-white);
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, .4);
+  transition: all .3s ease;
+
+}
+
+.from-ai-to-adoption .step-icon {
+  font-size: 1.6rem;
+  color: var(--color-gray-light);
+  transition: all .3s ease;
+}
+
+.from-ai-to-adoption .step:hover .step-icon {
+  color: var(--color-white);
+  transform: scale(1.08);
+}
+
+.from-ai-to-adoption .step-content {
+  text-align: center;
+}
+
+/* Use a light-on-dark fallback if the site's theme uses dark text on light background */
+@media (prefers-color-scheme: dark) {
+  .from-ai-to-adoption .step-title {
+    color: var(--color-white);
+  }
+}
+
+.from-ai-to-adoption .step-description {
+  font-size: .88rem;
+  color: #6b7280;
+  line-height: 1.35;
+  font-weight: 400;
+  max-width: 180px;
+}
+
+.from-ai-to-adoption .progress-indicator {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.from-ai-to-adoption .progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: all .3s ease;
+}
+
+.from-ai-to-adoption .progress-dot.active {
+  background: #4f46e5;
+  box-shadow: 0 0 10px rgba(79, 70, 229, .5);
+}
+
+@media (max-width: 900px) {
+  .from-ai-to-adoption .roadmap {
+    flex-direction: column;
+    align-items: center;
+    min-width: auto;
+    gap: 28px;
+  }
+
+  .from-ai-to-adoption .roadmap-line {
+    display: none;
+  }
+
+  .from-ai-to-adoption .step {
+    max-width: 320px;
+  }
+
+  .from-ai-to-adoption .step-node {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Moved from index.html: ai_ecosystem */
+
+
+.ai-ecosystem-module {
+  padding: 3rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.ai-ecosystem-module .glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+.ai-ecosystem-module .glow-teal {
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.4), 0 0 30px rgba(20, 184, 166, 0.2);
+}
+
+.ai-ecosystem-module .glow-purple {
+  box-shadow: 0 0 15px rgba(147, 51, 234, 0.4), 0 0 30px rgba(147, 51, 234, 0.2);
+}
+
+.ai-ecosystem-module .node-pulse {
+  animation: ai-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ai-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.ai-ecosystem-module .floating {
+  animation: ai-float 4s ease-in-out infinite;
+}
+
+@keyframes ai-float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.ai-ecosystem-module .text-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.ai-ecosystem-module .ecosystem-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+.ai-ecosystem-module .ai-header {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto 3rem auto;
+  height: 6rem;
+  border-radius: 1rem;
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #60a5fa;
+}
+
+.ai-ecosystem-module .ai-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ai-ecosystem-module .ai-header-icon {
+  font-size: 3rem;
+}
+
+.ai-ecosystem-module .ai-header-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.ai-ecosystem-module .ai-header-subtitle {
+  color: #bfdbfe;
+  font-size: 0.875rem;
+}
+
+.ai-ecosystem-module .ecosystem-grid {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .ai-ecosystem-module .ecosystem-grid {
+    gap: 1rem;
+    transform: scale(0.8);
+  }
+
+  .ai-ecosystem-module .node {
+    width: 80%;
+  }
+
+  .ai-ecosystem-module .node-text {
+    font-size: 0.75rem;
+  }
+}
+
+.ai-ecosystem-module .column-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ai-ecosystem-module .node-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ai-ecosystem-module .node {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.ai-ecosystem-module .node-teal {
+  background: linear-gradient(to bottom right, #0d9488, #1d4ed8);
+  border-color: #14b8a6;
+}
+
+.ai-ecosystem-module .node-purple {
+  background: linear-gradient(to bottom right, #7c3aed, #ec4899);
+  border-color: #a855f7;
+}
+
+.ai-ecosystem-module .node-green {
+  background: linear-gradient(to bottom right, #059669, #0d9488);
+  border-color: #10b981;
+}
+
+.ai-ecosystem-module .node-blue {
+  background: linear-gradient(to bottom right, #2563eb, #1e3a8a);
+  border-color: #3b82f6;
+}
+
+.ai-ecosystem-module .node-orange {
+  background: linear-gradient(to bottom right, #f97316, #c2410c);
+  border-color: #fb923c;
+}
+
+.ai-ecosystem-module .node-purple {
+  background: linear-gradient(to bottom right, #9333ea, #6b21a8);
+  border-color: #a855f7;
+}
+
+.ai-ecosystem-module .node-green {
+  background: linear-gradient(to bottom right, #22c55e, #166534);
+  border-color: #4ade80;
+}
+
+.ai-ecosystem-module .node-text {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  /* base size for body text */
+  text-align: center;
+  line-height: 1.4;
+  padding: 1rem 0.75rem;
+  /* more breathing room */
+}
+
+.ai-ecosystem-module .node-text strong {
+  display: block;
+  font-size: 1.5rem;
+  /* larger font for agent name */
+  font-weight: normal;
+  padding-bottom: 0.4rem;
+  /* spacing under agent name */
+  border-bottom: solid 1px white;
+}
+
+.ai-ecosystem-module .connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ai-ecosystem-module .connection-line {
+  stroke: url(#gradient);
+  stroke-width: 2;
+  fill: none;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+}
+
+.ai-ecosystem-module .legend {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.ai-ecosystem-module .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-ecosystem-module .legend-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.ai-ecosystem-module .legend-text {
+  color: #d1d5db;
+}
+
+.ai-ecosystem-module .legend-dot-teal {
+  background: linear-gradient(to bottom right, #0d9488, #1d4ed8);
+}
+
+.ai-ecosystem-module .legend-dot-purple {
+  background: linear-gradient(to bottom right, #7c3aed, #ec4899);
+}
+
+.ai-ecosystem-module .legend-dot-green {
+  background: linear-gradient(to bottom right, #059669, #0d9488);
+}
+
+/* Adjustments: center legend items with their column and add spacing */
+.ai-ecosystem-module .legend-item {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.ai-ecosystem-module .legend-text {
+  text-align: center;
+}
+
+/* Ensure the AI ecosystem section has safe spacing below to prevent overlap */
+.ai-ecosystem-module {
+  margin-bottom: 60px;
+  /* extra space below the module */
+  padding-bottom: 24px;
+  /* guard against absolutely-positioned lines */
+  position: relative;
+  z-index: 0;
+}
+
+/* Floating schedule tab */
+.floating-tab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1000;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 12px 12px 0 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.floating-tab:hover {
+  text-decoration: none;
+  background: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+
+@media screen and (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+
+/* Tooltips */
+.tip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted currentColor;
+  outline: 0
+}
+
+.tip:focus {
+  outline: 2px solid rgba(0, 0, 0, .2);
+  border-radius: 4px
+}
+
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  top: 120%;
+  min-width: 200px;
+  max-width: 320px;
+  background: #111;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.35;
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  z-index: 999;
+  transition: opacity .15s ease, transform .15s ease;
+  white-space: normal;
+}
+
+.tip:hover::after,
+.tip:focus::after,
+.tip:active::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .tip::after {
+    left: auto;
+    right: 0;
+  }
+}
+
+
+/* Responsive Capabilities links */
+.capabilities-mobile {
+  display: none;
+  margin-left: 16px;
+  font-weight: 600;
+}
+
+.capabilities-desktop {
+  display: inline-flex;
+}
+
+@media (max-width: 1024px) {
+
+  /* Tablet and below: show direct link, hide desktop dropdown toggle */
+  .capabilities-mobile {
+    display: inline-flex;
+  }
+
+  .capabilities-desktop {
+    display: none;
+  }
+}
+
+/* Match ordered list spacing with unordered lists inside service pages */
+.service-page ul,
+.service-page ol {
+  margin: 0 0 1rem 1.25rem;
+}
+
+.service-page ol {
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+
+
+.fas .fa-chevron-down {
+  display: none !important;
+}
+
+
+/* Reveal effect */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.is-visible[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Optional: smooth height expansion when you also add data-accordion */
+[data-reveal][data-accordion] {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 500ms ease, opacity 400ms ease, transform 400ms ease;
+}
+
+.is-visible[data-reveal][data-accordion] {
+  /* max-height is set in JS to the element's scrollHeight */
+}
+
+
+.followup-agent-module {
+  all: initial;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  display: block;
+}
+
+.followup-agent-module * {
+  box-sizing: border-box;
+}
+
+.followup-agent-module .followup-agent {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--color-light);
+  color: var(--color-primary);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px #98FF98;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.followup-agent-module .tabs-container {
+  padding: 24px 24px 0;
+  background: var(--color-light);
+}
+
+.followup-agent-module .tabs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .tabs-grid {
+    gap: 16px;
+  }
+}
+
+.followup-agent-module .tab-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .tab-card {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .followup-agent-module .tab-card {
+    transition: none;
+  }
+}
+
+.followup-agent-module .tab-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(152, 255, 152, 0.1);
+}
+
+.followup-agent-module .tab-card.active {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 1px #98FF98, 0 4px 16px rgba(152, 255, 152, 0.2);
+}
+
+.followup-agent-module .tab-card.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #98FF98, #62A362);
+}
+
+.followup-agent-module .tab-card:focus-visible {
+  outline: 2px solid #98FF98;
+  outline-offset: 2px;
+}
+
+.followup-agent-module .tab-icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .tab-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+  }
+}
+
+.followup-agent-module .tab-card.active .tab-icon {
+  opacity: 1;
+}
+
+.followup-agent-module .tab-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .tab-title {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+    text-align: left;
+  }
+}
+
+.followup-agent-module .tab-subtitle {
+  font-size: 14px;
+  color: var(--color-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .tab-subtitle {
+    display: block;
+  }
+}
+
+.followup-agent-module .content-panel {
+  background: var(--color-surface);
+  margin: 0 24px;
+  border-radius: 12px;
+  padding: 32px;
+  min-height: 300px;
+  border: 1px solid var(--color-border);
+}
+
+.followup-agent-module .panel-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .followup-agent-module .panel-content {
+    transition: none;
+    transform: none;
+  }
+}
+
+.followup-agent-module .panel-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.followup-agent-module .panel-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.followup-agent-module .panel-description {
+  font-size: 16px;
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.followup-agent-module .workflow-steps {
+  display: grid;
+  gap: 20px;
+  counter-reset: step-counter;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .workflow-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.followup-agent-module .workflow-step {
+  background: var(--color-light);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+
+.followup-agent-module .workflow-step::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: #98FF98;
+  color: #000000;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.followup-agent-module .step-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 8px 0 0 0;
+  line-height: 1.4;
+}
+
+.followup-agent-module .privacy-control {
+  background: var(--color-light);
+  border-top: 2px solid var(--color-accent);
+  padding: 20px 24px;
+  margin-top: 32px;
+}
+
+.followup-agent-module .privacy-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.followup-agent-module .privacy-items {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-secondary);
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .followup-agent-module .privacy-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.followup-agent-module .privacy-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.followup-agent-module .privacy-item::before {
+  content: '•';
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* -----------------------------------------------------------------
+   Additional component styles extracted from index.html
+   These styles were previously defined inline within the HTML and
+   have been moved here to centralize styling and improve maintainability.
+------------------------------------------------------------------- */
+
+/* Agent network hub styles */
+#agent-network-hub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#agent-network-hub .network-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#agent-network-hub .network-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(152, 255, 152, 0.3) 1px, transparent 0);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+#agent-network-hub .center-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(80px, 16vw, 100px);
+  height: clamp(80px, 16vw, 100px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(152, 255, 152, 0.3);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 8px);
+  padding: clamp(8px, 2vw, 12px);
+  box-shadow:
+    0 0 20px rgba(152, 255, 152, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+#agent-network-hub .center-node img {
+  width: clamp(32px, 6vw, 48px);
+  height: clamp(32px, 6vw, 48px);
+  border-radius: 4px;
+}
+
+#agent-network-hub .satellite-node {
+  position: absolute;
+  width: clamp(70px, 14vw, 90px);
+  height: clamp(70px, 14vw, 70px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 1vw, 4px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+#agent-network-hub .satellite-node svg {
+  width: clamp(16px, 3vw, 20px);
+  height: clamp(16px, 3vw, 20px);
+}
+
+#agent-network-hub .satellite-node[data-color="green"] svg {
+  color: #4ade80;
+  filter: drop-shadow(0 0 8px #4ade80);
+}
+
+#agent-network-hub .satellite-node[data-color="blue"] svg {
+  color: #60a5fa;
+  filter: drop-shadow(0 0 8px #60a5fa);
+}
+
+#agent-network-hub .satellite-node[data-color="yellow"] svg {
+  color: #fbbf24;
+  filter: drop-shadow(0 0 8px #fbbf24);
+}
+
+#agent-network-hub .node-text {
+  font-size: clamp(8px, 1.5vw, 10px);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#agent-network-hub .satellite-node[data-color="green"] .node-text {
+  color: #4ade80;
+  text-shadow: 0 0 8px #4ade80;
+}
+
+#agent-network-hub .satellite-node[data-color="blue"] .node-text {
+  color: #60a5fa;
+  text-shadow: 0 0 8px #60a5fa;
+}
+
+#agent-network-hub .satellite-node[data-color="yellow"] .node-text {
+  color: #fbbf24;
+  text-shadow: 0 0 8px #fbbf24;
+}
+
+#agent-network-hub .satellite-node:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(152, 255, 152, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(152, 255, 152, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #agent-network-hub .satellite-node {
+    transition: none;
+  }
+
+  #agent-network-hub .satellite-node:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #agent-network-hub .node-text {
+    font-size: 8px;
+  }
+}
+
+/* Ticker styles */
+.eleoro-ticker-section {
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: -1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.eleoro-ticker-section .eleoro-ticker-wrapper {
+  display: flex;
+  width: max-content;
+  animation: eleoro-scroll 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eleoro-ticker-section .eleoro-ticker-wrapper {
+    animation: none;
+  }
+}
+
+.eleoro-ticker-section .eleoro-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--color-accent);
+  -webkit-text-stroke: 0px var(--color-accent);
+  text-stroke: 0px var(--color-accent);
+  font-size: clamp(1.5rem, 1.5vw, 1.3rem);
+  /* Slightly smaller since it's restricted to 50% width */
+  font-weight: 700;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-heavy {
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-semi {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-italic {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.eleoro-ticker-section .eleoro-ticker-item.eleoro-style-wide {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@keyframes eleoro-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .eleoro-ticker-section {
+    padding: 1.5rem 0;
+  }
+
+  .eleoro-ticker-section .eleoro-ticker-item {
+    padding: 0 1.5rem;
+    -webkit-text-stroke: 1.5px var(--color-accent);
+    text-stroke: 1.5px var(--color-accent);
+  }
+}
+
+/* Services list styles */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-item {
+  align-items: flex-start;
+  background: var(--color-dark);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+
+.service-item:hover {
+  background: #111111;
+}
+
+.agent-icon {
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.agent-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: #98FF98;
+  stroke-width: 2;
+  fill: none;
+}
+
+.agent-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+}
+
+.agent-label.standard {
+  background: #98FF98;
+  color: var(--color-primary);
+}
+
+.agent-label.enterprise {
+  background: #60A5FA;
+  color: var(--color-primary);
+}
+
+.agent-label.custom {
+  background: #FBBF24;
+  color: var(--color-primary);
+}
+
+/* AI services module styles */
+.ai-services-module * {
+  box-sizing: border-box;
+}
+
+.ai-services-module .services-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.ai-services-module .services-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ai-services-module .services-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.ai-services-module .services-subtitle {
+  color: var(--color-secondary);
+  font-size: 1.125rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.ai-services-module .services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ai-services-module .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ai-services-module .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Corrected nested media queries for service grids.  At desktop sizes (min-width:1024px),
+   process grids use four columns while expertise and founders grids use two columns.
+   The original code had mismatched braces which prevented these rules from applying. */
+@media (min-width: 1024px) {
+  .ai-services-module .services-grid.process-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ai-services-module .services-grid.expertise-grid,
+  .ai-services-module .services-grid.founders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ai-services-module .service-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: inherit;
+}
+
+.ai-services-module .service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(152, 255, 152, 0.1);
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+.ai-services-module .card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.ai-services-module .card-icon {
+  width: 2rem;
+  height: 2rem;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.ai-services-module .card-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ai-services-module .badge-standard {
+  background: linear-gradient(135deg, #98FF98, #7FE57F);
+  color: #1a5a1a;
+}
+
+.ai-services-module .badge-enterprise {
+  background: linear-gradient(135deg, #60A5FA, #3B82F6);
+  color: #1e3a8a;
+}
+
+.ai-services-module .badge-custom {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  color: #92400e;
+}
+
+.ai-services-module .card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  font-family: var(--font-heading);
+}
+
+.ai-services-module .card-description {
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ai-services-module .icon-standard {
+  color: #4ade80;
+}
+
+.ai-services-module .icon-enterprise {
+  color: #60a5fa;
+}
+
+.ai-services-module .icon-custom {
+  color: #fbbf24;
+}
+
+
+/* ============================================================
+   New section styling for updated homepage
+   ============================================================ */
+/* Increase padding between sections by 50% */
+.section {
+  padding: 6rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Vertical list layout for Ongoing Costs, Differences, Security */
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vertical-list hr {
+  color: var(--color-border);
+  background: var(--color-border);
+  height: 1px;
+  margin: 1rem 0;
+}
+
+/* Features list for service cards */
+.card-features {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.card-features li {
+  position: relative;
+  padding-left: 20px;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.expertise-grid .card-features li::before {
+  content: '✎';
+}
+
+/* Contact CTA new sections */
+.contact-cta-section.section {
+  text-align: center;
+}
+
+.contact-cta-section.section h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.contact-cta-section.section p {
+  color: var(--color-secondary);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.eleoro-pricing-module *,
+.eleoro-pricing-module *::before,
+.eleoro-pricing-module *::after {
+  box-sizing: border-box;
+}
+
+.eleoro-pricing-module .pricing-section {
+  width: 100%;
+  background: var(--color-light);
+  padding: 4rem 1rem;
+}
+
+.eleoro-pricing-module .pricing-container {
+  max-width: 1200px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.eleoro-pricing-module .pricing-title {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.eleoro-pricing-module .pricing-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.eleoro-pricing-module .pricing-card {
+  width: 100%;
+  max-width: 900px;
+}
+
+.eleoro-pricing-module .pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eleoro-pricing-module .pricing-card {
+    transition: none;
+  }
+}
+
+.eleoro-pricing-module .pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.eleoro-pricing-module .pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(152, 255, 152, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.eleoro-pricing-module .pricing-card.most-popular {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(152, 255, 152, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent);
+}
+
+.eleoro-pricing-module .pricing-card.most-popular::after {
+  content: 'Most Popular';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-accent);
+  color: var(--color-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eleoro-pricing-module .card-body {
+  flex-grow: 1;
+}
+
+.eleoro-pricing-module .card-footer {
+  margin-top: auto;
+}
+
+.eleoro-pricing-module .plan-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.eleoro-pricing-module .lightning-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-accent);
+}
+
+.eleoro-pricing-module .plan-name {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.eleoro-pricing-module .plan-subtitle {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.eleoro-pricing-module .plan-price {
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eleoro-pricing-module .pricing-features-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem 0;
+  text-align: left;
+}
+
+.eleoro-pricing-module .pricing-features-table th,
+.eleoro-pricing-module .pricing-features-table td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eleoro-pricing-module .pricing-features-table th {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.eleoro-pricing-module .pricing-features-table td {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.eleoro-pricing-module .pricing-features-table td:first-child {
+  font-weight: 600;
+  color: var(--color-accent);
+  width: 45%;
+  vertical-align: top;
+}
+
+.eleoro-pricing-module .pricing-features-table td:last-child {
+  vertical-align: top;
+}
+
+.eleoro-pricing-module .hosted-line {
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-style: italic;
+}
+
+.eleoro-pricing-module .cta-button {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-notice) 100%);
+  color: var(--color-dark);
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(152, 255, 152, 0.3);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.eleoro-pricing-module .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(152, 255, 152, 0.4);
+  background: linear-gradient(135deg, #a8ffa8 0%, #72b372 100%);
+}
+
+.eleoro-pricing-module .cta-button:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eleoro-pricing-module .cta-button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .eleoro-pricing-module .pricing-title {
+    font-size: 2rem;
+  }
+
+  .eleoro-pricing-module .pricing-card {
+    padding: 1.5rem;
+  }
+
+  .eleoro-pricing-module .plan-name {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .eleoro-pricing-module .plan-name {
+    font-size: 1.25rem;
+  }
+
+  .eleoro-pricing-module .plan-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .eleoro-pricing-module .feature-list li {
+    font-size: 0.85rem;
+  }
+}
+
+/* FAQ styles */
+.faq-section .faq-list {
+  margin-top: var(--spacing-md);
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+.faq-item:hover {
+  border-color: var(--color-accent);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.faq-toggle-icon {
+  margin-left: var(--spacing-sm);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.faq-answer {
+  display: none;
+  margin-top: var(--spacing-sm);
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+:root {
+  --page-bg: #000;
+  --g1: #12121a;
+  --g2: #1a2440;
+  --g3: #163a3a;
+  --g4: #2a1e44;
+  --wave: rgba(255, 255, 255, 0.08);
+
+  /* Adjusted animation speeds (slightly slower) */
+  --t-gradient: 12s;
+  --t-wave-1: 10s;
+  --t-wave-2: 16s;
+  --t-wave-3: 18s;
+
+  /* Fade size for stronger separation */
+  --fade-height: 160px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--page-bg);
+  color: var(--color-primary);
+}
+
+/* Apply only to <section class="section"> */
+section.section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(315deg,
+      var(--g1) 3%,
+      var(--g2) 38%,
+      var(--g3) 68%,
+      var(--g4) 98%);
+  background-size: 400% 400%;
+  animation: section-gradient var(--t-gradient) ease infinite;
+  border: none;
+  border-radius: 16px;
+}
+
+/* Deeper black fades at top and bottom */
+section.section::before,
+section.section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--fade-height);
+  pointer-events: none;
+  z-index: 2;
+}
+
+section.section::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--page-bg) 0%, var(--page-fade, rgba(12, 12, 12, 0.9)) 30%, transparent 100%);
+}
+
+section.section::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--page-bg) 0%, var(--page-fade, rgba(12, 12, 12, 0.9)) 30%, transparent 100%);
+}
+
+/* Waves */
+section.section .wave {
+  background: var(--wave);
+  border-radius: 1000% 1000% 0 0;
+  position: absolute;
+  width: 200%;
+  height: 12em;
+  animation: wave var(--t-wave-1) -2s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: -50%;
+  z-index: 0;
+}
+
+section.section .wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave var(--t-wave-2) linear reverse infinite;
+  opacity: 0.7;
+}
+
+section.section .wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave var(--t-wave-3) -1s reverse infinite;
+  opacity: 0.9;
+}
+
+/* Keep content visible above fades and waves */
+section.section>* {
+  position: relative;
+  z-index: 3;
+}
+
+/* Animations */
+@keyframes section-gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes wave {
+  2% {
+    transform: translateX(1%);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1%);
+  }
+}
+
+/* Accessibility for motion */
+@media (prefers-reduced-motion: reduce) {
+  section.section {
+    animation: none;
+    background-position: 50% 50%;
+  }
+
+  section.section .wave {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Mobile-specific tweaks
+
+   These overrides improve the legibility and layout of the site on smaller
+   screens.  They remove unnecessary indentation, center key content and
+   provide breathing room between stacked elements.  Desktop styles are
+   preserved at larger breakpoints.
+------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+  /* On small screens the service card descriptions should align with the
+     card heading.  The desktop style uses a left margin to separate text
+     from the list icons; remove it here. */
+  .service-item p {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 992px) {
+
+  /* Stack and centre the hero content on tablets and phones.  The hero
+     container already becomes columnar via existing CSS; these rules
+     centre the text and add top margin to the visual for better spacing. */
+  .hero-container {
+    justify-content: center;
+  }
+
+  .hero-header-full {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .hero-content-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 28px 0;
+  }
+
+  .hero-features-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-feature-icon-wrapper {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-visual {
+    margin: var(--spacing-md) auto 0 auto;
+  }
+}
+
+/* === Refactored Components === */
+
+.hidden {
+  display: none !important;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.accent-subtitle {
+  color: var(--color-accent);
+}
+
+.check-icon {
+  color: var(--color-accent);
+  padding-right: 10px;
+}
+
+.hero-header-full {
+  flex: 1 1 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px;
+}
+
+.hero-content-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  padding: 0 28px 28px 28px;
+  /* Adjusted padding since title is moved out */
+  color: var(--color-primary);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.hero-promo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+
+.hero-promo-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.hero-promo-text {
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.hero-main-title {
+  margin: 16px 0 0 0;
+  font-family: 'Manrope', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 7vw, 72px);
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+.hero-highlight-text {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.hero-subtitle-text {
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-secondary);
+}
+
+.hero-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0 0;
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0 12px 0;
+}
+
+.hero-feature-item.last-item {
+  margin: 0;
+}
+
+.hero-feature-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  margin-right: 12px;
+  flex: 0 0 20px;
+  margin-top: 4px;
+}
+
+.hero-feature-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-primary);
+}
+
+/* Modals */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: var(--color-dark);
+  margin: 5% auto;
+  padding: 40px;
+  border: 1px solid var(--color-border);
+  width: 80%;
+  max-width: 900px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  color: var(--color-secondary);
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--color-accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Ensure mobile styles to refactored components take precedence */
+@media (max-width: 992px) {
+  .hero-container {
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero-header-full,
+  .hero-content-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .hero-subtitle-text {
+    margin-top: 0;
+  }
+
+  .hero-features-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-feature-icon-wrapper {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+.modal-body h2,
+.modal-body h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-body p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Extracted from index.html inline styles */
+  /* Pricing: switch from the default single-card flex layout to a 3-col grid */
+  .eleoro-pricing-module .pricing-grid.pricing-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    justify-content: unset;   /* cancel the original justify-content:center */
+    align-items: stretch;     /* stretch rows so all cards hit the same height */
+  }
+  /* style.css already sets: .pricing-card { display:flex; flex-direction:column; height:100% }
+     and .card-body { flex-grow:1 } and .card-footer { margin-top:auto }
+     so equal height + pinned footer work automatically inside the grid. */
+
+  @media (max-width: 768px) {
+    .eleoro-pricing-module .pricing-grid.pricing-grid-3col {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Theme toggle: style.css uses [data-theme="light"] — align icon rules to match */
+  :not([data-theme="light"]) .icon-moon { display: none; }
+  [data-theme="light"] .icon-sun  { display: none; }
+  [data-theme="light"] .icon-moon { display: block; }

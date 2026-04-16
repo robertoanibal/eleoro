@@ -1,0 +1,22 @@
+---
+interface Props {
+	id?: string;
+	title?: string;
+	description?: string;
+}
+
+const { 
+	id,
+	title = "Want to see how AI can help your business?", 
+	description = "Tell us your goals and we'll show you how our AI workflows can deliver results quickly." 
+} = Astro.props;
+---
+
+<!-- Consultation CTA -->
+<section id={id} class="contact-cta-section">
+	<div class="container">
+		<h2 class="section-title">{title}</h2>
+		<p class="section-intro">{description}</p>
+		<a href="#contact" class="cta-btn">Book a free consultation</a>
+	</div>
+</section>
