@@ -314,7 +314,7 @@ Add three status updates for Harmon & Lee projects from this notes file
 | Phase | Description | Status |
 |---|---|---|
 | 0 | Create Supabase project, verify local tooling | ✅ Complete |
-| 1 | Scaffold Astro, migrate homepage, CSS audit + visual diff optimization | 🔄 In progress |
+| 1 | Scaffold Astro, migrate homepage, CSS audit + visual diff optimization | ✅ Complete |
 | 2 | Blog with Astro Content Collections + Tailwind, sample post | ⬜ Not started |
 | 3 | SEO: meta tags, sitemap, llms.txt, JSON-LD structured data | ⬜ Not started |
 | 4 | Client portal: auth middleware, dashboard, updates, files, messages + Supabase MCP setup | ⬜ Not started |
