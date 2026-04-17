@@ -1,0 +1,315 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<BaseLayout title={`${post.data.title} | eleoro`} description={post.data.description}>
+  <Nav />
+
+  <main class="post-shell">
+    <!-- Back link -->
+    <nav class="post-back">
+      <a href="/blog" class="post-back-link">
+        <span aria-hidden="true">←</span> All articles
+      </a>
+    </nav>
+
+    <article>
+      <!-- Post header -->
+      <header class="post-header">
+        {post.data.tags.length > 0 && (
+          <div class="post-tags">
+            {post.data.tags.slice(0, 4).map((tag) => (
+              <span class="post-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <h1 class="post-title">{post.data.title}</h1>
+
+        <p class="post-description">{post.data.description}</p>
+
+        <div class="post-byline">
+          <span class="post-author">{post.data.author}</span>
+          <span class="post-byline-sep" aria-hidden="true">·</span>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+        </div>
+      </header>
+
+      <!-- Divider -->
+      <hr class="post-divider" />
+
+      <!-- Post body -->
+      <div class="post-body prose prose-eleoro prose-lg">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <footer class="post-footer">
+        <div class="post-footer-cta">
+          <p>Ready to reclaim those hours?</p>
+          <a href="/#contact" class="post-cta-btn">Talk to eleoro →</a>
+        </div>
+
+        <a href="/blog" class="post-back-link">
+          <span aria-hidden="true">←</span> All articles
+        </a>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  /* ── Shell ──────────────────────────────────────────────── */
+  .post-shell {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  /* ── Back link ──────────────────────────────────────────── */
+  .post-back {
+    margin-bottom: 40px;
+  }
+
+  .post-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .post-back-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  /* ── Post header ────────────────────────────────────────── */
+  .post-header {
+    margin-bottom: 36px;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .post-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 3px;
+    padding: 2px 7px;
+    opacity: 0.75;
+  }
+
+  .post-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .post-description {
+    font-size: 1.0625rem;
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .post-byline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-secondary);
+  }
+
+  .post-author {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .post-byline-sep {
+    opacity: 0.4;
+  }
+
+  /* ── Divider ────────────────────────────────────────────── */
+  .post-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 36px 0;
+  }
+
+  /* ── Body prose overrides ───────────────────────────────── */
+  /*
+   * prose-eleoro typography vars are defined in tailwind.config.mjs
+   * These scoped overrides handle spacing and heading fonts on top of that.
+   */
+  .post-body {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .post-body :global(h2),
+  .post-body :global(h3) {
+    font-family: var(--font-heading);
+  }
+
+  .post-body :global(h2) {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-body :global(h3) {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-body :global(p) {
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .post-body :global(li) {
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+  }
+
+  .post-body :global(strong) {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .post-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .post-body :global(a:hover) {
+    opacity: 0.85;
+  }
+
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1.25rem;
+    color: var(--color-secondary);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+
+  .post-body :global(code) {
+    font-size: 0.875em;
+    color: var(--color-accent);
+    background: var(--color-surface);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  .post-footer {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .post-footer-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .post-footer-cta p {
+    font-size: 0.9375rem;
+    color: var(--color-secondary);
+    margin: 0;
+  }
+
+  .post-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-light);
+    background: var(--color-accent);
+    padding: 8px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .post-cta-btn:hover {
+    opacity: 0.88;
+    text-decoration: none;
+    color: var(--color-light);
+  }
+
+  /* ── Mobile ─────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .post-shell {
+      padding: 36px 20px 72px;
+    }
+
+    .post-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
