@@ -331,6 +331,7 @@ Add three status updates for Harmon & Lee projects from this notes file
 | 5 | Deploy to Cloudflare Pages, point DNS, verify live | ⬜ Not started |
 | 6 | Google Search Console + Bing Webmaster Tools submission | ⬜ Not started |
 | 7 | Validate: Lighthouse, RLS check, form test, disable GitHub Pages, make repo private | ⬜ Not started |
+| 8 | Blog post rewrite + polish pass | ⬜ Not started |
 
 ---
 
@@ -483,12 +484,12 @@ Add three status updates for Harmon & Lee projects from this notes file
 **Google Search Console:**
 1. search.google.com/search-console → Add property → https://eleoro.com
 2. Verify via HTML meta tag (add to BaseLayout.astro, redeploy)
-3. Submit sitemap: https://eleoro.com/sitemap.xml
+3. Submit sitemap: https://eleoro.com/sitemap-index.xml
 
 **Bing Webmaster Tools:**
 1. bing.com/webmasters → Add site → https://eleoro.com
 2. Verify via meta tag
-3. Submit sitemap: https://eleoro.com/sitemap.xml
+3. Submit sitemap: https://eleoro.com/sitemap-index.xml
 
 ---
 
@@ -511,6 +512,35 @@ Add three status updates for Harmon & Lee projects from this notes file
 - [ ] Mobile layout matches original on 375px viewport
 - [ ] GitHub Pages disabled ✓
 - [ ] Repo made private ✓
+- [ ] llms-full.txt converted from static file to build-time Astro endpoint (`src/pages/llms-full.txt.ts`) so it auto-updates with every new blog post
+
+---
+
+## Phase 8 — Blog post rewrite + polish
+
+**Goal:** All 6 blog posts are well-written, on-brand, accurate, and strong enough to rank and be cited by AI systems.
+
+**Prerequisites:** Phase 5 complete (site live). Polish is most valuable once the site is indexed.
+
+**Posts to rewrite:**
+- `ai-workflows-law-firms.mdx`
+- `ai-document-drafting-engagement-letters.mdx`
+- `automating-client-intake-cpa-firms.mdx`
+- `billing-automation-law-firms.mdx`
+- `n8n-vs-zapier-legal-workflows.mdx`
+- `what-to-automate-first-professional-services.mdx`
+
+**Polish checklist per post:**
+- [ ] Opening hook is strong — specific, concrete, not generic
+- [ ] Headings are scannable and keyword-relevant
+- [ ] Each section delivers a real insight, not filler
+- [ ] Calls to action are natural, not forced
+- [ ] Tone is consistent: direct, expert, no hype
+- [ ] No hallucinated facts or inflated claims
+- [ ] `description` frontmatter is compelling (shows in blog card and OG preview)
+- [ ] Tags are accurate and consistent across posts
+
+**Process:** Claude rewrites each post in a dedicated thread. Roberto reviews and approves. Gemini CLI writes the final `.mdx` file and commits. One post per thread to keep context clean.
 
 ---
 
