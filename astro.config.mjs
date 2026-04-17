@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind({ applyBaseStyles: false }), mdx()],
+  site: 'https://eleoro.com',
+  integrations: [tailwind({ applyBaseStyles: false }), mdx(), sitemap()],
 });

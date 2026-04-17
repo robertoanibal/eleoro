@@ -4,6 +4,16 @@
 
 ---
 
+## Roles and responsibilities
+
+**Gemini CLI** is the builder. All file writes, shell commands, package installs, builds, and git operations are executed by Gemini CLI. Never ask Claude to write files or run commands directly.
+
+**Claude (Cowork / Claude.ai)** is the architect and advisor. Claude reads the blueprint, plans each phase, produces the prompts Roberto pastes into Gemini CLI, validates output, and updates the blueprint. Claude does not write repo files or run terminal commands.
+
+**Roberto** reviews all output visually before any commit is made. No phase is committed without explicit approval.
+
+---
+
 ## Project overview
 
 Migrating eleoro.com from a static HTML site hosted on GitHub Pages to a full-stack Astro application hosted on Cloudflare Pages, with a blog, client portal, SEO optimization, and AI discoverability — without changing any existing content, look & feel, or functionality.
@@ -315,8 +325,8 @@ Add three status updates for Harmon & Lee projects from this notes file
 |---|---|---|
 | 0 | Create Supabase project, verify local tooling | ✅ Complete |
 | 1 | Scaffold Astro, migrate homepage, CSS audit + visual diff optimization | ✅ Complete |
-| 2 | Blog with Astro Content Collections + Tailwind, sample post | ⬜ Not started |
-| 3 | SEO: meta tags, sitemap, llms.txt, JSON-LD structured data | ⬜ Not started |
+| 2 | Blog with Astro Content Collections + Tailwind, sample post | ✅ Complete |
+| 3 | SEO: meta tags, sitemap, llms.txt, JSON-LD structured data | ✅ Complete |
 | 4 | Client portal: auth middleware, dashboard, updates, files, messages + Supabase MCP setup | ⬜ Not started |
 | 5 | Deploy to Cloudflare Pages, point DNS, verify live | ⬜ Not started |
 | 6 | Google Search Console + Bing Webmaster Tools submission | ⬜ Not started |
@@ -326,7 +336,7 @@ Add three status updates for Harmon & Lee projects from this notes file
 
 ## Phase 1 — Scaffold Astro + migrate homepage + CSS optimization
 
-**Status: 🔄 In progress**
+**Status: ✅ Complete and approved**
 
 **Completed:**
 - [x] Astro project scaffolded on `astro-migration` branch
@@ -339,10 +349,10 @@ Add three status updates for Harmon & Lee projects from this notes file
 - [x] Chunk 1 applied — 3 rule sets removed, visual diff pending
 
 **Remaining:**
-- [ ] Visual diff after chunk 1 — approve or reject
-- [ ] Remaining CSS chunks (duplicates) — one at a time with diff after each
-- [ ] Final full-page diff at 1440px and 375px
-- [ ] Your approval → commit and push `astro-migration` branch
+- [x] Visual diff after chunk 1 — approve or reject
+- [x] Remaining CSS chunks (duplicates) — one at a time with diff after each
+- [x] Final full-page diff at 1440px and 375px
+- [x] Your approval → commit and push `astro-migration` branch
 
 **Must-not-change list:**
 - All text content, headings, pricing, copy
@@ -358,20 +368,45 @@ Add three status updates for Harmon & Lee projects from this notes file
 
 ## Phase 2 — Blog
 
-**Goal:** Working blog at eleoro.com/blog using Astro Content Collections and Tailwind CSS. One sample post. Navigation updated to include Blog link.
+**Status: ✅ Complete and approved**
 
-**Prerequisites:** Phase 1 complete and approved.
+**Completed:**
+- [x] Astro 5 Content Layer API configured — `src/content.config.ts` with glob loader
+- [x] Tailwind wired into `astro.config.mjs` with `applyBaseStyles: false` (homepage safe)
+- [x] `tailwind.config.mjs` created with `site.*` CSS variable tokens and custom `prose-eleoro` typography theme
+- [x] `@tailwindcss/typography` installed for blog post body rendering
+- [x] Blog index at `/blog` — 3-column grid, excerpt clamped to 3 lines, hover accent on title only
+- [x] Post page at `/blog/[slug]` — full post with Tailwind prose, tags, byline, CTA footer
+- [x] 6 real posts written: AI workflows for law firms, document drafting, billing automation, CPA intake, n8n vs Zapier, what to automate first
+- [x] Blog link added to `src/components/Nav.astro`
+- [x] Committed to `astro-migration` branch
 
-**Deliverables:**
-- `src/content/blog/` directory with Content Collections config
-- Blog index at `/blog` — post listing with title, date, excerpt
-- Post page at `/blog/[slug]` — full post, Tailwind-styled
-- One real sample post written about AI workflows for law firms
-- Blog link added to homepage nav
+**Key implementation notes:**
+- Astro 5 uses `src/content.config.ts` at the `src/` root (not `src/content/config.ts`)
+- Post IDs from glob loader are the filename without extension (e.g. `ai-workflows-law-firms`)
+- `applyBaseStyles: false` on Tailwind integration is critical — without it, Tailwind's CSS reset breaks homepage styles
+- Blog pages use `var(--color-*)` CSS variables directly in scoped `<style>` blocks, not Tailwind dark: variants, so they respond to the site's existing `data-theme` light/dark toggle automatically
 
 ---
 
 ## Phase 3 — SEO + AI discoverability
+
+**Status: ✅ Complete and approved**
+
+**Completed:**
+- [x] `astro.config.mjs` — `site: 'https://eleoro.com'` added, `@astrojs/sitemap` wired in (was already installed)
+- [x] `src/layouts/BaseLayout.astro` — dynamic canonical via `Astro.url.pathname + Astro.site`, full OG block, Twitter Card, named `<slot name="head" />`, Organization + dynamic WebPage JSON-LD
+- [x] `public/robots.txt` — allows all crawlers, points to `https://eleoro.com/sitemap-index.xml`
+- [x] `public/llms.txt` — AI crawler manifest: company summary + page index with all blog post URLs
+- [x] `public/llms-full.txt` — full text version: company overview, services, pricing, industries, all blog summaries
+- [x] `src/pages/index.astro` — `ProfessionalService` JSON-LD injected via `<Fragment slot="head">`
+- [x] `src/pages/blog/[slug].astro` — `BlogPosting` JSON-LD built from post frontmatter, injected via `<Fragment slot="head">`; passes `canonical` and `ogType="article"` to BaseLayout; injects `article:published_time` and `article:tag` meta
+
+**Key implementation notes:**
+- Sitemap auto-generates at build as `sitemap-index.xml` → `sitemap-0.xml` (all 8 pages included)
+- Canonical URLs always resolve to production (`https://eleoro.com`) even during local dev, because they use `Astro.site` not `Astro.url.origin`
+- OG image defaults to `/eleoro-logo-nobg.png` — swap for a proper 1200×630 card before Phase 6
+- BaseLayout new props: `canonical`, `ogTitle`, `ogDescription`, `ogImage`, `ogType` (all optional with sensible defaults)
 
 **Goal:** Every public page properly indexed by Google/Bing and discoverable by AI crawlers.
 
@@ -488,8 +523,12 @@ I am building eleoro.com using the technical blueprint attached below.
 [paste full contents of technical_blueprint.md here]
 
 Phase [N] is now starting. All previous phases are complete.
-Please guide me through Phase [N] step by step,
-using Gemini CLI to do the implementation work.
+Please guide me through Phase [N] step by step.
+
+IMPORTANT — role boundaries that must be respected throughout this thread:
+- Gemini CLI is the builder: all file writes, shell commands, npm installs, git operations, and builds must be given to me as Gemini CLI prompts that I paste and run myself.
+- Claude is the architect: plan each step, produce the Gemini prompts, validate output, and update the blueprint. Claude must never write files or run commands directly in this conversation.
+- I (Roberto) visually approve all output before any commit is made.
 ```
 
 ---
@@ -509,3 +548,6 @@ using Gemini CLI to do the implementation work.
 | Apr 2025 | service_role key never in Astro app | MCP servers only, anon key + RLS handles app-level security |
 | Apr 2025 | CSS false positive: .hero-text | Confirmed used in Hero.astro, excluded from optimization |
 | Apr 2025 | Font @import broken during migration | Reconstructed as line 1 of global.css |
+| Apr 2026 | Role boundaries enforced | Gemini CLI builds/writes/runs; Claude plans and produces prompts; Roberto approves before commits |
+| Apr 2026 | OG image placeholder | Using eleoro-logo-nobg.png for now; replace with 1200×630 card before Phase 6 |
+| Apr 2026 | Sitemap output is sitemap-index.xml | @astrojs/sitemap 3.x generates sitemap-index.xml, not sitemap.xml — robots.txt and GSC submission use this URL |

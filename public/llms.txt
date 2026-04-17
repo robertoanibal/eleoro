@@ -1,0 +1,19 @@
+# eleoro
+
+> eleoro builds AI-powered workflows for law firms and accounting practices. We automate the administrative layer — client intake, document drafting, follow-ups, and billing — so professional service teams can focus on the work that matters.
+
+eleoro works with small and mid-size law firms, CPA practices, and other professional service businesses. We design, build, and maintain custom automation systems using AI models from OpenAI, Anthropic, and Google, orchestrated through tools like n8n.
+
+## Pages
+
+- [Home](https://eleoro.com/): Overview of services, pricing, case studies, industries served, and contact form.
+- [Blog](https://eleoro.com/blog/): Articles on AI workflow automation for law firms, CPA practices, and professional service businesses.
+
+## Blog Posts
+
+- [How Law Firms Are Using AI Workflows to Win Back 10+ Hours a Week](https://eleoro.com/blog/ai-workflows-law-firms): Client intake, follow-ups, and billing automation for small and mid-size law firms.
+- [AI Document Drafting: How Law Firms Are Automating Engagement Letters](https://eleoro.com/blog/ai-document-drafting-engagement-letters): Automating engagement letter generation using AI and client intake data.
+- [Automating Client Intake for CPA Firms](https://eleoro.com/blog/automating-client-intake-cpa-firms): How accounting practices eliminate manual intake steps with AI workflows.
+- [Billing Automation for Law Firms](https://eleoro.com/blog/billing-automation-law-firms): Automating time tracking, invoice generation, and collections for law firms.
+- [n8n vs Zapier for Legal Workflows](https://eleoro.com/blog/n8n-vs-zapier-legal-workflows): Comparing automation platforms for law firm and legal ops use cases.
+- [What to Automate First in Professional Services](https://eleoro.com/blog/what-to-automate-first-professional-services): A prioritization framework for identifying high-ROI automation opportunities.

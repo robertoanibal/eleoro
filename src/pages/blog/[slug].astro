@@ -21,9 +21,52 @@ const formatDate = (date: Date) => {
     day: 'numeric',
   });
 };
+
+const postUrl = new URL(`/blog/${post.id}`, Astro.site).href;
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "url": postUrl,
+  "datePublished": post.data.pubDate.toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": post.data.author,
+    "url": "https://eleoro.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "eleoro",
+    "url": "https://eleoro.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://eleoro.com/eleoro-logo-nobg.png"
+    }
+  },
+  "image": "https://eleoro.com/eleoro-logo-nobg.png",
+  "keywords": post.data.tags.join(", "),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  }
+};
 ---
 
-<BaseLayout title={`${post.data.title} | eleoro`} description={post.data.description}>
+<BaseLayout
+  title={`${post.data.title} | eleoro`}
+  description={post.data.description}
+  canonical={postUrl}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+    <meta property="article:published_time" content={post.data.pubDate.toISOString()} />
+    {post.data.tags.map((tag) => (
+      <meta property="article:tag" content={tag} />
+    ))}
+  </Fragment>
   <Nav />
 
   <main class="post-shell">

@@ -1,0 +1,109 @@
+# eleoro — Full Content Index for AI Crawlers
+
+> This file is intended for AI language model crawlers. It contains the full text content of eleoro.com for indexing and retrieval.
+
+---
+
+## Company Overview
+
+eleoro builds AI-powered workflow automation for law firms, CPA practices, and other professional service businesses. We design, build, and maintain custom automation systems that handle the administrative layer of professional services: client intake, document drafting, follow-up communications, billing, and data processing.
+
+We are not a software product — we are a professional services firm that builds bespoke automation systems for each client. Our systems use AI models from OpenAI, Anthropic, and Google, orchestrated through tools like n8n, to create workflows that integrate with the tools each practice already uses.
+
+**Who we serve:** Small and mid-size law firms, CPA and accounting practices, and other professional service businesses that bill hourly or by retainer and have repetitive administrative workflows.
+
+**What we automate:** Client intake and onboarding, engagement letter and document drafting, follow-up and communication sequences, billing and collections, data entry and reconciliation.
+
+**How we work:** We scope, build, and deploy each automation system. Clients receive a working system they own, plus ongoing support and improvements as their needs evolve.
+
+---
+
+## Services
+
+### AI Workflow Design and Build
+Custom automation systems designed around your firm's existing tools and processes. No off-the-shelf software — each system is built for how you actually work.
+
+### Client Intake Automation
+Eliminate manual intake steps. Smart forms, conflict checks, engagement letter generation, and e-signature routing — all triggered by a single client submission.
+
+### Document Drafting Automation
+AI-generated first drafts for engagement letters, retainer agreements, standard correspondence, and other high-volume document types. Human review always in the loop.
+
+### Follow-up and Communication Workflows
+Automated follow-up sequences for outstanding documents, unpaid invoices, and pending client actions. Reduces administrative time while maintaining a professional client experience.
+
+### Billing and Collections Automation
+Time entry reconciliation, invoice generation, and payment follow-up workflows. Reduces billing lag and improves collections without adding admin headcount.
+
+---
+
+## Pricing
+
+eleoro offers three engagement tiers:
+
+**Starter** — For firms automating their first workflow. Includes scoping, build, and deployment of one core workflow (typically client intake or document drafting). Fixed project fee.
+
+**Growth** — For firms ready to automate multiple workflows. Includes three to five interconnected workflows, priority support, and quarterly review. Monthly retainer.
+
+**Custom** — For firms with complex or high-volume automation needs. Fully bespoke scope, dedicated support, and ongoing iteration. Custom pricing.
+
+All engagements include a discovery call to assess fit and scope before any commitment.
+
+---
+
+## Industries Served
+
+- Law firms (all practice areas, emphasis on family law, estate planning, immigration, personal injury)
+- CPA and accounting practices
+- Financial advisory and wealth management firms
+- Healthcare and medical practices (administrative workflows only)
+- Consulting and professional services firms
+
+---
+
+## Blog Posts
+
+### How Law Firms Are Using AI Workflows to Win Back 10+ Hours a Week
+URL: https://eleoro.com/blog/ai-workflows-law-firms
+
+For small and mid-size law firms, administrative work — intake, follow-ups, billing — consumes hours that should be billable. This post covers three high-impact automation wins: frictionless intake and onboarding, automated follow-up sequences, and billing reconciliation. Law firms implementing these workflows typically reclaim 10 to 20 hours per week per attorney.
+
+### AI Document Drafting: How Law Firms Are Automating Engagement Letters
+URL: https://eleoro.com/blog/ai-document-drafting-engagement-letters
+
+Engagement letters are high-volume, high-stakes documents that follow a predictable pattern. AI workflow systems can generate accurate first drafts in seconds using client intake data — reducing turnaround from hours to minutes. This post explains how the workflow operates and what review processes keep attorneys in control.
+
+### Automating Client Intake for CPA Firms
+URL: https://eleoro.com/blog/automating-client-intake-cpa-firms
+
+CPA firm intake involves collecting tax documents, engagement agreements, and client data across multiple touchpoints. This post covers how AI workflows can consolidate intake into a single smart form submission, automatically route documents, and trigger engagement letters — all without manual intervention.
+
+### Billing Automation for Law Firms
+URL: https://eleoro.com/blog/billing-automation-law-firms
+
+Billing lag is one of the most common causes of cash flow problems at small law firms. This post covers time entry reconciliation, automated invoice generation, and payment follow-up workflows that reduce billing cycles from weeks to days.
+
+### n8n vs Zapier for Legal Workflows
+URL: https://eleoro.com/blog/n8n-vs-zapier-legal-workflows
+
+Zapier is widely known; n8n is less familiar but better suited to law firm automation needs. This post compares the two platforms across cost, flexibility, data privacy, and the ability to handle complex multi-step legal workflows. eleoro builds primarily on n8n for client systems.
+
+### What to Automate First in Professional Services
+URL: https://eleoro.com/blog/what-to-automate-first-professional-services
+
+Not every workflow is worth automating first. This post provides a prioritization framework: identify the workflows with the highest time cost, the most repetitive steps, and the lowest risk of error propagation. For most professional service firms, intake and follow-up are the right starting point.
+
+---
+
+## Contact
+
+eleoro accepts new client inquiries via the contact form at https://eleoro.com/#contact.
+
+Discovery calls are free and no-commitment. We assess fit, scope the opportunity, and provide a proposal before any engagement begins.
+
+---
+
+## Additional Resources
+
+- Sitemap: https://eleoro.com/sitemap-index.xml
+- AI crawler manifest: https://eleoro.com/llms.txt

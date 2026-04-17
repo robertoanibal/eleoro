@@ -14,9 +14,40 @@ import Footer from '../components/Footer.astro';
 import Difference from '../components/Difference.astro';
 import Consultation from '../components/Consultation.astro';
 import Security from '../components/Security.astro';
+
+const professionalServiceSchema = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	"name": "eleoro",
+	"url": "https://eleoro.com/",
+	"logo": "https://eleoro.com/eleoro-logo-nobg.png",
+	"description": "eleoro builds AI-powered workflow automation for law firms, CPA practices, and professional service businesses. We automate client intake, document drafting, follow-ups, and billing.",
+	"areaServed": "US",
+	"serviceType": [
+		"AI Workflow Automation",
+		"Client Intake Automation",
+		"Document Drafting Automation",
+		"Billing Automation"
+	],
+	"knowsAbout": [
+		"AI workflows for law firms",
+		"Legal automation",
+		"CPA practice automation",
+		"n8n workflow automation",
+		"Professional services automation"
+	],
+	"potentialAction": {
+		"@type": "ContactAction",
+		"target": "https://eleoro.com/#contact",
+		"name": "Contact eleoro"
+	}
+};
 ---
 
 <BaseLayout title="eleoro | AI workflows for law firms and CPA practices">
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify(professionalServiceSchema)} />
+	</Fragment>
 	<Nav />
 	<main>
 		<Hero />
