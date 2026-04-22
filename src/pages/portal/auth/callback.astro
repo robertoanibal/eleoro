@@ -1,0 +1,15 @@
+---
+import { createSupabaseClient } from '../../../lib/supabase';
+
+const code = Astro.url.searchParams.get('code');
+
+if (code) {
+  const supabase = createSupabaseClient(Astro);
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  if (!error) {
+    return Astro.redirect('/portal/dashboard');
+  }
+}
+
+return Astro.redirect('/portal?error=Invalid link');
+---

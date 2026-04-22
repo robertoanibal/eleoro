@@ -1,0 +1,76 @@
+---
+import { createSupabaseClient } from '../lib/supabase';
+
+const supabase = createSupabaseClient(Astro);
+const { data: { session } } = await supabase.auth.getSession();
+
+if (!session) {
+  return Astro.redirect('/portal');
+}
+
+const { data: client } = await supabase
+  .from('clients')
+  .select('name')
+  .eq('email', session.user.email)
+  .single();
+
+const clientName = client?.name || session.user.email;
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  if (formData.get('action') === 'signout') {
+    await supabase.auth.signOut();
+    return Astro.redirect('/portal');
+  }
+}
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | eleoro Portal</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <div class="flex-shrink-0 flex items-center">
+              <a href="/portal/dashboard">
+                <img class="h-8 w-auto" src="/eleoro-logo-nobg.png" alt="eleoro">
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm font-medium text-gray-700">{clientName}</span>
+            <form method="POST">
+              <button name="action" value="signout" type="submit" class="text-sm font-medium text-red-600 hover:text-red-800">
+                Sign out
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex-grow">
+      <slot />
+    </main>
+    
+    <footer class="bg-white border-t">
+      <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-xs text-gray-500">
+          This portal is for eleoro deliverables only. Do not upload confidential client records.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

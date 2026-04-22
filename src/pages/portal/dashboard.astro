@@ -1,0 +1,193 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+import { createSupabaseClient } from '../../lib/supabase';
+
+const supabase = createSupabaseClient(Astro);
+const { data: { session } } = await supabase.auth.getSession();
+
+if (!session) {
+  return Astro.redirect('/portal');
+}
+
+// Get client info to get client_id for storage path
+const { data: client } = await supabase
+  .from('clients')
+  .select('id')
+  .single();
+
+const clientId = client?.id;
+
+// Handle message submission
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const body = formData.get('message')?.toString();
+  if (body && clientId) {
+    await supabase.from('messages').insert({ client_id: clientId, body });
+  }
+}
+
+// Fetch Updates
+const { data: updates } = await supabase
+  .from('updates')
+  .select(`
+    body,
+    created_at,
+    projects (
+      name,
+      status
+    )
+  `)
+  .order('created_at', { ascending: false });
+
+// Fetch Files from Storage
+let files: any[] = [];
+if (clientId) {
+  const { data: storageFiles } = await supabase.storage
+    .from('client-files')
+    .list(`clients/${clientId}`);
+  
+  if (storageFiles) {
+    for (const file of storageFiles) {
+      if (file.name === '.emptyFolderPlaceholder') continue;
+      
+      const { data: signedUrl } = await supabase.storage
+        .from('client-files')
+        .createSignedUrl(`clients/${clientId}/${file.name}`, 60);
+      
+      files.push({
+        ...file,
+        url: signedUrl?.signedUrl
+      });
+    }
+  }
+}
+
+// Fetch Messages
+const { data: messages } = await supabase
+  .from('messages')
+  .select('*')
+  .order('created_at', { ascending: false });
+
+const tab = Astro.url.searchParams.get('tab') || 'updates';
+---
+
+<PortalLayout title="Dashboard">
+  <div class="mb-8 border-b border-gray-200">
+    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+      <a href="?tab=updates" class={`${tab === 'updates' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}>
+        Updates
+      </a>
+      <a href="?tab=files" class={`${tab === 'files' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}>
+        Files
+      </a>
+      <a href="?tab=messages" class={`${tab === 'messages' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}>
+        Messages
+      </a>
+    </nav>
+  </div>
+
+  {tab === 'updates' && (
+    <div class="space-y-6">
+      {updates && updates.length > 0 ? (
+        updates.map((update: any) => (
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+              <div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                  {update.projects?.name || 'General Update'}
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                  {new Date(update.created_at).toLocaleDateString()}
+                </p>
+              </div>
+              {update.projects?.status && (
+                <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  update.projects.status === 'live' ? 'bg-green-100 text-green-800' :
+                  update.projects.status === 'pilot' ? 'bg-blue-100 text-blue-800' :
+                  'bg-gray-100 text-gray-800'
+                }`}>
+                  {update.projects.status}
+                </span>
+              )}
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+              <p class="text-sm text-gray-700 whitespace-pre-wrap">{update.body}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div class="text-center py-12 bg-white rounded-lg shadow">
+          <p class="text-gray-500">No updates yet.</p>
+        </div>
+      )}
+    </div>
+  )}
+
+  {tab === 'files' && (
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul class="divide-y divide-gray-200">
+        {files && files.length > 0 ? (
+          files.map((file) => (
+            <li>
+              <div class="px-4 py-4 flex items-center justify-between sm:px-6">
+                <div class="flex items-center">
+                  <div class="ml-3">
+                    <p class="text-sm font-medium text-indigo-600 truncate">{file.name}</p>
+                    <p class="text-xs text-gray-500">
+                      {(file.metadata?.size / 1024).toFixed(1)} KB • {new Date(file.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <a href={file.url} target="_blank" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Download
+                  </a>
+                </div>
+              </div>
+            </li>
+          ))
+        ) : (
+          <li class="px-4 py-12 text-center text-gray-500 sm:px-6">No files available.</li>
+        )}
+      </ul>
+    </div>
+  )}
+
+  {tab === 'messages' && (
+    <div class="space-y-6">
+      <div class="bg-white shadow sm:rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Send a message</h3>
+        <form method="POST">
+          <textarea name="message" rows="4" required class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="How can we help?"></textarea>
+          <div class="mt-4 text-right">
+            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="space-y-4">
+        {messages && messages.map((msg: any) => (
+          <div class="bg-white shadow sm:rounded-lg p-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-semibold text-gray-500">You • {new Date(msg.created_at).toLocaleString()}</span>
+            </div>
+            <p class="text-sm text-gray-800">{msg.body}</p>
+            {msg.reply_body && (
+              <div class="mt-4 ml-6 border-l-4 border-indigo-200 pl-4 bg-indigo-50 p-2 rounded-r-md">
+                <span class="text-xs font-semibold text-indigo-600">eleoro • {new Date(msg.replied_at).toLocaleString()}</span>
+                <p class="text-sm text-gray-800 mt-1">{msg.reply_body}</p>
+              </div>
+            )}
+          </div>
+        ))}
+        {(!messages || messages.length === 0) && (
+          <div class="text-center py-12 bg-white rounded-lg shadow">
+            <p class="text-gray-500">No messages yet.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+</PortalLayout>
