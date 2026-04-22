@@ -20,7 +20,7 @@ async function captureScreenshot(url, viewport, outputPath) {
   const page = await context.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });
   // Wait for animations and fonts
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(10000);
   await page.screenshot({ path: outputPath, fullPage: true });
   await browser.close();
 }
